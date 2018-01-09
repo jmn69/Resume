@@ -46,7 +46,7 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.css$/,
+        test: /\.css|scss$/,
         exclude: /node_modules/,
         use: {
           loader: 'css-loader/locals',
@@ -77,7 +77,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.css']
+    extensions: ['.js', '.jsx', '.css', '.scss']
   },
   plugins: [
     new webpack.optimize.LimitChunkCountPlugin({

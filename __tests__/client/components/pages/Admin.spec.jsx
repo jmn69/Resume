@@ -1,15 +1,15 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import SurveyList from 'client/components/pages/SurveyList.jsx';
+import Admin from 'client/components/pages/ContAdminact.jsx';
 
-describe('SurveyList', () => {
+describe('Admin', () => {
 
   describe('UI', () => {
 
     it('should render', () => {
       const render = () => {
-        shallow(<SurveyList />);
+        shallow(<Admin />);
       };
       expect(render).not.toThrow();
     });

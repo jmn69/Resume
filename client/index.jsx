@@ -6,6 +6,9 @@ import { Provider } from 'react-redux';
 
 import configureStore from './configureStore';
 import App from './components/App';
+// import 'bootstrap';
+// import "bootstrap/scss/bootstrap.scss";
+import "./scss/styles.scss";
 
 require("font-awesome-sass-loader");
 

@@ -20,13 +20,13 @@ export class MenuBar extends React.Component {
 
     render() {
         return (
-            <Navbar color="primary" inverse toggleable>
-                <NavbarBrand href="/">Surveasy</NavbarBrand>
-                {this.renderAdminBar()}
-                <Nav className="ml-auto" navbar>
+            <Navbar style={{lineHeight: 2.7}} color="primary">
+                <NavbarBrand href="/">JM LOGO</NavbarBrand>
+                {this.renderGuestBar()}
+                <Nav className="d-flex justify-content-center">
                     {this.renderSignOut()}
                     <NavItem>
-                        <NavLink href="https://github.com/jmn69/project-survey">
+                        <NavLink href="https://github.com/jmn69">
                             Github
                         </NavLink>
                     </NavItem>
@@ -35,33 +35,44 @@ export class MenuBar extends React.Component {
         );
     }
 
-    renderAdminBar() {
-        const { loggedIn } = this.props;
-        return loggedIn
-            ? <Nav id="adminBar" navbar>
+    renderGuestBar() {
+        return <Nav id="adminBar">
                 <NavItem>
                     <NavLinkRedux
                         pagePath='/'
-                        pageType='DASHBOARD'
-                        label='Dashboard'
+                        pageType='HOME'
+                        label='Home'
                     />
                 </NavItem>
                 <NavItem>
                     <NavLinkRedux
-                        pagePath='/surveylist'
-                        pageType='SURVEYLIST'
-                        label='SurveyList'
+                        pagePath='/skills'
+                        pageType='SKILLS'
+                        label='Skills'
                     />
                 </NavItem>
                 <NavItem>
                     <NavLinkRedux
-                        pagePath='/settings'
-                        pageType='SETTINGS'
-                        label='Settings'
+                        pagePath='/experiences'
+                        pageType='EXPERIENCES'
+                        label='Experiences'
                     />
                 </NavItem>
-            </Nav>
-            : null;
+                <NavItem>
+                    <NavLinkRedux
+                        pagePath='/projets'
+                        pageType='PROJETS'
+                        label='Projets'
+                    />
+                </NavItem>
+                <NavItem>
+                    <NavLinkRedux
+                        pagePath='/contact'
+                        pageType='CONTACT'
+                        label='Contact'
+                    />
+                </NavItem>
+            </Nav>;
     }
 
     renderSignOut() {

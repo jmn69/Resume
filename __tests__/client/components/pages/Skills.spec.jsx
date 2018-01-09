@@ -1,15 +1,15 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Settings from 'client/components/pages/Settings.jsx';
+import Skills from 'client/components/pages/Skills.jsx';
 
-describe('Settings', () => {
+describe('Skills', () => {
 
   describe('UI', () => {
 
     it('should render', () => {
       const render = () => {
-        shallow(<Settings />);
+        shallow(<Skills />);
       };
       expect(render).not.toThrow();
     });

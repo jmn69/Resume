@@ -22,7 +22,7 @@ describe('Actions app', () => {
         const url = "/";
         expect(app.goTo(url)).toEqual(
             {
-                type: 'DASHBOARD'
+                type: 'HOME'
             }
         );
     });

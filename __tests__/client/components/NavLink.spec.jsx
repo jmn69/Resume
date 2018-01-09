@@ -27,8 +27,8 @@ describe('NavLink', () => {
         shallow(
           <NavLink
             pagePath='/'
-            pageType='DASHBOARD'
-            label='Dashboard'
+            pageType='HOME'
+            label='Home'
           />
         );
       };
@@ -40,15 +40,15 @@ describe('NavLink', () => {
       const wrapper = shallow(
         <NavLink
           pagePath='/'
-          pageType='DASHBOARD'
-          label='Dashboard'
+          pageType='HOME'
+          label='Home'
         />
       );
       wrapper.setProps({
         goToPage: spy
       });
       wrapper.instance().handleNavClick();
-      expect(spy).toHaveBeenCalledWith('DASHBOARD');
+      expect(spy).toHaveBeenCalledWith('HOME');
     });
 
   });
@@ -71,9 +71,9 @@ describe('NavLink', () => {
       it("goToPage", function () {
 
         const { store, fn } = prepare("goToPage", {});
-        fn('DASHBOARD').then(() => {
+        fn('HOME').then(() => {
           expect(store.getActions().map(a => a.type)).toEqual([
-            "DASHBOARD"
+            "HOME"
           ]);
         });
       });

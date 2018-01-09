@@ -55,7 +55,7 @@ export class SignIn extends React.Component {
 
         const data = await this.props.authentication(payload);
         if (data.success) {
-            const url = this.props.currentUrl ? this.props.currentUrl : "/";
+            const url = this.props.currentUrl ? this.props.currentUrl : "/admin";
             this.props.goTo(url);
         }
         else {
@@ -85,7 +85,7 @@ export class SignIn extends React.Component {
                 <Row className={`${styles.root} align-items-center justify-content-center`}>
                     <Col xs="12" sm="8" md="4">
                         <Card>
-                            <CardHeader className="card-primary card-inverse">Manage your surveys</CardHeader>
+                            <CardHeader className="bg-secondary text-light">Administration</CardHeader>
                             <CardBlock className="bg-faded">
                                 <br />
                                 <Form>

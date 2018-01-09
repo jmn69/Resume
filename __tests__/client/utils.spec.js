@@ -10,13 +10,13 @@ describe('client utils', () => {
 
     it('should allowed to access a route with a role', () => {
         const state = { app: {loggedIn: true}}
-        const res = isAllowed('DASHBOARD', state);
+        const res = isAllowed('HOME', state);
         expect(res).toEqual(true);
     });
 
     it('should not allowed to access a route with a role', () => {
         const state = { app: {loggedIn: false}}
-        const res = isAllowed('DASHBOARD', state);
+        const res = isAllowed('HOME', state);
         expect(res).toEqual(false);
     });
 });

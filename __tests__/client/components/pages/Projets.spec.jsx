@@ -1,15 +1,15 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Dashboard from 'client/components/pages/Dashboard.jsx';
+import Projets from 'client/components/pages/Projets.jsx';
 
-describe('Dashboard', () => {
+describe('Projets', () => {
 
   describe('UI', () => {
 
     it('should render', () => {
       const render = () => {
-        shallow(<Dashboard />);
+        shallow(<Projets />);
       };
       expect(render).not.toThrow();
     });

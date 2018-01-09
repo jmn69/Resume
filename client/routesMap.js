@@ -2,20 +2,24 @@ import { redirect, NOT_FOUND } from 'redux-first-router';
 import { fetchData } from './utils';
 
 export default {
-  SURVEYLIST: {
-    path: '/surveylist',
-    role: 'admin'
+  PROJETS: {
+    path: '/projets'
   },
-  SETTINGS: {
-    path: '/settings',
-    role: 'admin'
+  SKILLS: {
+    path: '/skills'
   },
   SIGNIN: '/signin',
-  DASHBOARD: {
-    path: '/',
-    role: 'admin'
+  HOME: {
+    path: '/'
   },
-  SURVEY: {
-    path: '/survey/:id'
+  EXPERIENCES: {
+    path: '/experiences'
+  },
+  CONTACT: {
+    path: '/contact'
+  },
+  ADMIN: {
+    path: '/admin',
+    role: 'admin'
   }
 };

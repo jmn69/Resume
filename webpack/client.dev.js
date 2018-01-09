@@ -33,6 +33,18 @@ module.exports = {
         exclude: /node_modules/
       },
       {
+        test: /\.scss$/,
+        use: ExtractCssChunks.extract({
+          use: [
+            {
+              loader: 'css-loader'
+            },
+            {
+              loader: 'sass-loader'
+            }]
+        })
+      },
+      {
         test: /\.css$/,
         use: ExtractCssChunks.extract({
           use: {
@@ -65,7 +77,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.css']
+    extensions: ['.js', '.jsx', '.css', '.scss']
   },
   plugins: [
     new WriteFilePlugin(), // used so you can see what chunks are produced in dev

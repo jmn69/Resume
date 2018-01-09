@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import NavLinkBs from 'reactstrap/lib/NavLink';
 import { goToPage } from '../actions';
+import classNames from 'classnames';
 
 export class NavLink extends React.Component {
     constructor(props) {
@@ -11,10 +12,11 @@ export class NavLink extends React.Component {
     }
 
     render() {
-        const { path, pagePath, label } = this.props;
+        const { label } = this.props;
         return (
             <NavLinkBs
-                style={{ color: this.active(path, this.props.pagePath) }}
+                className={classNames({ [`text-white`]: this.active() })}
+                style={{ backgroundColor: this.active() ? "#00847F" : "", fontSize: 15, fontWeight: 500 }}
                 onClick={this.handleNavClick}
                 href="#"
             >
@@ -23,8 +25,9 @@ export class NavLink extends React.Component {
         );
     }
 
-    active(currentPath, path) {
-        return currentPath === path ? "#18BC9C" : "";
+    active() {
+        const { path, pagePath } = this.props;
+        return path === pagePath;
     }
 
     handleNavClick() {

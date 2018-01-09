@@ -1,13 +1,15 @@
 import { NOT_FOUND } from 'redux-first-router';
 
-export default (state = 'DASHBOARD', action = {}) =>
+export default (state = 'HOME', action = {}) =>
   components[action.type] || state
 
 const components = {
-  DASHBOARD: 'Dashboard',
-  SETTINGS: 'Settings',
+  HOME: 'Home',
+  SKILLS: 'Skills',
   SIGNIN: 'SignIn',
-  SURVEYLIST: 'SurveyList',
-  SURVEY: 'Survey',
+  PROJETS: 'Projets',
+  EXPERIENCES: 'Experiences',
+  CONTACT: 'Contact',
+  ADMIN: 'Admin',
   [NOT_FOUND]: 'NotFound'
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class Settings extends React.Component {
+export default class Skills extends React.Component {
     constructor(props) {
         super(props)
         this.state = {}
@@ -9,7 +9,7 @@ export default class Settings extends React.Component {
     render() {
         return (
             <div>
-                Settings
+                Skills
             </div>);
     }
 }

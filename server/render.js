@@ -32,8 +32,8 @@ export default ({ clientStats }) => async (req, res, next) => {
         <head>
           <meta charset="utf-8">
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-          <title>project-survey</title>
-          <link rel="stylesheet" href="https://bootswatch.com/4-alpha/flatly/bootstrap.min.css">
+          <title>Jordane Michon Fullstack Developer</title>
+          <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700" rel="stylesheet"> 
           ${styles}
         </head>
         <body>

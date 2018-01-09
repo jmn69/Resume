@@ -1,15 +1,15 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import AdminArea from 'client/components/AdminArea.jsx';
+import Contact from 'client/components/pages/Contact.jsx';
 
-describe('AdminArea', () => {
+describe('Contact', () => {
 
   describe('UI', () => {
 
     it('should render', () => {
       const render = () => {
-        shallow(<AdminArea />);
+        shallow(<Contact />);
       };
       expect(render).not.toThrow();
     });

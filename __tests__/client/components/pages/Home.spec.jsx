@@ -1,15 +1,15 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import SurveyConnected, { Survey, mapStateToProps, mapDispatchToProps } from 'client/components/pages/Survey.jsx';
+import Home from 'client/components/pages/Home.jsx';
 
-describe('Survey', () => {
+describe('Home', () => {
 
   describe('UI', () => {
 
     it('should render', () => {
       const render = () => {
-        shallow(<Survey />);
+        shallow(<Home />);
       };
       expect(render).not.toThrow();
     });
