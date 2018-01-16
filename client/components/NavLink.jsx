@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import NavLinkBs from 'reactstrap/lib/NavLink';
 import { goToPage } from '../actions';
-import classNames from 'classnames';
 
 export class NavLink extends React.Component {
     constructor(props) {
@@ -15,7 +14,7 @@ export class NavLink extends React.Component {
         const { label } = this.props;
         return (
             <NavLinkBs
-                className={classNames({ [`text-white`]: this.active() })}
+                className="text-white"
                 style={{ backgroundColor: this.active() ? "#00847F" : "", fontSize: 15, fontWeight: 500 }}
                 onClick={this.handleNavClick}
                 href="#"
