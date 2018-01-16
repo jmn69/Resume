@@ -17,7 +17,7 @@ export default class App extends React.Component {
     return (
       <div>
         <MenuBar />
-        <Container style={{ paddingTop: '1rem' }} fluid>
+        <Container fluid>
           <Switcher />
         </Container>
       </div>
