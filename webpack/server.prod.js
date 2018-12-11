@@ -1,8 +1,8 @@
-const fs = require('fs')
-const path = require('path')
-const webpack = require('webpack')
+const fs = require('fs');
+const path = require('path');
+const webpack = require('webpack');
 
-const res = p => path.resolve(__dirname, p)
+const res = p => path.resolve(__dirname, p);
 
 // if you're specifying externals to leave unbundled, you need to tell Webpack
 // to still bundle `react-universal-component`, `webpack-flush-chunks` and
@@ -13,35 +13,31 @@ const externals = fs
   .filter(
     x =>
       !/\.bin|react-universal-component|require-universal-module|webpack-flush-chunks/.test(
-        x
-      )
+        x,
+      ),
   )
   .reduce((externals, mod) => {
-    externals[mod] = `commonjs ${mod}`
-    return externals
-  }, {})
+    externals[mod] = `commonjs ${mod}`;
+    return externals;
+  }, {});
 
 module.exports = {
   name: 'server',
   target: 'node',
   devtool: 'source-map',
-  entry: ['fetch-everywhere', res('../server/render.js')],
+  entry: [res('../server/render.js')],
   externals,
   output: {
     path: res('../buildServer'),
     filename: '[name].js',
-    libraryTarget: 'commonjs2'
+    libraryTarget: 'commonjs2',
   },
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
-        use: [
-          {
-            loader: "babel-loader"
-          }
-        ],
-        exclude: /node_modules/
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: 'babel-loader',
       },
       {
         test: /\.css$/,
@@ -50,42 +46,24 @@ module.exports = {
           loader: 'css-loader/locals',
           options: {
             modules: true,
-            localIdentName: '[name]__[local]--[hash:base64:5]'
-          }
-        }
+            localIdentName: '[name]__[local]--[hash:base64:5]',
+          },
+        },
       },
-      {
-        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 10000,
-              mimetype: 'application/font-woff'
-            }
-          }
-        ]
-      },
-      {
-        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        use: [
-          { loader: 'file-loader' }
-        ]
-      }
-    ]
+    ],
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.css']
+    extensions: ['.js', '.css'],
   },
   plugins: [
     new webpack.optimize.LimitChunkCountPlugin({
-      maxChunks: 1
+      maxChunks: 1,
     }),
 
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify('production')
-      }
-    })
-  ]
-}
+        NODE_ENV: JSON.stringify('production'),
+      },
+    }),
+  ],
+};

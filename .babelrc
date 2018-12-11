@@ -1,36 +1,9 @@
 {
-  "presets": [
-    "es2015",
-    "react",
-    "stage-2"
-  ],
-  "plugins": [
-    "transform-es2015-destructuring",
-    "transform-object-rest-spread",
-    "universal-import"
-  ],
-  "env": {
-    "development": {
-      "plugins": [
-        "react-hot-loader/babel"
-      ]
+  presets: ['env', 'react', 'stage-2'],
+  plugins: ['babel-plugin-styled-components', 'universal-import'],
+  env: {
+    development: {
+      plugins: ['babel-plugin-styled-components', 'react-hot-loader/babel'],
     },
-    "test": {
-      "presets": [
-        "es2015",
-        "react",
-        "stage-2"
-      ],
-      "plugins": [
-        ["module-resolver", {
-          "root": ["./"],
-          "alias": {
-            "client": "./client"
-          }
-        }],
-        "dynamic-import-node",
-        "transform-es2015-modules-commonjs"
-      ]
-    }
-  }
+  },
 }
