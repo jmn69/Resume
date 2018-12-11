@@ -4,6 +4,7 @@ import { connectRoutes } from 'redux-first-router';
 
 import routesMap from './routesMap';
 import * as reducers from './reducers';
+import localeReducer from './locale/reducer';
 
 export default (history, preloadedState) => {
   const {
@@ -13,7 +14,11 @@ export default (history, preloadedState) => {
     routesMap,
   );
 
-  const rootReducer = combineReducers({ ...reducers, location: reducer });
+  const rootReducer = combineReducers({
+    ...reducers,
+    locale: localeReducer,
+    location: reducer,
+  });
   const middlewares = applyMiddleware(middleware);
   const enhancers = composeEnhancers(enhancer, middlewares);
   const store = createStore(rootReducer, preloadedState, enhancers);

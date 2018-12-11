@@ -61,6 +61,7 @@ module.exports = {
     'prefer-template': 1,
     'prefer-destructuring': 0,
     'function-paren-newline': 0,
+    'react/prefer-stateless-function': 0,
     'react/no-array-index-key': 1,
     'global-require': 1,
     'react/jsx-indent': 1,

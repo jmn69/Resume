@@ -5,42 +5,43 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
 import AppContainer from 'react-hot-loader/lib/AppContainer';
-import { IntlProvider, addLocaleData } from 'react-intl';
-import en from 'react-intl/locale-data/en';
-import fr from 'react-intl/locale-data/fr';
-import App from './App';
+// import { IntlProvider, addLocaleData } from 'react-intl';
+// import en from 'react-intl/locale-data/en';
+// import fr from 'react-intl/locale-data/fr';
+// import Cookies from 'js-cookie';
+import Root from './Root';
 import configureStore from './configureStore';
-import translations from './i18n/locales';
+// import translations from './i18n/locales';
 
 const history = createHistory();
 const { store } = configureStore(history, window.REDUX_STATE);
 
-addLocaleData([...en, ...fr]);
+// addLocaleData([...en, ...fr]);
 
-const render = App => {
+const render = Root => {
   const root = document.getElementById('root');
 
-  const locale = 'fr';
-  const messages = translations[locale];
+  // const locale = Cookies.get('language_pref') || 'en';
+  // const messages = translations[locale];
 
   ReactDOM.hydrate(
-    <IntlProvider messages={messages} key={locale} locale={locale}>
-      <AppContainer>
-        <Provider store={store}>
-          <App />
-        </Provider>
-      </AppContainer>
-    </IntlProvider>,
+    // <IntlProvider messages={messages} key={locale} locale={locale}>
+    <AppContainer>
+      <Provider store={store}>
+        <Root />
+      </Provider>
+    </AppContainer>,
+    // </IntlProvider>,
     root,
   );
 };
 
-render(App);
+render(Root);
 
 if (module.hot && process.env.NODE_ENV === 'development') {
-  module.hot.accept('./App', () => {
-    const App = require('./App').default;
+  module.hot.accept('./Root', () => {
+    const Root = require('./Root').default;
 
-    render(App);
+    render(Root);
   });
 }

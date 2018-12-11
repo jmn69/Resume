@@ -19,13 +19,6 @@ const Sidebar = ({ path, dispatch }) => (
       Skills
     </NavLink>
 
-    <Link
-      className={isActive(path, '/list/react')}
-      to={{ type: 'LIST', payload: { category: 'react' } }}
-    >
-      React
-    </Link>
-
     <div style={{ height: 20 }} />
 
     <h2>EVENT HANDLERS</h2>

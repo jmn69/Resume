@@ -16,9 +16,9 @@ const app = express();
 app.use(cookieParser());
 
 app.use((req, res, next) => {
-  const cookie = req.cookies.languagePref;
+  const cookie = req.cookies.language_pref;
   if (cookie === undefined) {
-    res.cookie('languagePref', 'fr', { maxAge: 900000, httpOnly: true });
+    res.cookie('language_pref', 'fr', { maxAge: 31536000, httpOnly: false });
   }
   next();
 });

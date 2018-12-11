@@ -19,7 +19,7 @@ export default ({ clientStats }) => async (req, res) => {
   if (!store) return; // no store means redirect was already served
 
   const sheet = new ServerStyleSheet();
-  const locale = req.cookies.languagePref || 'en';
+  const locale = req.cookies.language_pref || 'en';
   const messages = translations[locale];
   const app = createApp(App, store, locale, messages);
   const appString = ReactDOM.renderToString(sheet.collectStyles(app));
