@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   parser: 'babel-eslint',
   parserOptions: {
@@ -16,6 +18,7 @@ module.exports = {
     },
     'import/resolver': {
       node: {
+        paths: [path.resolve(__dirname, 'src')],
         extensions: ['.js', '.json', '.css', '.styl'],
       },
     },
@@ -60,6 +63,7 @@ module.exports = {
     camelcase: 1,
     'prefer-template': 1,
     'prefer-destructuring': 0,
+    'react/forbid-prop-types': 0,
     'function-paren-newline': 0,
     'react/prefer-stateless-function': 0,
     'react/no-array-index-key': 1,
@@ -79,7 +83,7 @@ module.exports = {
     'spaced-comment': [2, 'always', { markers: ['?'] }],
     'arrow-parens': [2, 'as-needed', { requireForBlockBody: false }],
     'brace-style': [2, 'stroustrup'],
-    'import/no-unresolved': [2, { commonjs: true, caseSensitive: true }],
+    'import/no-unresolved': 0,
     'no-unused-expressions': [
       2,
       {
@@ -121,8 +125,8 @@ module.exports = {
           'getChildContext',
           'static-methods',
           'lifecycle',
-          'everything-else',
           'render',
+          'everything-else',
         ],
       },
     ],

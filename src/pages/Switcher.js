@@ -16,11 +16,7 @@ const UniversalComponent = universal(({ page }) => import(`./${page}`), {
   error: () => <div className={styles.notFound}>PAGE NOT FOUND - 404</div>,
 });
 
-const Switcher = ({ page }) => (
-  <div className={styles.switcher}>
-    <UniversalComponent page={page} />
-  </div>
-);
+const Switcher = ({ page }) => <UniversalComponent page={page} />;
 
 const mapStateToProps = state => ({
   page: state.page,

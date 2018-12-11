@@ -10,7 +10,7 @@ import fr from 'react-intl/locale-data/fr';
 
 import translations from '../src/i18n/locales';
 import configureStore from './configureStore';
-import App from '../src/App';
+import Root from '../src/Root';
 
 addLocaleData([...en, ...fr]);
 
@@ -21,7 +21,7 @@ export default ({ clientStats }) => async (req, res) => {
   const sheet = new ServerStyleSheet();
   const locale = req.cookies.language_pref || 'en';
   const messages = translations[locale];
-  const app = createApp(App, store, locale, messages);
+  const app = createApp(Root, store, locale, messages);
   const appString = ReactDOM.renderToString(sheet.collectStyles(app));
   const styleTags = sheet.getStyleTags();
   const state = store.getState();
@@ -53,7 +53,7 @@ export default ({ clientStats }) => async (req, res) => {
 const createApp = (App, store, locale, messages) => (
   <IntlProvider messages={messages} key={locale} locale={locale}>
     <Provider store={store}>
-      <App />
+      <Root />
     </Provider>
   </IntlProvider>
 );

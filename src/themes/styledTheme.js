@@ -11,4 +11,15 @@ export default {
     error: '#e53935',
     success: '#4caf50',
   },
+  fonts: {
+    sans: 'Roboto',
+    mono: 'Roboto',
+  },
+  fontSizes: {
+    small: '12px',
+    medium: '14px',
+    button: '16px',
+    large: '20px',
+    title: '26px',
+  },
 };

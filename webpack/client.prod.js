@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 const StatsPlugin = require('stats-webpack-plugin');
 const AutoDllPlugin = require('autodll-webpack-plugin');
+const sharedConfig = require('./config.shared.js');
 
 module.exports = {
   name: 'client',
@@ -38,6 +39,7 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.css'],
+    alias: sharedConfig.alias,
   },
   plugins: [
     new StatsPlugin('stats.json'),

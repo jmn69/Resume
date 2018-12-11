@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
+const sharedConfig = require('./config.shared.js');
 
 const res = p => path.resolve(__dirname, p);
 
@@ -54,6 +55,7 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.css'],
+    alias: sharedConfig.alias,
   },
   plugins: [
     new webpack.optimize.LimitChunkCountPlugin({
