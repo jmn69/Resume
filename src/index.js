@@ -1,37 +1,37 @@
 /* eslint-disable global-require */
 
-import React from 'react';
+import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
 import AppContainer from 'react-hot-loader/lib/AppContainer';
-// import { IntlProvider, addLocaleData } from 'react-intl';
-// import en from 'react-intl/locale-data/en';
-// import fr from 'react-intl/locale-data/fr';
-// import Cookies from 'js-cookie';
+import { createGlobalStyle } from 'styled-components';
 import Root from './Root';
 import configureStore from './configureStore';
-// import translations from './i18n/locales';
 
 const history = createHistory();
 const { store } = configureStore(history, window.REDUX_STATE);
 
-// addLocaleData([...en, ...fr]);
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto"
+  }
+`;
 
 const render = Root => {
   const root = document.getElementById('root');
 
-  // const locale = Cookies.get('language_pref') || 'en';
-  // const messages = translations[locale];
-
   ReactDOM.hydrate(
-    // <IntlProvider messages={messages} key={locale} locale={locale}>
     <AppContainer>
       <Provider store={store}>
-        <Root />
+        <Fragment>
+          <Root />
+          <GlobalStyle />
+        </Fragment>
       </Provider>
     </AppContainer>,
-    // </IntlProvider>,
     root,
   );
 };

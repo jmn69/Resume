@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-// import RebassProvider from 'rebass/dist/Provider';
 import { IntlProvider, addLocaleData } from 'react-intl';
 import en from 'react-intl/locale-data/en';
 import fr from 'react-intl/locale-data/fr';
 import { connect } from 'react-redux';
 import T from 'prop-types';
-// import { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 
-// import styledTheme from './themes/styledTheme';
-// import rebassTheme from './themes/rebassTheme';
+import styledTheme from './themes/styledTheme';
 import App from './App';
 import translations from './i18n/locales';
+import Fonts from './themes/Fonts';
 
 addLocaleData([...en, ...fr]);
 
@@ -23,6 +22,10 @@ class Root extends Component {
     locale: T.string.isRequired,
   };
 
+  componentDidMount() {
+    Fonts();
+  }
+
   render() {
     const { locale } = this.props;
 
@@ -30,11 +33,9 @@ class Root extends Component {
 
     return (
       <IntlProvider messages={messages} key={locale} locale={locale}>
-        {/* <ThemeProvider theme={styledTheme}>
-            <RebassProvider theme={rebassTheme}> */}
-        <App />
-        {/* </RebassProvider>
-          </ThemeProvider> */}
+        <ThemeProvider theme={styledTheme}>
+          <App />
+        </ThemeProvider>
       </IntlProvider>
     );
   }
