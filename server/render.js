@@ -28,7 +28,10 @@ export default ({ clientStats }) => async (req, res) => {
       <html>
         <head>
           <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width">
           <title>${state.title}</title>
+          <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+           <link href="https://use.fontawesome.com/releases/v5.6.1/css/svg-with-js.css" rel="stylesheet"></link>
           ${styles}
           ${styleTags}
         </head>

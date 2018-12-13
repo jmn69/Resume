@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 import { IntlProvider, addLocaleData } from 'react-intl';
 import en from 'react-intl/locale-data/en';
 import fr from 'react-intl/locale-data/fr';
@@ -13,10 +13,11 @@ import styledTheme from './themes/styledTheme';
 import App from './App';
 import translations from './i18n/locales';
 import Fonts from './themes/Fonts';
+import './css/Init';
 
 addLocaleData([...en, ...fr]);
 
-library.add(faBars);
+library.add(faBars, faCircleNotch);
 
 class Root extends Component {
   static propTypes = {

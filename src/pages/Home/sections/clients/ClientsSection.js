@@ -1,10 +1,32 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
+import T from 'prop-types';
+import { connect } from 'react-redux';
 
 import ClientsSectionIntl from './ClientsSection.i';
+import { Container } from './ClientsSection.s';
 
-export default () => (
-  <div className='section'>
-    <FormattedMessage {...ClientsSectionIntl.Clients} />
-  </div>
-);
+class HomeSection extends Component {
+  static propTypes = {
+    isFullPageReady: T.bool.isRequired,
+  };
+
+  render() {
+    const { isFullPageReady } = this.props;
+
+    return (
+      <div className='section'>
+        <div className='fp-bg' />
+        <Container isFullPageReady={isFullPageReady}>
+          <FormattedMessage {...ClientsSectionIntl.Clients} />
+        </Container>
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  isFullPageReady: state.settings.isFullPageReady,
+});
+
+export default connect(mapStateToProps)(HomeSection);
