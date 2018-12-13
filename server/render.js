@@ -4,24 +4,16 @@ import { Provider } from 'react-redux';
 import { flushChunkNames } from 'react-universal-component/server';
 import flushChunks from 'webpack-flush-chunks';
 import { ServerStyleSheet } from 'styled-components';
-import { IntlProvider, addLocaleData } from 'react-intl';
-import en from 'react-intl/locale-data/en';
-import fr from 'react-intl/locale-data/fr';
 
-import translations from '../src/i18n/locales';
 import configureStore from './configureStore';
 import Root from '../src/Root';
-
-addLocaleData([...en, ...fr]);
 
 export default ({ clientStats }) => async (req, res) => {
   const store = await configureStore(req, res);
   if (!store) return; // no store means redirect was already served
 
   const sheet = new ServerStyleSheet();
-  const locale = req.cookies.language_pref || 'en';
-  const messages = translations[locale];
-  const app = createApp(Root, store, locale, messages);
+  const app = createApp(Root, store);
   const appString = ReactDOM.renderToString(sheet.collectStyles(app));
   const styleTags = sheet.getStyleTags();
   const state = store.getState();
@@ -50,10 +42,8 @@ export default ({ clientStats }) => async (req, res) => {
       </html>`);
 };
 
-const createApp = (App, store, locale, messages) => (
-  <IntlProvider messages={messages} key={locale} locale={locale}>
-    <Provider store={store}>
-      <Root />
-    </Provider>
-  </IntlProvider>
+const createApp = (Root, store) => (
+  <Provider store={store}>
+    <Root />
+  </Provider>
 );

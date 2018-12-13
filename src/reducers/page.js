@@ -5,8 +5,5 @@ export default (state = 'HOME', action = {}) =>
 
 const components = {
   HOME: 'Home',
-  SKILLS: 'Skills',
-  EXPERIENCES: 'Experiences',
-  CONTACT: 'Contact',
   [NOT_FOUND]: 'NotFound',
 };

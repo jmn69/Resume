@@ -1,22 +1,20 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
-import { connect } from 'react-redux';
-import HomeIntl from './Home.i';
+import ReactFullpage from '@fullpage/react-fullpage';
 
-import { changeLocale } from '../../locale/action';
+import HomeSection from './sections/home';
+import SkillsSection from './sections/skills';
+import ClientSection from './sections/clients';
+import AboutSection from './sections/about';
 
-const Home = () => (
-  <div>
-    <FormattedMessage {...HomeIntl.Home} />
-  </div>
+export default () => (
+  <ReactFullpage
+    render={({ state, fullpageApi }) => (
+      <ReactFullpage.Wrapper>
+        <HomeSection />
+        <SkillsSection />
+        <ClientSection />
+        <AboutSection />
+      </ReactFullpage.Wrapper>
+    )}
+  />
 );
-
-const mapStateToProps = state => ({
-  locale: state.locale.locale,
-});
-
-const mapDispatchToProps = dispatch => ({
-  changeLocale: locale => dispatch(changeLocale(locale)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);

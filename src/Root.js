@@ -7,6 +7,7 @@ import fr from 'react-intl/locale-data/fr';
 import { connect } from 'react-redux';
 import T from 'prop-types';
 import { ThemeProvider } from 'styled-components';
+import { hot } from 'react-hot-loader';
 
 import styledTheme from './themes/styledTheme';
 import App from './App';
@@ -45,4 +46,4 @@ const mapStateToProps = state => ({
   locale: state.locale.locale,
 });
 
-export default connect(mapStateToProps)(Root);
+export default hot(module)(connect(mapStateToProps)(Root));
