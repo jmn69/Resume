@@ -3,7 +3,7 @@ import T from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 import { withTheme } from 'styled-components';
-import { LoaderContainer } from './Loader.s';
+import { LoaderContainer, MessageWrapper } from './Loader.s';
 
 const Loader = props => (
   <LoaderContainer fullPage={props.fullPage}>
@@ -13,7 +13,7 @@ const Loader = props => (
       color={props.color ? props.color : props.theme.colors.accent}
       icon={faCircleNotch}
     />
-    Chargement...
+    {props.message && <MessageWrapper>{props.message}</MessageWrapper>}
   </LoaderContainer>
 );
 
@@ -22,12 +22,14 @@ Loader.propTypes = {
   theme: T.any.isRequired,
   size: T.string,
   color: T.string,
+  message: T.string,
 };
 
 Loader.defaultProps = {
   size: '1x',
   fullPage: false,
   color: null,
+  message: null,
 };
 
 export default withTheme(Loader);

@@ -7,7 +7,6 @@ export const LoadingContainer = styled.div`
   left: 0;
   position: fixed;
   display: block;
-  opacity: 0.7;
   background-color: #fff;
   z-index: 99;
   text-align: center;

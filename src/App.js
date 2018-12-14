@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import TopMenu from './pages/Home/topMenu/TopMenu';
 
+import TopMenu from './pages/Home/topMenu/TopMenuContainer';
 import Switcher from './pages/Switcher';
 import { AppContainer } from './App.s';
 

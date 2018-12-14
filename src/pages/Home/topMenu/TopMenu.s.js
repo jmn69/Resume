@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import T from 'prop-types';
 
-export const Container = styled.ul`
+const Container = styled.ul`
   @media screen and (max-width: 600px) {
     display: none;
   }
@@ -10,8 +11,8 @@ export const Container = styled.ul`
   }
 
   position: fixed;
-  top: 20px;
-  right: 20px;
+  top: 4%;
+  right: 20%;
   z-index: 70;
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: antialiased;
@@ -25,7 +26,7 @@ export const Container = styled.ul`
       &:after {
         content: '';
         height: 2px;
-        background: #fff;
+        background: ${props => props.color};
         display: block;
         position: absolute;
         bottom: 8px;
@@ -37,9 +38,15 @@ export const Container = styled.ul`
   }
 `;
 
+Container.propTypes = {
+  color: T.string.isRequired,
+};
+
+export { Container };
+
 export const MenuItem = styled.li`
   display: inline-block;
-  margin: 10px 25px;
+  margin: 4% 25px;
   position: relative;
 `;
 

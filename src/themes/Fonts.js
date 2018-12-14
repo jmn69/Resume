@@ -3,15 +3,15 @@ const FontFaceObserver = require('fontfaceobserver');
 const Fonts = () => {
   const link = document.createElement('link');
   link.href =
-    'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900';
+    'https://fonts.googleapis.com/css?family=Lato:300,400,500,700,900';
   link.rel = 'stylesheet';
 
   document.head.appendChild(link);
 
-  const roboto = new FontFaceObserver('Roboto');
+  const lato = new FontFaceObserver('Lato');
 
-  roboto.load().then(() => {
-    document.documentElement.classList.add('roboto');
+  lato.load().then(() => {
+    document.documentElement.classList.add('Lato');
   });
 };
 

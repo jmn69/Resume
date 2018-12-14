@@ -16,7 +16,6 @@ class HomeSection extends Component {
 
     return (
       <div className='section'>
-        <div className='fp-bg' />
         <Container isFullPageReady={isFullPageReady}>
           <FormattedMessage {...ClientsSectionIntl.Clients} />
         </Container>

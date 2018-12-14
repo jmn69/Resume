@@ -13,3 +13,7 @@ LoaderContainer.propTypes = {
 };
 
 export { LoaderContainer };
+
+export const MessageWrapper = styled.span`
+  margin-left: 1%;
+`;

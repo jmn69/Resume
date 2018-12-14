@@ -1,19 +1,20 @@
 export default {
   colors: {
-    primary: '#00a8e8',
-    accent: '#FF2C00',
-    third: '#FFB600',
+    primary: '#00C6BF',
+    accent: '#1550CF',
+    third: '#0BE300',
     lightThird: '#ffe199',
     gray: '#e0e0e0',
-    darkGray: '#344245',
+    darkGray: '#383838',
     lightGray: '#F9FBFB',
+    lightGray2: '#edf3f3',
     white: '#ffffff',
     error: '#e53935',
     success: '#4caf50',
   },
   fonts: {
-    sans: 'Roboto',
-    mono: 'Roboto',
+    sans: 'Lato',
+    mono: 'Lato',
   },
   fontSizes: {
     small: '12px',
