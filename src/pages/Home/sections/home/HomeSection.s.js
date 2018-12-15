@@ -69,6 +69,10 @@ export const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  @media screen and (max-width: 600px) {
+    align-items: center;
+  }
 `;
 
 export const FullStackDevWrapper = styled.div`
@@ -76,6 +80,10 @@ export const FullStackDevWrapper = styled.div`
   margin-bottom: 20px;
   display: flex;
   flex-wrap: wrap;
+
+  @media screen and (max-width: 600px) {
+    justify-content: center;
+  }
 `;
 
 export const FullStackWrapper = styled(Text)`
@@ -89,6 +97,7 @@ export const FullStackWrapper = styled(Text)`
   @media screen and (max-width: 600px) {
     font-size: 3.3rem;
     letter-spacing: 0px;
+    margin-right: 0px;
   }
 
   @media only screen and (max-device-width: 600px) {
@@ -119,5 +128,15 @@ export const IntroWrapper = styled(Text)`
   @media screen and (min-width: 1280px) {
     line-height: 2.3;
     letter-spacing: 0.4px;
+  }
+`;
+
+export const ButtonWrapper = styled.div`
+  margin-top: 40px;
+  width: 25%;
+  min-width: 250px;
+
+  @media screen and (min-width: 1280px) {
+    min-width: 300px;
   }
 `;

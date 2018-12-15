@@ -21,9 +21,12 @@ const selectColorByPageIndex = (currentPageIndex, theme) => {
 class TopMenuComponent extends Component {
   static propTypes = {
     currentPageIndex: T.number.isRequired,
-    theme: T.any.isRequired,
+    theme: T.any,
   };
 
+  static defaultProps = {
+    theme: null,
+  };
   render() {
     const textColor = selectColorByPageIndex(
       this.props.currentPageIndex,
