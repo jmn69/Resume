@@ -4,7 +4,7 @@ import Loader from 'Common/components/Loader';
 import T from 'prop-types';
 import { connect } from 'react-redux';
 
-import HomeSection from './sections/home';
+import HomeSectionContainer from './sections/home';
 import SkillsSection from './sections/skills';
 import ClientSection from './sections/clients';
 import AboutSection from './sections/about';
@@ -39,7 +39,7 @@ class Home extends Component {
                 />
               </LoadingContainer>
             ) : null}
-            <HomeSection />
+            <HomeSectionContainer />
             <SkillsSection />
             <ClientSection />
             <AboutSection />

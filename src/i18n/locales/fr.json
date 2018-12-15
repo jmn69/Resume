@@ -1,3 +1,16 @@
 {
-  "Home.Home": "Accueil"
+  "About.About": "A propos",
+  "Clients.Clients": "Clients",
+  "HomeSection.Developer": "Développeur",
+  "HomeSection.FullStack": "Fullstack",
+  "HomeSection.Intro":
+    "Mélangez un bout d'entrepreneur avec de la prise de risque,{eol}\n                rajoutez un féru des nouvelles technologies ainsi que de la créativité.{eol}\n                Un peu de rigueur, un peu de liberté.{eol}\n                Finissez par une bonne quantité de curiosité et vous obtenez un Freelance prêt à relever n'importe quel challenge,{eol}\n                qui s'intègre avec aisance dans vos équipes et contribue aux succès de vos produits.{eol}",
+  "HomeSection.WorkWithMe": "Travailler avec moi",
+  "Locale.En": "En",
+  "Locale.Fr": "Fr",
+  "Skills.Skills": "Compétences",
+  "TopMenu.About": "A propos",
+  "TopMenu.Clients": "Clients",
+  "TopMenu.Home": "Accueil",
+  "TopMenu.Skills": "Compétences"
 }

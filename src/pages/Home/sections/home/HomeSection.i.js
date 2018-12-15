@@ -17,4 +17,8 @@ export default defineMessages({
                 Finissez par une bonne quantité de curiosité et vous obtenez un Freelance prêt à relever n'importe quel challenge,{eol}
                 qui s'intègre avec aisance dans vos équipes et contribue aux succès de vos produits.{eol}`,
   },
+  WorkWithMe: {
+    id: 'HomeSection.WorkWithMe',
+    defaultMessage: 'Work with me',
+  },
 });

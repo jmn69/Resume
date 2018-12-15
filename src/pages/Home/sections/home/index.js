@@ -1,3 +1,3 @@
-import HomeSection from './HomeSection';
+import HomeSectionContainer from './HomeSectionContainer';
 
-export default HomeSection;
+export default HomeSectionContainer;

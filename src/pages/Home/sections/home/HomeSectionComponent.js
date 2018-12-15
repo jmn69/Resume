@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
+import { compose } from 'redux';
 import T from 'prop-types';
-import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faJedi } from '@fortawesome/free-solid-svg-icons';
 import { withTheme } from 'styled-components';
@@ -27,10 +27,12 @@ class HomeSection extends Component {
   static propTypes = {
     isFullPageReady: T.bool.isRequired,
     theme: T.any,
+    intl: T.any,
   };
 
   static defaultProps = {
     theme: null,
+    intl: null,
   };
 
   state = {
@@ -38,7 +40,7 @@ class HomeSection extends Component {
   };
 
   render() {
-    const { isFullPageReady, theme } = this.props;
+    const { isFullPageReady, theme, intl } = this.props;
     const { showButton } = this.state;
 
     return (
@@ -74,7 +76,9 @@ class HomeSection extends Component {
               </ScrollAnimation>
               {showButton ? (
                 <ButtonWrapper>
-                  <Button text='Work with me' />
+                  <Button
+                    text={intl.formatMessage(HomeSectionIntl.WorkWithMe)}
+                  />
                 </ButtonWrapper>
               ) : null}
 
@@ -91,8 +95,4 @@ class HomeSection extends Component {
   };
 }
 
-const mapStateToProps = state => ({
-  isFullPageReady: state.settings.isFullPageReady,
-});
-
-export default connect(mapStateToProps)(withTheme(HomeSection));
+export default compose(injectIntl, withTheme)(HomeSection);
