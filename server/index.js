@@ -9,6 +9,7 @@ import clientConfig from '../webpack/client.dev';
 import serverConfig from '../webpack/server.dev';
 
 const DEV = process.env.NODE_ENV === 'development';
+const port = DEV ? 3000 : 4030;
 const publicPath = clientConfig.output.publicPath;
 const outputPath = clientConfig.output.path;
 const app = express();
@@ -46,6 +47,6 @@ else {
   app.use(serverRender({ clientStats, outputPath }));
 }
 
-app.listen(3000, () => {
-  console.log('Listening @ http://localhost:3000/'); // eslint-disable-line no-console
+app.listen(port, () => {
+  console.log(`Listening @ http://localhost:${port}/`); // eslint-disable-line no-console
 });
