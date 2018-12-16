@@ -5,7 +5,7 @@ import T from 'prop-types';
 import { connect } from 'react-redux';
 
 import HomeSectionContainer from './sections/home';
-import SkillsSection from './sections/skills';
+import SkillsSectionContainer from './sections/skills';
 import ClientSection from './sections/clients';
 import AboutSection from './sections/about';
 import { LoadingContainer } from './Home.s';
@@ -26,7 +26,7 @@ class Home extends Component {
         navigation
         navigationTooltips={anchors}
         menu='#topMenu'
-        onLeave={(origin, destination, direction) => {
+        onLeave={(origin, destination) => {
           setCurrentPage(destination.index);
         }}
         render={({ state, fullpageApi }) => (
@@ -40,7 +40,7 @@ class Home extends Component {
               </LoadingContainer>
             ) : null}
             <HomeSectionContainer />
-            <SkillsSection />
+            <SkillsSectionContainer />
             <ClientSection />
             <AboutSection />
           </ReactFullpage.Wrapper>

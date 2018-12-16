@@ -18,6 +18,7 @@ import App from './App';
 import translations from './i18n/locales';
 import Fonts from './themes/Fonts';
 import './css/Init';
+import './css/External';
 
 addLocaleData([...en, ...fr]);
 

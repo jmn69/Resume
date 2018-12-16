@@ -32,7 +32,6 @@ export default ({ clientStats }) => async (req, res) => {
           <title>${state.title}</title>
           <link href="https://fonts.googleapis.com/css?family=Lato:300,400,500,700,900" rel="stylesheet">
           <link href="https://use.fontawesome.com/releases/v5.6.1/css/svg-with-js.css" rel="stylesheet"></link>
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
           ${styles}
           ${styleTags}
         </head>

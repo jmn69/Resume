@@ -4,6 +4,7 @@ const WriteFilePlugin = require('write-file-webpack-plugin');
 const AutoDllPlugin = require('autodll-webpack-plugin');
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 const sharedConfig = require('./config.shared.js');
+const getLocalIdent = require('css-loader/lib/getLocalIdent');
 
 module.exports = {
   name: 'client',
@@ -36,7 +37,21 @@ module.exports = {
             loader: 'css-loader',
             options: {
               modules: true,
-              localIdentName: '[name]__[local]--[hash:base64:5]',
+              localIdentName: '[path][name]__[local]--[hash:base64:5]',
+              getLocalIdent: (
+                loaderContext,
+                localIdentName,
+                localName,
+                options,
+              ) =>
+                loaderContext.resourcePath.includes('External.css')
+                  ? localName
+                  : getLocalIdent(
+                    loaderContext,
+                    localIdentName,
+                    localName,
+                    options,
+                  ),
             },
           },
         }),

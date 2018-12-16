@@ -27,7 +27,6 @@ import {
 
 class HomeSection extends Component {
   static propTypes = {
-    isFullPageReady: T.bool.isRequired,
     theme: T.any,
     intl: T.any,
   };
@@ -42,12 +41,12 @@ class HomeSection extends Component {
   };
 
   render() {
-    const { isFullPageReady, theme, intl } = this.props;
+    const { theme, intl } = this.props;
     const { showButton } = this.state;
 
     return (
       <div className='section'>
-        <Container isFullPageReady={isFullPageReady}>
+        <Container>
           <InnerContainer>
             <LogoContainer>
               <FontAwesomeIcon
@@ -60,7 +59,7 @@ class HomeSection extends Component {
               <ScrollAnimation animateIn='fadeInDown'>
                 <NameContainer>
                   <Text color={theme.colors.lightGray2} fontSize={24}>
-                    Jordane Michon
+                    Jordane Michon (Temporary website)
                   </Text>
                   <LogoMobileContainer>
                     <FontAwesomeIcon

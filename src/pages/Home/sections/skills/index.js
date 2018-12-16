@@ -1,3 +1,3 @@
-import SkillsSection from './SkillsSection';
+import SkillsSectionContainer from './SkillsSectionContainer';
 
-export default SkillsSection;
+export default SkillsSectionContainer;

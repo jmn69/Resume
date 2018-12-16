@@ -10,9 +10,9 @@ import { Container, MenuItem, MenuLink } from './TopMenu.s';
 const selectColorByPageIndex = (currentPageIndex, theme) => {
   const colorByPageIndex = {
     0: theme.colors.lightGray,
-    1: theme.colors.accent,
+    1: theme.colors.primary,
     2: theme.colors.lightGray,
-    3: theme.colors.accent,
+    3: theme.colors.primary,
   };
 
   return colorByPageIndex[currentPageIndex] || 'white';

@@ -19,7 +19,7 @@ const Loader = props => (
 
 Loader.propTypes = {
   fullPage: T.bool,
-  theme: T.any.isRequired,
+  theme: T.any,
   size: T.string,
   color: T.string,
   message: T.string,
@@ -30,6 +30,7 @@ Loader.defaultProps = {
   fullPage: false,
   color: null,
   message: null,
+  theme: null,
 };
 
 export default withTheme(Loader);

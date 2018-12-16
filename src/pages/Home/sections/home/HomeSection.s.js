@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-import T from 'prop-types';
 import Text from 'Common/components/Text';
 
-const Container = styled.div`
+export const Container = styled.div`
   height: 100%;
   width: 100%;
   display: flex;
@@ -44,12 +43,6 @@ const Container = styled.div`
       GradientType=1
     );
 `;
-
-Container.propTypes = {
-  isFullPageReady: T.bool,
-};
-
-export { Container };
 
 export const InnerContainer = styled.div`
   @media screen and (min-width: 1280px) {
