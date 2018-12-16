@@ -9,6 +9,10 @@ const Container = styled.div`
   justify-content: center;
   padding-top: 8%;
 
+  @media screen and (max-width: 600px) {
+    padding-top: 3%;
+  }
+
   background: rgb(105, 234, 228); /* Old browsers */
   background: -moz-linear-gradient(
     left,
@@ -52,7 +56,10 @@ export const InnerContainer = styled.div`
     width: 1200px;
   }
 
-  width: 80%;
+  @media screen and (min-width: 600px) {
+    width: 80%;
+  }
+  width: 90%;
   margin: auto;
   height: 100%;
   display: flex;
@@ -61,6 +68,10 @@ export const InnerContainer = styled.div`
 
 export const LogoContainer = styled.div`
   margin-top: -5%;
+
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
 `;
 
 export const ContentContainer = styled.div`
@@ -83,6 +94,8 @@ export const FullStackDevWrapper = styled.div`
 
   @media screen and (max-width: 600px) {
     justify-content: center;
+    margin-top: 0px;
+    margin-bottom: 10px;
   }
 `;
 
@@ -123,7 +136,15 @@ export const IntroWrapper = styled(Text)`
   max-width: 600px;
   font-size: 0.9rem;
   letter-spacing: 0.3px;
-  line-height: 1.8;
+  line-height: 1.6;
+
+  @media screen and (max-height: 600px) {
+    line-height: 1.4;
+  }
+
+  @media screen and (min-width: 600px) {
+    line-height: 1.8;
+  }
 
   @media screen and (min-width: 1280px) {
     line-height: 2.3;
@@ -132,11 +153,27 @@ export const IntroWrapper = styled(Text)`
 `;
 
 export const ButtonWrapper = styled.div`
-  margin-top: 40px;
+  margin-top: 20px;
   width: 25%;
   min-width: 250px;
+  @media screen and (min-width: 600px) {
+    margin-top: 40px;
+  }
 
   @media screen and (min-width: 1280px) {
-    min-width: 300px;
+    margin-top: 40px;
+    width: 300px;
+  }
+`;
+
+export const NameContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const LogoMobileContainer = styled.div`
+  @media screen and (min-width: 600px) {
+    display: none;
   }
 `;

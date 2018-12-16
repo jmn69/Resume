@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import T from 'prop-types';
 
 const Container = styled.div`
-  height: ${props => (props.isFullPageReady ? '100%' : '100vh')};
+  height: 100%;
   width: 100%;
 
   background: rgb(105, 234, 228); /* Old browsers */

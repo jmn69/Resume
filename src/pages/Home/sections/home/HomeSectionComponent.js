@@ -21,6 +21,8 @@ import {
   FullStackWrapper,
   DevWrapper,
   ButtonWrapper,
+  NameContainer,
+  LogoMobileContainer,
 } from './HomeSection.s';
 
 class HomeSection extends Component {
@@ -56,9 +58,18 @@ class HomeSection extends Component {
             </LogoContainer>
             <ContentContainer>
               <ScrollAnimation animateIn='fadeInDown'>
-                <Text color={theme.colors.lightGray2} fontSize={24}>
-                  Jordane Michon
-                </Text>
+                <NameContainer>
+                  <Text color={theme.colors.lightGray2} fontSize={24}>
+                    Jordane Michon
+                  </Text>
+                  <LogoMobileContainer>
+                    <FontAwesomeIcon
+                      size='3x'
+                      color={theme.colors.lightGray}
+                      icon={faJedi}
+                    />
+                  </LogoMobileContainer>
+                </NameContainer>
                 <FullStackDevWrapper>
                   <FullStackWrapper>
                     <FormattedMessage {...HomeSectionIntl.FullStack} />
