@@ -28,6 +28,7 @@
     "@fullpage/react-fullpage": "^0.1.10",
     "babel-plugin-styled-components": "^1.9.3",
     "babel-polyfill": "^6.23.0",
+    "compression": "^1.7.3",
     "cookie-parser": "^1.4.3",
     "express": "^4.15.2",
     "file-loader": "^2.0.0",

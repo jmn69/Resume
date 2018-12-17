@@ -4,6 +4,7 @@ import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackHotServerMiddleware from 'webpack-hot-server-middleware';
+import compression from 'compression'; // Todo: Remove an replace by compression webpack plugin when upgrade to webpack 4
 import cookieParser from 'cookie-parser';
 import clientConfig from '../webpack/client.dev';
 import serverConfig from '../webpack/server.dev';
@@ -14,6 +15,7 @@ const publicPath = clientConfig.output.publicPath;
 const outputPath = clientConfig.output.path;
 const app = express();
 
+app.use(compression());
 app.use(cookieParser());
 
 app.use((req, res, next) => {

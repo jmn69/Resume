@@ -25,7 +25,7 @@ const externals = fs
 module.exports = {
   name: 'server',
   target: 'node',
-  devtool: 'source-map',
+  // devtool: 'source-map',
   entry: [res('../server/render.js')],
   externals,
   output: {
