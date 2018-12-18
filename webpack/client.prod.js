@@ -10,7 +10,7 @@ module.exports = {
   name: 'client',
   target: 'web',
   // devtool: 'source-map',
-  entry: ['babel-polyfill', path.resolve(__dirname, '../src/index.js')],
+  entry: ['@babel/polyfill', path.resolve(__dirname, '../src/index.js')],
   output: {
     filename: '[name].[chunkhash].js',
     chunkFilename: '[name].[chunkhash].js',
@@ -114,7 +114,7 @@ module.exports = {
           'transition-group',
           'redux-first-router',
           'redux-first-router-link',
-          'babel-polyfill',
+          '@babel/polyfill',
           'redux-devtools-extension/logOnlyInProduction',
         ],
       },

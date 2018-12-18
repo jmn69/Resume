@@ -1,18 +1,18 @@
 const path = require('path');
 const webpack = require('webpack');
 const WriteFilePlugin = require('write-file-webpack-plugin');
-const AutoDllPlugin = require('autodll-webpack-plugin');
+// const AutoDllPlugin = require('autodll-webpack-plugin');
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 const sharedConfig = require('./config.shared.js');
-const getLocalIdent = require('css-loader/lib/getLocalIdent');
+// const getLocalIdent = require('css-loader/lib/getLocalIdent');
 
 module.exports = {
   name: 'client',
   target: 'web',
+  mode: 'development',
   devtool: 'source-map',
   // devtool: 'eval',
   entry: [
-    'babel-polyfill',
     'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false&quiet=false&noInfo=false',
     'react-hot-loader/patch',
     path.resolve(__dirname, '../src/index.js'),
@@ -32,29 +32,30 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ExtractCssChunks.extract({
-          use: {
+        use: [
+          ExtractCssChunks.loader,
+          {
             loader: 'css-loader',
             options: {
               modules: true,
               localIdentName: '[path][name]__[local]--[hash:base64:5]',
-              getLocalIdent: (
-                loaderContext,
-                localIdentName,
-                localName,
-                options,
-              ) =>
-                loaderContext.resourcePath.includes('External.css')
-                  ? localName
-                  : getLocalIdent(
-                    loaderContext,
-                    localIdentName,
-                    localName,
-                    options,
-                  ),
+              // getLocalIdent: (
+              //   loaderContext,
+              //   localIdentName,
+              //   localName,
+              //   options,
+              // ) =>
+              //   loaderContext.resourcePath.includes('External.css')
+              //     ? localName
+              //     : getLocalIdent(
+              //       loaderContext,
+              //       localIdentName,
+              //       localName,
+              //       options,
+              //     ),
             },
           },
-        }),
+        ],
       },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -78,15 +79,43 @@ module.exports = {
     extensions: ['.js', '.css'],
     alias: sharedConfig.alias,
   },
+  optimization: {
+    runtimeChunk: {
+      name: 'bootstrap',
+    },
+    splitChunks: {
+      chunks: 'initial',
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor',
+        },
+      },
+    },
+    //   splitChunks: {
+    //     chunks: 'async',
+    //     minSize: 30000,
+    //     minChunks: 1,
+    //     maxAsyncRequests: 5,
+    //     maxInitialRequests: 3,
+    //     automaticNameDelimiter: '~',
+    //     name: true,
+    //     cacheGroups: {
+    //       vendors: {
+    //         test: /[\\/]node_modules[\\/]/,
+    //         priority: -10,
+    //       },
+    //       default: {
+    //         minChunks: 2,
+    //         priority: -20,
+    //         reuseExistingChunk: true,
+    //       },
+    //     },
+    //   },
+  },
   plugins: [
     new WriteFilePlugin(), // used so you can see what chunks are produced in dev
-    new ExtractCssChunks(),
-    new webpack.optimize.CommonsChunkPlugin({
-      names: ['bootstrap'], // needed to put webpack bootstrap code before chunks
-      filename: '[name].js',
-      minChunks: Infinity,
-    }),
-
+    new ExtractCssChunks({ hot: true, cssModules: true }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
@@ -94,23 +123,23 @@ module.exports = {
         NODE_ENV: JSON.stringify('development'),
       },
     }),
-    new AutoDllPlugin({
-      context: path.join(__dirname, '..'),
-      filename: '[name].js',
-      entry: {
-        vendor: [
-          'react',
-          'react-dom',
-          'react-redux',
-          'redux',
-          'history/createBrowserHistory',
-          'transition-group',
-          'redux-first-router',
-          'redux-first-router-link',
-          'babel-polyfill',
-          'redux-devtools-extension/logOnlyInProduction',
-        ],
-      },
-    }),
+    // new AutoDllPlugin({
+    //   context: path.join(__dirname, '..'),
+    //   filename: '[name].js',
+    //   entry: {
+    //     vendor: [
+    //       'react',
+    //       'react-dom',
+    //       'react-redux',
+    //       'redux',
+    //       'history/createBrowserHistory',
+    //       'react-transition-group',
+    //       'redux-first-router',
+    //       'redux-first-router-link',
+    //       '@babel/polyfill',
+    //       'redux-devtools-extension/logOnlyInProduction',
+    //     ],
+    //   },
+    // }),
   ],
 };

@@ -1,4 +1,4 @@
-import 'babel-polyfill';
+import '@babel/polyfill';
 import express from 'express';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
@@ -26,20 +26,27 @@ app.use((req, res, next) => {
   next();
 });
 
+let isBuilt = false;
+const done = () =>
+  !isBuilt &&
+  app.listen(3000, () => {
+    isBuilt = true;
+    console.log('BUILD COMPLETE -- Listening @ http://localhost:3000');
+  });
+
 // UNIVERSAL HMR + STATS HANDLING GOODNESS:
 
 if (DEV) {
   const multiCompiler = webpack([clientConfig, serverConfig]);
   const clientCompiler = multiCompiler.compilers[0];
+  const options = { publicPath, stats: { colors: true } };
+  const devMiddleware = webpackDevMiddleware(multiCompiler, options);
 
-  app.use(webpackDevMiddleware(multiCompiler, { publicPath }));
+  app.use(devMiddleware);
   app.use(webpackHotMiddleware(clientCompiler));
-  app.use(
-    // keeps serverRender updated with arg: { clientStats, outputPath }
-    webpackHotServerMiddleware(multiCompiler, {
-      serverRendererOptions: { outputPath },
-    }),
-  );
+  app.use(webpackHotServerMiddleware(multiCompiler));
+
+  devMiddleware.waitUntilValid(done);
 }
 else {
   const clientStats = require('../buildClient/stats.json'); // eslint-disable-line import/no-unresolved, global-require
@@ -47,8 +54,10 @@ else {
 
   app.use(publicPath, express.static(outputPath));
   app.use(serverRender({ clientStats, outputPath }));
+
+  done();
 }
 
-app.listen(port, () => {
-  console.log(`Listening @ http://localhost:${port}/`); // eslint-disable-line no-console
-});
+// app.listen(port, () => {
+//   console.log(`Listening @ http://localhost:${port}/`); // eslint-disable-line no-console
+// });
