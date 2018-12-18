@@ -14,7 +14,7 @@ module.exports = {
   entry: [
     'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false&quiet=false&noInfo=false',
     'react-hot-loader/patch',
-    path.resolve(__dirname, '../src/index.js'),
+    path.resolve(__dirname, '../src/index.dev.js'),
   ],
   output: {
     filename: '[name].js',
@@ -79,15 +79,23 @@ module.exports = {
     alias: sharedConfig.alias,
   },
   optimization: {
-    runtimeChunk: {
-      name: 'bootstrap',
-    },
     splitChunks: {
-      chunks: 'initial',
+      chunks: 'async',
+      minSize: 30000,
+      minChunks: 1,
+      maxAsyncRequests: 5,
+      maxInitialRequests: 3,
+      automaticNameDelimiter: '~',
+      name: true,
       cacheGroups: {
         vendors: {
           test: /[\\/]node_modules[\\/]/,
-          name: 'vendor',
+          priority: -10,
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true,
         },
       },
     },

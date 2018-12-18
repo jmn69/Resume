@@ -6,13 +6,15 @@ const sharedConfig = require('./config.shared.js');
 const getLocalIdent = require('css-loader/lib/getLocalIdent');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+//   .BundleAnalyzerPlugin;
 
 module.exports = {
   name: 'client',
   target: 'web',
   mode: 'development',
   // devtool: 'source-map',
-  entry: ['@babel/polyfill', path.resolve(__dirname, '../src/index.js')],
+  entry: [path.resolve(__dirname, '../src/index.prod.js')],
   output: {
     filename: '[name].[chunkhash].js',
     chunkFilename: '[name].[chunkhash].js',
@@ -77,7 +79,6 @@ module.exports = {
     alias: sharedConfig.alias,
   },
   optimization: {
-    // FOR PRODUCTION
     minimizer: [
       new UglifyJsPlugin({
         uglifyOptions: {
@@ -91,22 +92,29 @@ module.exports = {
         },
       }),
     ],
-    // END
-    // NEEDED BOTH IN PROD AND DEV BUILDS
-    runtimeChunk: {
-      name: 'bootstrap',
-    },
     splitChunks: {
-      chunks: 'initial',
+      chunks: 'async',
+      minSize: 30000,
+      minChunks: 1,
+      maxAsyncRequests: 5,
+      maxInitialRequests: 3,
+      automaticNameDelimiter: '~',
+      name: true,
       cacheGroups: {
         vendors: {
           test: /[\\/]node_modules[\\/]/,
-          name: 'vendor',
+          priority: -10,
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true,
         },
       },
     },
   },
   plugins: [
+    // new BundleAnalyzerPlugin(),
     new StatsPlugin('stats.json'),
     new ExtractCssChunks({ cssModules: true }),
     new CompressionPlugin({
