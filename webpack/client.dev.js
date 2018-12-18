@@ -1,10 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
 const WriteFilePlugin = require('write-file-webpack-plugin');
-// const AutoDllPlugin = require('autodll-webpack-plugin');
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 const sharedConfig = require('./config.shared.js');
-// const getLocalIdent = require('css-loader/lib/getLocalIdent');
+const getLocalIdent = require('css-loader/lib/getLocalIdent');
 
 module.exports = {
   name: 'client',
@@ -39,20 +38,20 @@ module.exports = {
             options: {
               modules: true,
               localIdentName: '[path][name]__[local]--[hash:base64:5]',
-              // getLocalIdent: (
-              //   loaderContext,
-              //   localIdentName,
-              //   localName,
-              //   options,
-              // ) =>
-              //   loaderContext.resourcePath.includes('External.css')
-              //     ? localName
-              //     : getLocalIdent(
-              //       loaderContext,
-              //       localIdentName,
-              //       localName,
-              //       options,
-              //     ),
+              getLocalIdent: (
+                loaderContext,
+                localIdentName,
+                localName,
+                options,
+              ) =>
+                loaderContext.resourcePath.includes('External.css')
+                  ? localName
+                  : getLocalIdent(
+                    loaderContext,
+                    localIdentName,
+                    localName,
+                    options,
+                  ),
             },
           },
         ],
@@ -92,26 +91,6 @@ module.exports = {
         },
       },
     },
-    //   splitChunks: {
-    //     chunks: 'async',
-    //     minSize: 30000,
-    //     minChunks: 1,
-    //     maxAsyncRequests: 5,
-    //     maxInitialRequests: 3,
-    //     automaticNameDelimiter: '~',
-    //     name: true,
-    //     cacheGroups: {
-    //       vendors: {
-    //         test: /[\\/]node_modules[\\/]/,
-    //         priority: -10,
-    //       },
-    //       default: {
-    //         minChunks: 2,
-    //         priority: -20,
-    //         reuseExistingChunk: true,
-    //       },
-    //     },
-    //   },
   },
   plugins: [
     new WriteFilePlugin(), // used so you can see what chunks are produced in dev
@@ -123,23 +102,5 @@ module.exports = {
         NODE_ENV: JSON.stringify('development'),
       },
     }),
-    // new AutoDllPlugin({
-    //   context: path.join(__dirname, '..'),
-    //   filename: '[name].js',
-    //   entry: {
-    //     vendor: [
-    //       'react',
-    //       'react-dom',
-    //       'react-redux',
-    //       'redux',
-    //       'history/createBrowserHistory',
-    //       'react-transition-group',
-    //       'redux-first-router',
-    //       'redux-first-router-link',
-    //       '@babel/polyfill',
-    //       'redux-devtools-extension/logOnlyInProduction',
-    //     ],
-    //   },
-    // }),
   ],
 };
