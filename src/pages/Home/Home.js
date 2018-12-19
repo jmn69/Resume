@@ -31,18 +31,18 @@ class Home extends Component {
         }}
         render={({ state, fullpageApi }) => (
           <ReactFullpage.Wrapper>
-            {!state.initialized || fullpageApi === undefined ? (
+            {/* {!state.initialized || fullpageApi === undefined ? (
               <LoadingContainer>
                 <Loader
                   fullPage
                   message="Wait a moment, I'm doing things right for you"
                 />
               </LoadingContainer>
-            ) : null}
-            <HomeSectionContainer />
-            <SkillsSectionContainer />
+            ) : null} */}
+            <HomeSectionContainer isFullPageReady={state.initialized} />
+            <SkillsSectionContainer isFullPageReady={state.initialized} />
             <ClientSection />
-            <AboutSection />
+            <AboutSection isFullPageReady={state.initialized} />
           </ReactFullpage.Wrapper>
         )}
       />
@@ -54,4 +54,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(homeOperations.setCurrentPage(pageIndex)),
 });
 
-export default connect(null, mapDispatchToProps)(Home);
+export default connect(
+  null,
+  mapDispatchToProps,
+)(Home);

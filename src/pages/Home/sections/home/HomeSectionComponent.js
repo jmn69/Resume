@@ -29,6 +29,7 @@ class HomeSection extends Component {
   static propTypes = {
     theme: T.any,
     intl: T.any,
+    isFullPageReady: T.bool.isRequired,
   };
 
   static defaultProps = {
@@ -41,60 +42,62 @@ class HomeSection extends Component {
   };
 
   render() {
-    const { theme, intl } = this.props;
+    const { theme, intl, isFullPageReady } = this.props;
     const { showButton } = this.state;
 
     return (
       <div className='section'>
-        <Container>
-          <InnerContainer>
-            <LogoContainer>
-              <FontAwesomeIcon
-                size='3x'
-                color={theme.colors.lightGray}
-                icon={faJedi}
-              />
-            </LogoContainer>
-            <ContentContainer>
-              <ScrollAnimation animateIn='fadeInDown'>
-                <NameContainer>
-                  <Text color={theme.colors.lightGray2} fontSize={24}>
-                    Jordane Michon (Temporary website)
-                  </Text>
-                  <LogoMobileContainer>
-                    <FontAwesomeIcon
-                      size='3x'
-                      color={theme.colors.lightGray}
-                      icon={faJedi}
+        <Container isFullPageReady={isFullPageReady}>
+          {isFullPageReady ? (
+            <InnerContainer>
+              <LogoContainer>
+                <FontAwesomeIcon
+                  size='3x'
+                  color={theme.colors.lightGray}
+                  icon={faJedi}
+                />
+              </LogoContainer>
+              <ContentContainer>
+                <ScrollAnimation animateIn='fadeInDown'>
+                  <NameContainer>
+                    <Text color={theme.colors.lightGray2} fontSize={24}>
+                      Jordane Michon (Temporary website)
+                    </Text>
+                    <LogoMobileContainer>
+                      <FontAwesomeIcon
+                        size='3x'
+                        color={theme.colors.lightGray}
+                        icon={faJedi}
+                      />
+                    </LogoMobileContainer>
+                  </NameContainer>
+                  <FullStackDevWrapper>
+                    <FullStackWrapper>
+                      <FormattedMessage {...HomeSectionIntl.FullStack} />
+                    </FullStackWrapper>
+                    <DevWrapper>
+                      <FormattedMessage {...HomeSectionIntl.Developer} />
+                    </DevWrapper>
+                  </FullStackDevWrapper>
+                  <IntroWrapper>
+                    <FormattedMessage
+                      {...HomeSectionIntl.Intro}
+                      values={{ eol: <br /> }}
                     />
-                  </LogoMobileContainer>
-                </NameContainer>
-                <FullStackDevWrapper>
-                  <FullStackWrapper>
-                    <FormattedMessage {...HomeSectionIntl.FullStack} />
-                  </FullStackWrapper>
-                  <DevWrapper>
-                    <FormattedMessage {...HomeSectionIntl.Developer} />
-                  </DevWrapper>
-                </FullStackDevWrapper>
-                <IntroWrapper>
-                  <FormattedMessage
-                    {...HomeSectionIntl.Intro}
-                    values={{ eol: <br /> }}
-                  />
-                </IntroWrapper>
-              </ScrollAnimation>
-              {showButton ? (
-                <ButtonWrapper>
-                  <Button
-                    text={intl.formatMessage(HomeSectionIntl.WorkWithMe)}
-                  />
-                </ButtonWrapper>
-              ) : null}
+                  </IntroWrapper>
+                </ScrollAnimation>
+                {showButton ? (
+                  <ButtonWrapper>
+                    <Button
+                      text={intl.formatMessage(HomeSectionIntl.WorkWithMe)}
+                    />
+                  </ButtonWrapper>
+                ) : null}
 
-              <Waypoint onEnter={this.handleWaypointEnter} />
-            </ContentContainer>
-          </InnerContainer>
+                <Waypoint onEnter={this.handleWaypointEnter} />
+              </ContentContainer>
+            </InnerContainer>
+          ) : null}
         </Container>
       </div>
     );
@@ -105,4 +108,7 @@ class HomeSection extends Component {
   };
 }
 
-export default compose(injectIntl, withTheme)(HomeSection);
+export default compose(
+  injectIntl,
+  withTheme,
+)(HomeSection);

@@ -142,9 +142,10 @@ const hardcodedSkillsData = [
   },
 ];
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, ownProps) => ({
   currentPageIndex: state.home.currentPageIndex,
   data: hardcodedSkillsData,
+  ...ownProps,
 });
 
 export default connect(mapStateToProps)(SkillsSectionComponent);

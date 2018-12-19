@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 import Text from 'Common/components/Text';
+import T from 'prop-types';
 
-export const Container = styled.div`
+const Container = styled.div`
+  min-height: ${props => (!props.isFullPageReady ? '10000px' : 'unset')};
+  overflow: hidden;
+
   height: 100%;
   width: 100%;
   display: flex;
@@ -43,6 +47,12 @@ export const Container = styled.div`
       GradientType=1
     );
 `;
+
+Container.propTypes = {
+  isFullPageReady: T.bool,
+};
+
+export { Container };
 
 export const InnerContainer = styled.div`
   @media screen and (min-width: 1280px) {

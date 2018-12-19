@@ -32,6 +32,7 @@ class SkillsSectionComponent extends Component {
     currentPageIndex: T.number.isRequired,
     data: T.arrayOf(skillsCatType).isRequired,
     theme: T.any,
+    isFullPageReady: T.bool.isRequired,
   };
 
   static defaultProps = {
@@ -51,7 +52,9 @@ class SkillsSectionComponent extends Component {
   }
 
   render() {
-    const { currentPageIndex, data, theme } = this.props;
+    const {
+      currentPageIndex, data, theme, isFullPageReady,
+    } = this.props;
     const { hasInit, skillCatPosSelected } = this.state;
 
     const cards =
@@ -84,7 +87,7 @@ class SkillsSectionComponent extends Component {
 
     return (
       <div className='section'>
-        <Container>
+        <Container isFullPageReady={isFullPageReady}>
           <InnerContainer>
             {currentPageIndex === 1 || hasInit ? (
               <Fragment>

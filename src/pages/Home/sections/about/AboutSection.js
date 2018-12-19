@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import AboutSectionIntl from './AboutSection.i';
 import { Container } from './AboutSection.s';
 
-class HomeSection extends Component {
+export default class AboutSection extends Component {
   static propTypes = {
     isFullPageReady: T.bool.isRequired,
   };
@@ -17,16 +17,8 @@ class HomeSection extends Component {
     return (
       <div className='section'>
         <div className='fp-bg' />
-        <Container isFullPageReady={isFullPageReady}>
-          <FormattedMessage {...AboutSectionIntl.About} />
-        </Container>
+        <Container isFullPageReady={isFullPageReady} />
       </div>
     );
   }
 }
-
-const mapStateToProps = state => ({
-  isFullPageReady: state.settings.isFullPageReady,
-});
-
-export default connect(mapStateToProps)(HomeSection);
