@@ -1,6 +1,6 @@
-export const SET_FULLPAGE_READY = 'SET_FULLPAGE_READY';
+export const SET_PAGE_INIT = 'SET_PAGE_INIT';
 
-export const setFullPageReady = isReady => ({
-  type: SET_FULLPAGE_READY,
-  payload: isReady,
+export const setPageInit = page => ({
+  type: SET_PAGE_INIT,
+  payload: page,
 });

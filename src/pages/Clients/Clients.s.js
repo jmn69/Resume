@@ -1,9 +1,11 @@
 import styled from 'styled-components';
-import T from 'prop-types';
 
-const Container = styled.div`
-  height: 100%;
+export const Container = styled.div`
+  position: absolute;
+  top: 0px;
+  left: 0px;
   width: 100%;
+  height: 100%;
 
   background: rgb(105, 234, 228); /* Old browsers */
   background: -moz-linear-gradient(
@@ -36,9 +38,3 @@ const Container = styled.div`
       GradientType=1
     );
 `;
-
-Container.propTypes = {
-  isFullPageReady: T.bool,
-};
-
-export { Container };

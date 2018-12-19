@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import SkillsSectionComponent from './SkillsSectionComponent';
+import SkillsComponent from './SkillsComponent';
 
 const hardcodedSkillsData = [
   {
@@ -143,9 +143,8 @@ const hardcodedSkillsData = [
 ];
 
 const mapStateToProps = (state, ownProps) => ({
-  currentPageIndex: state.home.currentPageIndex,
   data: hardcodedSkillsData,
   ...ownProps,
 });
 
-export default connect(mapStateToProps)(SkillsSectionComponent);
+export default connect(mapStateToProps)(SkillsComponent);

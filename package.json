@@ -6,26 +6,19 @@
   "author": "Jordane Michon <jordane.michon@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start":
-      "npm run clean && cross-env NODE_ENV=development babel-watch server/index.js",
+    "start": "npm run clean && cross-env NODE_ENV=development babel-watch server/index.js",
     "start:prod": "npm run build && npm run serve",
     "serve": "cross-env NODE_ENV=production node buildServer/index.js",
-    "build":
-      "npm run build:client && npm run build:server && npm run build:node",
-    "build:client":
-      "rimraf buildClient && cross-env NODE_ENV=production webpack --mode production --progress -p --config webpack/client.prod.js",
-    "build:server":
-      "rimraf buildServer && cross-env NODE_ENV=production webpack --mode production --progress -p --config webpack/server.prod.js",
-    "build:node":
-      "cross-env NODE_ENV=production babel server/index.js -o buildServer/index.js",
+    "build": "npm run build:client && npm run build:server && npm run build:node",
+    "build:client": "rimraf buildClient && cross-env NODE_ENV=production webpack --mode production --progress -p --config webpack/client.prod.js",
+    "build:server": "rimraf buildServer && cross-env NODE_ENV=production webpack --mode production --progress -p --config webpack/server.prod.js",
+    "build:node": "cross-env NODE_ENV=production babel server/index.js -o buildServer/index.js",
     "clean": "rimraf buildClient buildServer",
     "precommit": "lint-staged",
     "cm": "git-cz",
     "lint": "eslint --fix src server webpack",
-    "format":
-      "prettier --single-quote --trailing-comma es5 --write '{src,server,webpack}/**/*.js' && npm run lint",
-    "extract:messages":
-      "react-intl-cra 'src/**/*.{js,jsx}' -o 'src/i18n/messages/messages.json'",
+    "format": "prettier --single-quote --trailing-comma es5 --write '{src,server,webpack}/**/*.js' && npm run lint",
+    "extract:messages": "react-intl-cra 'src/**/*.{js,jsx}' -o 'src/i18n/messages/messages.json'",
     "manage:translations": "node ./translationRunner.js"
   },
   "dependencies": {
@@ -44,7 +37,6 @@
     "js-cookie": "^2.2.0",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
-    "react-animate-on-scroll": "^2.1.5",
     "react-burger-menu": "^2.5.4",
     "react-circular-progressbar": "^1.0.0",
     "react-dom": "^16.6.3",

@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import T from 'prop-types';
 
-const Container = styled.ul`
+export const Container = styled.ul`
   @media screen and (max-width: 600px) {
     display: none;
   }
@@ -20,37 +20,38 @@ const Container = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
-
-  .active {
-    & > a {
-      &:after {
-        content: '';
-        height: 2px;
-        background: ${props => props.color};
-        display: block;
-        position: absolute;
-        bottom: 8px;
-        left: 0;
-        right: 0;
-        display: block;
-      }
-    }
-  }
 `;
-
-Container.propTypes = {
-  color: T.string.isRequired,
-};
-
-export { Container };
 
 export const MenuItem = styled.li`
   display: inline-block;
   margin: 4% 25px;
   position: relative;
+  cursor: pointer;
 `;
 
-export const MenuLink = styled.a`
+const activeCss = css`
+  content: '';
+  height: 2px;
+  background: ${props => props.color};
+  display: block;
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  right: 0;
+  display: block;
+`;
+
+const MenuLink = styled.span`
   padding: 0 1.1em 1.1em 1.1em;
   text-decoration: none;
+  &:after {
+    ${props => (props.isActive ? activeCss : '')}
+  }
 `;
+
+MenuLink.propTypes = {
+  color: T.string.isRequired,
+  isActive: T.bool.isRequired,
+};
+
+export { MenuLink };

@@ -7,56 +7,57 @@ import Text from 'Common/components/Text';
 import TopMenuIntl from './TopMenu.i';
 import { Container, MenuItem, MenuLink } from './TopMenu.s';
 
-const selectColorByPageIndex = (currentPageIndex, theme) => {
+const selectColorByPageIndex = (path, theme) => {
   const colorByPageIndex = {
-    0: theme.colors.lightGray,
-    1: theme.colors.primary,
-    2: theme.colors.lightGray,
-    3: theme.colors.primary,
+    '/': theme.colors.lightGray,
+    '/skills': theme.colors.primary,
+    '/clients': theme.colors.lightGray,
+    '/about': theme.colors.primary,
   };
 
-  return colorByPageIndex[currentPageIndex] || 'white';
+  return colorByPageIndex[path] || 'white';
 };
+
+const isActive = (actualPath, expectedPath) => actualPath === expectedPath;
 
 class TopMenuComponent extends Component {
   static propTypes = {
-    currentPageIndex: T.number.isRequired,
     theme: T.any,
+    dispatch: T.func.isRequired,
+    path: T.string.isRequired,
   };
 
   static defaultProps = {
     theme: null,
   };
   render() {
-    const textColor = selectColorByPageIndex(
-      this.props.currentPageIndex,
-      this.props.theme,
-    );
+    const { dispatch, path } = this.props;
+    const textColor = selectColorByPageIndex(path, this.props.theme);
     return (
-      <Container color={textColor} id='topMenu'>
-        <MenuItem data-menuanchor='Home'>
-          <MenuLink href='#Home'>
+      <Container>
+        <MenuItem onClick={() => dispatch({ type: 'HOME' })}>
+          <MenuLink isActive={isActive(path, '/')} color={textColor}>
             <Text color={textColor}>
               <FormattedMessage {...TopMenuIntl.Home} />
             </Text>
           </MenuLink>
         </MenuItem>
-        <MenuItem data-menuanchor='Skills'>
-          <MenuLink href='#Skills'>
+        <MenuItem onClick={() => dispatch({ type: 'SKILLS' })}>
+          <MenuLink isActive={isActive(path, '/skills')} color={textColor}>
             <Text color={textColor}>
               <FormattedMessage {...TopMenuIntl.Skills} />
             </Text>
           </MenuLink>
         </MenuItem>
-        <MenuItem data-menuanchor='Clients'>
-          <MenuLink href='#Clients'>
+        <MenuItem onClick={() => dispatch({ type: 'CLIENTS' })}>
+          <MenuLink isActive={isActive(path, '/clients')} color={textColor}>
             <Text color={textColor}>
               <FormattedMessage {...TopMenuIntl.Clients} />
             </Text>
           </MenuLink>
         </MenuItem>
-        <MenuItem data-menuanchor='About'>
-          <MenuLink href='#About'>
+        <MenuItem onClick={() => dispatch({ type: 'ABOUT' })}>
+          <MenuLink isActive={isActive(path, '/about')} color={textColor}>
             <Text color={textColor}>
               <FormattedMessage {...TopMenuIntl.About} />
             </Text>

@@ -6,7 +6,6 @@ import routesMap from './routesMap';
 import * as reducers from './reducers';
 import localeReducer from './locale/reducer';
 import settingsReducer from './settings/reducer';
-import homeReducer from './pages/Home/redux/reducers';
 
 export default (history, preloadedState) => {
   const {
@@ -21,7 +20,6 @@ export default (history, preloadedState) => {
     locale: localeReducer,
     location: reducer,
     settings: settingsReducer,
-    home: homeReducer,
   });
   const middlewares = applyMiddleware(middleware);
   const enhancers = composeEnhancers(enhancer, middlewares);

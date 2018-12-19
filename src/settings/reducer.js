@@ -1,14 +1,14 @@
-import { SET_FULLPAGE_READY } from './action';
+import { SET_PAGE_INIT } from './action';
 
 const INITIAL_STATE = {
-  isFullPageReady: false,
+  pagesHasInit: [],
 };
 const settingsReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case SET_FULLPAGE_READY:
+    case SET_PAGE_INIT:
       return {
         ...state,
-        isFullPageReady: action.payload,
+        pagesHasInit: [...state.pagesHasInit, action.payload],
       };
     default:
       return state;
