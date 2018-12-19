@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import TopMenuComponent from './TopMenuComponent';
 
 const mapStateToProps = state => ({
-  currentPageIndex: state.home.currentPageIndex,
+  path: state.location.pathname,
 });
 
 export default connect(mapStateToProps)(TopMenuComponent);

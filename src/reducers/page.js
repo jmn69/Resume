@@ -5,5 +5,8 @@ export default (state = 'Home', action = {}) =>
 
 const components = {
   HOME: 'Home',
+  SKILLS: 'Skills',
+  CLIENTS: 'Clients',
+  ABOUT: 'About',
   [NOT_FOUND]: 'NotFound',
 };

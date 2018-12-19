@@ -13,7 +13,7 @@ import {
   TitleCard,
   Selector,
   SkillCatCardContainer,
-} from './SkillsSection.s';
+} from './Skills.s';
 
 const skillsType = T.shape({
   masteryPercentage: T.number.isRequired,
@@ -27,12 +27,10 @@ const skillsCatType = T.shape({
   skills: T.arrayOf(skillsType),
 });
 
-class SkillsSectionComponent extends Component {
+class SkillsComponent extends Component {
   static propTypes = {
-    currentPageIndex: T.number.isRequired,
     data: T.arrayOf(skillsCatType).isRequired,
     theme: T.any,
-    isFullPageReady: T.bool.isRequired,
   };
 
   static defaultProps = {
@@ -40,22 +38,12 @@ class SkillsSectionComponent extends Component {
   };
 
   state = {
-    hasInit: false,
     skillCatPosSelected: Array.isArray(this.props.data) && this.props.data[0],
   };
 
-  componentDidUpdate() {
-    const { hasInit } = this.state;
-    if (!hasInit && this.props.currentPageIndex === 1) {
-      this.setState({ hasInit: true }); // eslint-disable-line react/no-did-update-set-state
-    }
-  }
-
   render() {
-    const {
-      currentPageIndex, data, theme, isFullPageReady,
-    } = this.props;
-    const { hasInit, skillCatPosSelected } = this.state;
+    const { data, theme } = this.props;
+    const { skillCatPosSelected } = this.state;
 
     const cards =
       data &&
@@ -86,18 +74,14 @@ class SkillsSectionComponent extends Component {
       });
 
     return (
-      <div className='section'>
-        <Container isFullPageReady={isFullPageReady}>
-          <InnerContainer>
-            {currentPageIndex === 1 || hasInit ? (
-              <Fragment>
-                <CircularProgressContainer>{cards}</CircularProgressContainer>
-                <SkillsChartsContainer>charts</SkillsChartsContainer>
-              </Fragment>
-            ) : null}
-          </InnerContainer>
-        </Container>
-      </div>
+      <Container>
+        <InnerContainer>
+          <Fragment>
+            <CircularProgressContainer>{cards}</CircularProgressContainer>
+            <SkillsChartsContainer>charts</SkillsChartsContainer>
+          </Fragment>
+        </InnerContainer>
+      </Container>
     );
   }
 
@@ -110,4 +94,4 @@ class SkillsSectionComponent extends Component {
   }
 }
 
-export default withTheme(SkillsSectionComponent);
+export default withTheme(SkillsComponent);

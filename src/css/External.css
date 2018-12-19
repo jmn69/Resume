@@ -1,3 +1,68 @@
+.switcher {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.testAnim {
+    animation-duration: 1s;
+    opacity: 1;
+    animation-fill-mode: both;
+    animation-name: fadeInDown;
+}
+
+/** NEXT TRANSITION **/
+
+.next .slide-enter {
+  transform: translateX(100%); 
+  opacity: 0; 
+}
+
+.next .slide-enter-active {
+  transform: translateX(0%); 
+  opacity: 1;
+  transition: all 500ms;
+}
+
+.next .slide-exit {
+  transform: translateX(0%); 
+  opacity: 1; 
+}
+
+.next .slide-exit-active {
+  transform: translateX(-100%); 
+  opacity: 0; 
+  transition: all 500ms;
+}
+
+/** BACK TRANSITION **/
+
+.back .slide-enter {
+  transform: translateX(-100%); 
+  opacity: 0; 
+}
+
+.back .slide-enter-active {
+  transform: translateX(0%); 
+  opacity: 1; 
+  transition: all 500ms;
+}
+
+.back .slide-exit {
+  transform: translateX(0%); 
+  opacity: 1; 
+}
+
+.back .slide-exit-active {
+  transform: translateX(100%); 
+  opacity: 0; 
+  transition: all 500ms;
+}
+
+
 /*
  * react-circular-progressbar styles
  *
