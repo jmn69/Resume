@@ -7,7 +7,7 @@ import { faJedi } from '@fortawesome/free-solid-svg-icons';
 import { withTheme } from 'styled-components';
 import Text from 'Common/components/Text';
 import Button from 'Common/components/Button';
-import Waypoint from 'react-waypoint';
+import Animated from 'Common/components/Animated';
 import universal from 'react-universal-component';
 
 import HomeIntl from './Home.i';
@@ -42,42 +42,19 @@ class Home extends Component {
     intl: null,
   };
 
-  state = {
-    showButton: false,
-    ContentAnimationClasses: '',
-    ContentAnimationStyle: { opacity: this.props.hasInit ? 1 : 0 },
-  };
-
   componentDidMount() {
+    const { hasInit, setPageInit } = this.props;
     SkillsComponent.preload();
     ClientsComponent.preload();
     AboutComponent.preload();
 
-    if (!this.props.hasInit) {
-      this.delayedAnimationTimeout = setTimeout(() => {
-        this.setState({
-          ContentAnimationClasses: 'animated fadeInDown',
-          ContentAnimationStyle: {
-            animationDuration: '1s',
-            opacity: 1,
-          },
-        });
-      }, 300);
-      this.props.setPageInit('Home');
+    if (!hasInit) {
+      setPageInit('Home');
     }
   }
 
-  componentWillUnmount() {
-    clearTimeout(this.delayedAnimationTimeout);
-  }
-
   render() {
-    const { theme, intl } = this.props;
-    const {
-      showButton,
-      ContentAnimationClasses,
-      ContentAnimationStyle,
-    } = this.state;
+    const { theme, intl, hasInit } = this.props;
 
     return (
       <Container>
@@ -90,9 +67,11 @@ class Home extends Component {
             />
           </LogoContainer>
           <ContentContainer>
-            <div
-              className={ContentAnimationClasses}
-              style={ContentAnimationStyle}
+            <Animated
+              initiallyVisible={hasInit}
+              animate={!hasInit}
+              animation='fadeInDown'
+              delay={300}
             >
               <NameContainer>
                 <Text color={theme.colors.lightGray2} fontSize={24}>
@@ -120,23 +99,19 @@ class Home extends Component {
                   values={{ eol: <br /> }}
                 />
               </IntroWrapper>
-            </div>
-            {showButton ? (
-              <ButtonWrapper>
-                <Button text={intl.formatMessage(HomeIntl.WorkWithMe)} />
-              </ButtonWrapper>
-            ) : null}
-
-            <Waypoint onEnter={this.handleWaypointEnter} />
+            </Animated>
+            <ButtonWrapper>
+              <Button
+                delay={300}
+                animate={!hasInit}
+                text={intl.formatMessage(HomeIntl.WorkWithMe)}
+              />
+            </ButtonWrapper>
           </ContentContainer>
         </InnerContainer>
       </Container>
     );
   }
-
-  handleWaypointEnter = () => {
-    this.setState({ showButton: true });
-  };
 }
 
 export default compose(

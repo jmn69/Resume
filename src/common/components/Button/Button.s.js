@@ -38,10 +38,10 @@ export const SvgContainer = styled.div`
 
   @keyframes textAppear {
     0% {
-      fill: transparent;
+      color: transparent;
     }
     100% {
-      fill: ${props => props.theme.colors.white};
+      color: ${props => props.theme.colors.white};
     }
   }
 `;
@@ -50,25 +50,34 @@ const RectComp = props => (
 );
 
 export const DrawingRect = styled(RectComp)`
-  fill: transparent;
+  fill: ${props =>
+    props.animate ? 'transparent' : `${props.theme.colors.accent}`};
   width: 100%;
   height: 100%;
   stroke-dasharray: 140 540;
   stroke-dashoffset: -474;
   stroke-width: 4px;
   stroke: ${props => props.theme.colors.accent};
-  -webkit-animation: 1s draw linear forwards;
-  animation: 1s draw linear forwards;
+  ${props =>
+    props.animate
+      ? `-webkit-animation: 1s draw linear forwards;
+  animation: 1s draw linear forwards;`
+      : ''}
 `;
 
 export const ButtonText = styled(Text)`
+  color: ${props =>
+    props.animate ? 'transparent' : `${props.theme.colors.white}`};
   letter-spacing: 2px;
   line-height: 32px;
   font-size: ${props => props.theme.fontSizes.medium};
-  color: ${props => props.theme.colors.white};
   text-transform: uppercase;
-  -webkit-animation: 1s textAppear linear forwards;
-  animation: 1s textAppear linear forwards;
+
+  ${props =>
+    props.animate
+      ? `-webkit-animation: 1s textAppear linear forwards;
+  animation: 1s textAppear linear forwards;`
+      : ''}
 
   @media screen and (max-width: 600px) {
     letter-spacing: 1px;

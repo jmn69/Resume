@@ -47,7 +47,6 @@
     "react-select": "^2.1.2",
     "react-transition-group": "^2.5.1",
     "react-universal-component": "^3.0.3",
-    "react-waypoint": "^8.1.0",
     "rebass": "^3.0.0",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.2",
