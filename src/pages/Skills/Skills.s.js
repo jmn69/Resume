@@ -10,7 +10,9 @@ export const Container = styled.div`
   height: 100%;
 
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
   padding-top: 8%;
 
   @media screen and (max-width: 600px) {
@@ -18,7 +20,7 @@ export const Container = styled.div`
   }
 `;
 
-export const InnerContainer = styled.div`
+export const InnerCircularProgressContainer = styled.div`
   @media screen and (min-width: 1280px) {
     width: 1200px;
   }
@@ -26,26 +28,37 @@ export const InnerContainer = styled.div`
   @media screen and (min-width: 600px) {
     width: 80%;
   }
+  flex: 1;
   width: 90%;
-  margin: auto;
-  height: 100%;
   display: flex;
   flex-direction: column;
 `;
 
+export const InnerSkillsChartsContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  flex: 2;
+  width: 100%;
+  background: ${props => props.theme.colors.primary};
+`;
+
 export const CircularProgressContainer = styled.div`
   display: flex;
-  flex: 1;
   justify-content: space-around;
   align-items: center;
   margin: -10px;
 `;
 
 export const SkillsChartsContainer = styled.div`
+  width: 60%;
   display: flex;
-  flex: 2;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  margin-top: -8%;
+`;
+
+export const ProgressBarContainer = styled.div`
+  margin-bottom: 5px;
 `;
 
 export const Card = styled(CardBase)`
@@ -91,4 +104,59 @@ export const Selector = styled.div`
     transparent;
   display: inline-block;
   margin-top: 2%;
+`;
+
+export const BarChartLegend = styled.div`
+  margin-top: 20px;
+
+  &:after {
+    display: block;
+    content: '';
+    clear: both;
+  }
+
+  &:before {
+    display: block;
+    position: relative;
+    content: '';
+    width: 100%;
+    height: 1px;
+    margin-bottom: -10px;
+    background: #00847f;
+  }
+`;
+export const Clearfix = styled.div`
+  &:after {
+    display: block;
+    content: '';
+    clear: both;
+  }
+`;
+export const Legend = styled.div`
+  display: inline-block;
+  float: left;
+  width: 25%;
+
+  &:before {
+    display: block;
+    position: relative;
+    content: '';
+    width: 1px;
+    height: 10px;
+    margin: auto;
+    margin-bottom: 5px;
+    background: #00847f;
+  }
+`;
+export const LegendLeft = styled(Legend)`
+  text-align: left;
+  &:before {
+    margin-left: 0;
+  }
+`;
+export const LegendRight = styled(Legend)`
+  text-align: right;
+  &:before {
+    margin-right: 0;
+  }
 `;

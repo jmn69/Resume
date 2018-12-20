@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import T from 'prop-types';
 import CircularProgress from 'Common/components/CircularProgress';
+import ProgressBar from 'Common/components/ProgressBar';
 import Text from 'Common/components/Text';
 import Animated from 'Common/components/Animated';
 import { withTheme } from 'styled-components';
@@ -8,7 +9,6 @@ import universal from 'react-universal-component';
 
 import {
   Container,
-  InnerContainer,
   CircularProgressContainer,
   SkillsChartsContainer,
   Card,
@@ -16,6 +16,12 @@ import {
   Selector,
   SkillCatCardContainer,
   SkillCatCardInnerContainer,
+  ProgressBarContainer,
+  InnerCircularProgressContainer,
+  InnerSkillsChartsContainer,
+  BarChartLegend,
+  LegendLeft,
+  LegendRight,
 } from './Skills.s';
 
 const skillsType = T.shape({
@@ -107,14 +113,41 @@ class SkillsComponent extends Component {
         );
       });
 
+    const charts =
+      skillCatPosSelected &&
+      skillCatPosSelected.skills &&
+      skillCatPosSelected.skills.map(skill => (
+        <ProgressBarContainer key={skill.id}>
+          <ProgressBar percentage={skill.masteryPercentage} text={skill.name} />
+        </ProgressBarContainer>
+      ));
+
     return (
       <Container>
-        <InnerContainer>
-          <Fragment>
-            <CircularProgressContainer>{cards}</CircularProgressContainer>
-            <SkillsChartsContainer>charts</SkillsChartsContainer>
-          </Fragment>
-        </InnerContainer>
+        <InnerCircularProgressContainer>
+          <CircularProgressContainer>{cards}</CircularProgressContainer>
+        </InnerCircularProgressContainer>
+        <InnerSkillsChartsContainer>
+          <SkillsChartsContainer>
+            <Fragment>
+              {charts}
+              <BarChartLegend>
+                <LegendLeft>
+                  <Text color={theme.colors.white}>Initié</Text>
+                </LegendLeft>
+                <LegendLeft>
+                  <Text color={theme.colors.white}>Bon niveau</Text>
+                </LegendLeft>
+                <LegendRight>
+                  <Text color={theme.colors.white}>Très bon niveau</Text>
+                </LegendRight>
+                <LegendRight>
+                  <Text color={theme.colors.white}>Expertise</Text>
+                </LegendRight>
+              </BarChartLegend>
+            </Fragment>
+          </SkillsChartsContainer>
+        </InnerSkillsChartsContainer>
       </Container>
     );
   }

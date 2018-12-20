@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import React from 'react';
 import Text from 'Common/components/Text';
 
@@ -50,8 +50,7 @@ const RectComp = props => (
 );
 
 export const DrawingRect = styled(RectComp)`
-  fill: ${props =>
-    props.animate ? 'transparent' : `${props.theme.colors.accent}`};
+  fill: ${props => (props.animate ? 'transparent' : '#FE0006')};
   width: 100%;
   height: 100%;
   stroke-dasharray: 140 540;
