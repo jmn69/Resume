@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import SkillsComponent from './SkillsComponent';
+import { setPageInit } from '../../settings/action';
 
 const hardcodedSkillsData = [
   {
@@ -144,7 +145,17 @@ const hardcodedSkillsData = [
 
 const mapStateToProps = (state, ownProps) => ({
   data: hardcodedSkillsData,
+  hasInit: !!state.settings.pagesHasInit.find(
+    pageHasInit => pageHasInit === 'Skills',
+  ),
   ...ownProps,
 });
 
-export default connect(mapStateToProps)(SkillsComponent);
+const mapDispatchToProps = dispatch => ({
+  setPageInit: page => dispatch(setPageInit(page)),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(SkillsComponent);

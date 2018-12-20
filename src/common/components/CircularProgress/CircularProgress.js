@@ -27,39 +27,48 @@ class CircularProgress extends React.Component {
   static propTypes = {
     percentage: T.number,
     theme: T.any,
+    delay: T.number,
+    animate: T.bool,
   };
 
   static defaultProps = {
     percentage: 50,
     theme: null,
+    delay: 0,
+    animate: true,
   };
 
   state = {
     percentText: getPercentText(this.props.percentage),
-    cpt: 0,
+    percent: this.props.animate ? 0 : this.props.percentage,
   };
 
   componentDidMount() {
-    this.intervalId = setInterval(this.tick, 10);
+    if (this.props.animate) {
+      this.delayedAnimationCiPgTimeout = setTimeout(() => {
+        this.setState({ percent: this.props.percentage });
+      }, this.props.delay);
+    }
   }
 
   componentWillUnmount() {
-    this.intervalId && clearInterval(this.intervalId);
+    this.delayedAnimationCiPgTimeout &&
+      clearTimeout(this.delayedAnimationCiPgTimeout);
   }
 
   render() {
-    const { cpt, percentText } = this.state;
+    const { percent, percentText } = this.state;
     const { theme } = this.props;
 
     return (
       <CircularProgressbar
-        percentage={cpt}
+        percentage={percent}
         text={percentText}
         strokeWidth={5}
         styles={{
           path: {
             stroke: theme.colors.primary,
-            strokeLinecap: 'butt',
+            strokeLinecap: 'round',
             transition: 'stroke-dashoffset 0.5s ease 0s',
           },
           trail: {
@@ -73,18 +82,6 @@ class CircularProgress extends React.Component {
       />
     );
   }
-  intervalId = null;
-
-  tick = () => {
-    const currentCpt = this.state.cpt;
-    if (currentCpt >= this.props.percentage) {
-      clearInterval(this.intervalId);
-    }
-
-    this.setState({
-      cpt: currentCpt + 1,
-    });
-  };
 }
 
 export default withTheme(CircularProgress);

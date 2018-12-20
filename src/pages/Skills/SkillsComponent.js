@@ -2,7 +2,9 @@ import React, { Component, Fragment } from 'react';
 import T from 'prop-types';
 import CircularProgress from 'Common/components/CircularProgress';
 import Text from 'Common/components/Text';
+import Animated from 'Common/components/Animated';
 import { withTheme } from 'styled-components';
+import universal from 'react-universal-component';
 
 import {
   Container,
@@ -13,6 +15,7 @@ import {
   TitleCard,
   Selector,
   SkillCatCardContainer,
+  SkillCatCardInnerContainer,
 } from './Skills.s';
 
 const skillsType = T.shape({
@@ -27,10 +30,16 @@ const skillsCatType = T.shape({
   skills: T.arrayOf(skillsType),
 });
 
+const HomeComponent = universal(() => import('../Home'));
+const ClientsComponent = universal(() => import('../Clients'));
+const AboutComponent = universal(() => import('../About'));
+
 class SkillsComponent extends Component {
   static propTypes = {
     data: T.arrayOf(skillsCatType).isRequired,
     theme: T.any,
+    setPageInit: T.func.isRequired,
+    hasInit: T.bool.isRequired,
   };
 
   static defaultProps = {
@@ -41,34 +50,59 @@ class SkillsComponent extends Component {
     skillCatPosSelected: Array.isArray(this.props.data) && this.props.data[0],
   };
 
+  componentDidMount() {
+    const { hasInit, setPageInit } = this.props;
+    HomeComponent.preload();
+    ClientsComponent.preload();
+    AboutComponent.preload();
+    if (!hasInit) {
+      setPageInit('Skills');
+    }
+  }
+
   render() {
-    const { data, theme } = this.props;
+    const { data, theme, hasInit } = this.props;
     const { skillCatPosSelected } = this.state;
+    let delay = 1800;
 
     const cards =
       data &&
       data.map(skillCat => {
         const isSelected =
           skillCatPosSelected && skillCatPosSelected.id === skillCat.id;
+        delay -= 300;
         return (
           <SkillCatCardContainer key={skillCat.id}>
-            <Card
-              onClick={() => this.handleSkillCatClick(skillCat.id)}
-              selected={isSelected}
+            <Animated
+              initiallyVisible={hasInit}
+              animate={!hasInit}
+              animation='bounceInLeft'
+              delay={delay}
             >
-              <TitleCard>
-                <Text
-                  letterSpacing='1px'
-                  fontWeight={isSelected ? 600 : 500}
-                  color={theme.colors.darkGray}
-                  fontSize={theme.fontSizes.title}
+              <SkillCatCardInnerContainer>
+                <Card
+                  onClick={() => this.handleSkillCatClick(skillCat.id)}
+                  selected={isSelected}
                 >
-                  {skillCat.name}
-                </Text>
-              </TitleCard>
-              <CircularProgress percentage={skillCat.masteryPercentage} />
-            </Card>
-            {isSelected ? <Selector /> : null}
+                  <TitleCard>
+                    <Text
+                      letterSpacing='1px'
+                      fontWeight={isSelected ? 600 : 500}
+                      color={theme.colors.darkGray}
+                      fontSize={theme.fontSizes.title}
+                    >
+                      {skillCat.name}
+                    </Text>
+                  </TitleCard>
+                  <CircularProgress
+                    delay={delay + 700}
+                    animate={!hasInit}
+                    percentage={skillCat.masteryPercentage}
+                  />
+                </Card>
+                {isSelected ? <Selector /> : null}
+              </SkillCatCardInnerContainer>
+            </Animated>
           </SkillCatCardContainer>
         );
       });
