@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import CardBase from 'Common/components/Card';
+import Text from 'Common/components/Text';
+import CircularProgress from 'Common/components/CircularProgress';
 
 export const Container = styled.div`
   background: ${props => props.theme.colors.white};
@@ -21,17 +23,21 @@ export const Container = styled.div`
 `;
 
 export const InnerCircularProgressContainer = styled.div`
-  @media screen and (min-width: 1280px) {
-    width: 1200px;
+  @media screen and (min-width: 1000px) {
+    width: 90%;
+    margin-bottom: 2%;
   }
 
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 1800px) {
     width: 80%;
+    margin-bottom: 2%;
   }
   flex: 1;
-  width: 90%;
+  width: 98%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  margin-bottom: 3%;
 `;
 
 export const InnerSkillsChartsContainer = styled.div`
@@ -64,13 +70,19 @@ export const ProgressBarContainer = styled.div`
 export const Card = styled(CardBase)`
   box-shadow: 1px 2px 15px 0
     ${props =>
-    props.selected ? 'rgba(254, 0, 6, 0.16)' : 'rgba(0, 198, 191, 0.16)'};
-  max-height: 50%;
-  max-width: 10%;
-  min-width: 230px;
-  min-height: 230px;
-  padding: 5%;
+    props.selected ? 'rgba(56, 56, 56, 0.16)' : 'rgba(0, 198, 191, 0.16)'};
+  max-width: 70%;
+  padding: 5% 10%;
   cursor: pointer;
+  min-width: 110px;
+
+  @media screen and (min-width: 1280px) {
+    min-width: unset;
+  }
+
+  @media screen and (min-width: 2150px) {
+    min-width: unset;
+  }
 `;
 
 export const TitleCard = styled.div`
@@ -79,31 +91,48 @@ export const TitleCard = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: -2%;
+  margin-right: -2%;
 `;
 
 export const SkillCatCardContainer = styled.div`
   width: 100%;
   height: 100%;
+
+  max-height: 210px;
+
+  @media screen and (min-width: 1280px) {
+    max-height: 280px;
+  }
+
+  @media screen and (min-width: 2150px) {
+    max-height: 300px;
+  }
 `;
 
 export const SkillCatCardInnerContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 10px;
   width: 100%;
   height: 100%;
+  position: relative;
 `;
 
 export const Selector = styled.div`
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 0 20px 20px 20px;
+  border-width: 0 15px 15px 15px;
   border-color: transparent transparent ${props => props.theme.colors.accent}
     transparent;
   display: inline-block;
-  margin-top: 2%;
+  position: absolute;
+  bottom: -25px;
+
+  @media screen and (min-width: 1000px) {
+    border-width: 0 20px 20px 20px;
+  }
 `;
 
 export const BarChartLegend = styled.div`
@@ -159,4 +188,26 @@ export const LegendRight = styled(Legend)`
   &:before {
     margin-right: 0;
   }
+`;
+
+export const TruncateText = styled(Text)`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 0;
+  font-size: calc(14px + 8 * ((100vw - 600px) / 2000));
+
+  @media screen and (min-width: 1280px) {
+    font-size: calc(16px + 8 * ((100vw - 600px) / 2000));
+    letter-spacing: 0.5px;
+  }
+
+  @media screen and (min-width: 2150px) {
+    font-size: calc(18px + 8 * ((100vw - 600px) / 2000));
+    letter-spacing: 1px;
+  }
+`;
+
+export const CircularProgressStyled = styled(CircularProgress)`
+  min-width: 90px;
 `;

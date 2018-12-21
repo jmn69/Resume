@@ -22,6 +22,7 @@ import {
   BarChartLegend,
   LegendLeft,
   LegendRight,
+  TruncateText,
 } from './Skills.s';
 
 const skillsType = T.shape({
@@ -91,14 +92,14 @@ class SkillsComponent extends Component {
                   selected={isSelected}
                 >
                   <TitleCard>
-                    <Text
+                    <TruncateText
                       letterSpacing='1px'
                       fontWeight={isSelected ? 600 : 500}
                       color={theme.colors.darkGray}
                       fontSize={theme.fontSizes.title}
                     >
                       {skillCat.name}
-                    </Text>
+                    </TruncateText>
                   </TitleCard>
                   <CircularProgress
                     delay={delay + 700}
