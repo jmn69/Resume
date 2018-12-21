@@ -1,28 +1,23 @@
 import React, { Component, Fragment } from 'react';
 import T from 'prop-types';
-import CircularProgress from 'Common/components/CircularProgress';
+import { injectIntl } from 'react-intl';
 import ProgressBar from 'Common/components/ProgressBar';
-import Text from 'Common/components/Text';
 import Animated from 'Common/components/Animated';
-import { withTheme } from 'styled-components';
 import universal from 'react-universal-component';
+import { MobileScreen, DesktopScreen } from 'react-responsive-redux';
+import ProgressBarLegend from 'Common/components/ProgressBarLegend';
 
+import SkillsIntl from './Skills.i';
+import SkillCard from './SkillCard';
 import {
   Container,
   CircularProgressContainer,
   SkillsChartsContainer,
-  Card,
-  TitleCard,
-  Selector,
   SkillCatCardContainer,
   SkillCatCardInnerContainer,
   ProgressBarContainer,
   InnerCircularProgressContainer,
   InnerSkillsChartsContainer,
-  BarChartLegend,
-  LegendLeft,
-  LegendRight,
-  TruncateText,
 } from './Skills.s';
 
 const skillsType = T.shape({
@@ -30,12 +25,19 @@ const skillsType = T.shape({
   name: T.string.isRequired,
 });
 
-const skillsCatType = T.shape({
+export const skillsCatType = T.shape({
   id: T.number.isRequired,
   name: T.string.isRequired,
   masteryPercentage: T.number.isRequired,
   skills: T.arrayOf(skillsType),
 });
+
+const legendText = intl => [
+  intl.formatMessage(SkillsIntl.Initiate),
+  intl.formatMessage(SkillsIntl.GoodLvl),
+  intl.formatMessage(SkillsIntl.VeryGoodLvl),
+  intl.formatMessage(SkillsIntl.Expertise),
+];
 
 const HomeComponent = universal(() => import('../Home'));
 const ClientsComponent = universal(() => import('../Clients'));
@@ -44,13 +46,13 @@ const AboutComponent = universal(() => import('../About'));
 class SkillsComponent extends Component {
   static propTypes = {
     data: T.arrayOf(skillsCatType).isRequired,
-    theme: T.any,
+    intl: T.any,
     setPageInit: T.func.isRequired,
     hasInit: T.bool.isRequired,
   };
 
   static defaultProps = {
-    theme: null,
+    intl: null,
   };
 
   state = {
@@ -68,7 +70,43 @@ class SkillsComponent extends Component {
   }
 
   render() {
-    const { data, theme, hasInit } = this.props;
+    return (
+      <Fragment>
+        <MobileScreen>{this.renderMobileTablet()}</MobileScreen>
+        <DesktopScreen>{this.renderDesktopTablet()}</DesktopScreen>
+      </Fragment>
+    );
+  }
+
+  renderMobileTablet = () => {
+    const { intl } = this.props;
+    const { skillCatPosSelected } = this.state;
+    const charts =
+      skillCatPosSelected &&
+      skillCatPosSelected.skills &&
+      skillCatPosSelected.skills.map(skill => (
+        <ProgressBarContainer key={skill.id}>
+          <ProgressBar percentage={skill.masteryPercentage} text={skill.name} />
+        </ProgressBarContainer>
+      ));
+
+    return (
+      <Container>
+        <InnerCircularProgressContainer>cards</InnerCircularProgressContainer>
+        <InnerSkillsChartsContainer>
+          <SkillsChartsContainer>
+            <Fragment>
+              {charts}
+              <ProgressBarLegend texts={legendText(intl)} />
+            </Fragment>
+          </SkillsChartsContainer>
+        </InnerSkillsChartsContainer>
+      </Container>
+    );
+  };
+
+  renderDesktopTablet = () => {
+    const { data, intl, hasInit } = this.props;
     const { skillCatPosSelected } = this.state;
     let delay = 1800;
 
@@ -87,27 +125,13 @@ class SkillsComponent extends Component {
               delay={delay}
             >
               <SkillCatCardInnerContainer>
-                <Card
-                  onClick={() => this.handleSkillCatClick(skillCat.id)}
+                <SkillCard
+                  animate={!hasInit}
+                  category={skillCat}
+                  onCategoryClick={this.handleSkillCatClick}
                   selected={isSelected}
-                >
-                  <TitleCard>
-                    <TruncateText
-                      letterSpacing='1px'
-                      fontWeight={isSelected ? 600 : 500}
-                      color={theme.colors.darkGray}
-                      fontSize={theme.fontSizes.title}
-                    >
-                      {skillCat.name}
-                    </TruncateText>
-                  </TitleCard>
-                  <CircularProgress
-                    delay={delay + 700}
-                    animate={!hasInit}
-                    percentage={skillCat.masteryPercentage}
-                  />
-                </Card>
-                {isSelected ? <Selector /> : null}
+                  delay={delay + 700}
+                />
               </SkillCatCardInnerContainer>
             </Animated>
           </SkillCatCardContainer>
@@ -132,26 +156,13 @@ class SkillsComponent extends Component {
           <SkillsChartsContainer>
             <Fragment>
               {charts}
-              <BarChartLegend>
-                <LegendLeft>
-                  <Text color={theme.colors.white}>Initié</Text>
-                </LegendLeft>
-                <LegendLeft>
-                  <Text color={theme.colors.white}>Bon niveau</Text>
-                </LegendLeft>
-                <LegendRight>
-                  <Text color={theme.colors.white}>Très bon niveau</Text>
-                </LegendRight>
-                <LegendRight>
-                  <Text color={theme.colors.white}>Expertise</Text>
-                </LegendRight>
-              </BarChartLegend>
+              <ProgressBarLegend texts={legendText(intl)} />
             </Fragment>
           </SkillsChartsContainer>
         </InnerSkillsChartsContainer>
       </Container>
     );
-  }
+  };
 
   handleSkillCatClick(skillCatId) {
     const skillCatPos = this.props.data.find(
@@ -162,4 +173,4 @@ class SkillsComponent extends Component {
   }
 }
 
-export default withTheme(SkillsComponent);
+export default injectIntl(SkillsComponent);

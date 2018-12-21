@@ -56,11 +56,15 @@ export const CircularProgressContainer = styled.div`
 `;
 
 export const SkillsChartsContainer = styled.div`
-  width: 60%;
+  width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin-top: -8%;
+
+  @media screen and (min-width: 900px) {
+    width: 60%;
+  }
 `;
 
 export const ProgressBarContainer = styled.div`
