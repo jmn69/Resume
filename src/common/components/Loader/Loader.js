@@ -1,7 +1,6 @@
 import React from 'react';
 import T from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 import { withTheme } from 'styled-components';
 import { LoaderContainer, MessageWrapper } from './Loader.s';
 
@@ -11,7 +10,7 @@ const Loader = props => (
       spin
       size={props.fullPage ? '3x' : props.size}
       color={props.color ? props.color : props.theme.colors.accent}
-      icon={faCircleNotch}
+      icon='circle-notch'
     />
     {props.message && <MessageWrapper>{props.message}</MessageWrapper>}
   </LoaderContainer>

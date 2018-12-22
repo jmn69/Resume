@@ -27,6 +27,10 @@ export const ProgressBarText = styled.span`
   font-size: 0.9em;
   color: ${props => props.theme.colors.white};
 
+  @media screen and (max-width: 991px) {
+    margin-left: 5px;
+  }
+
   @media screen and (min-width: 1280px) {
     line-height: 40px;
   }

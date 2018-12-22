@@ -7,13 +7,6 @@
           flex: 1;
 }
 
-.testAnim {
-    animation-duration: 1s;
-    opacity: 1;
-    animation-fill-mode: both;
-    animation-name: fadeInDown;
-}
-
 /** NEXT TRANSITION **/
 
 .next .slide-enter {

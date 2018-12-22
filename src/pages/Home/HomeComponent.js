@@ -3,7 +3,6 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { compose } from 'redux';
 import T from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faJedi } from '@fortawesome/free-solid-svg-icons';
 import { withTheme } from 'styled-components';
 import Text from 'Common/components/Text';
 import Button from 'Common/components/Button';
@@ -63,7 +62,7 @@ class Home extends Component {
             <FontAwesomeIcon
               size='3x'
               color={theme.colors.lightGray}
-              icon={faJedi}
+              icon='jedi'
             />
           </LogoContainer>
           <ContentContainer>
@@ -81,7 +80,7 @@ class Home extends Component {
                   <FontAwesomeIcon
                     size='3x'
                     color={theme.colors.lightGray}
-                    icon={faJedi}
+                    icon='jedi'
                   />
                 </LogoMobileContainer>
               </NameContainer>

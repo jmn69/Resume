@@ -3,9 +3,14 @@ import T from 'prop-types';
 import { injectIntl } from 'react-intl';
 import ProgressBar from 'Common/components/ProgressBar';
 import Animated from 'Common/components/Animated';
+import { compose } from 'redux';
+import { withTheme } from 'styled-components';
 import universal from 'react-universal-component';
-import { MobileScreen, DesktopScreen } from 'react-responsive-redux';
+import { responsiveWrapper } from 'react-responsive-redux';
 import ProgressBarLegend from 'Common/components/ProgressBarLegend';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import Swipe from 'react-easy-swipe';
 
 import SkillsIntl from './Skills.i';
 import SkillCard from './SkillCard';
@@ -18,6 +23,8 @@ import {
   ProgressBarContainer,
   InnerCircularProgressContainer,
   InnerSkillsChartsContainer,
+  ArrowRightWrapper,
+  ArrowLeftWrapper,
 } from './Skills.s';
 
 const skillsType = T.shape({
@@ -30,6 +37,14 @@ export const skillsCatType = T.shape({
   name: T.string.isRequired,
   masteryPercentage: T.number.isRequired,
   skills: T.arrayOf(skillsType),
+});
+
+const MobileScreen = responsiveWrapper({
+  maxDeviceWidth: 991,
+});
+
+const DesktopScreen = responsiveWrapper({
+  minDeviceWidth: 992,
 });
 
 const legendText = intl => [
@@ -47,16 +62,19 @@ class SkillsComponent extends Component {
   static propTypes = {
     data: T.arrayOf(skillsCatType).isRequired,
     intl: T.any,
+    theme: T.any,
     setPageInit: T.func.isRequired,
     hasInit: T.bool.isRequired,
   };
 
   static defaultProps = {
     intl: null,
+    theme: null,
   };
 
   state = {
     skillCatPosSelected: Array.isArray(this.props.data) && this.props.data[0],
+    direction: 'next',
   };
 
   componentDidMount() {
@@ -80,7 +98,7 @@ class SkillsComponent extends Component {
 
   renderMobileTablet = () => {
     const { intl } = this.props;
-    const { skillCatPosSelected } = this.state;
+    const { skillCatPosSelected, direction } = this.state;
     const charts =
       skillCatPosSelected &&
       skillCatPosSelected.skills &&
@@ -91,19 +109,62 @@ class SkillsComponent extends Component {
       ));
 
     return (
-      <Container>
-        <InnerCircularProgressContainer>cards</InnerCircularProgressContainer>
-        <InnerSkillsChartsContainer>
-          <SkillsChartsContainer>
-            <Fragment>
-              {charts}
-              <ProgressBarLegend texts={legendText(intl)} />
-            </Fragment>
-          </SkillsChartsContainer>
-        </InnerSkillsChartsContainer>
-      </Container>
+      <Swipe
+        onSwipeLeft={this.handleNextCategoryClick}
+        onSwipeRight={this.handlePreviousCategoryClick}
+      >
+        <TransitionGroup className={`switcher ${direction}`} duration={500}>
+          <CSSTransition
+            key={skillCatPosSelected.id}
+            timeout={500}
+            classNames='slide'
+          >
+            <Container>
+              <InnerCircularProgressContainer>
+                <SkillCatCardContainer>
+                  <SkillCatCardInnerContainer>
+                    <SkillCard category={skillCatPosSelected} />
+                  </SkillCatCardInnerContainer>
+                </SkillCatCardContainer>
+                {this.renderArrowRight()}
+                {this.renderArrowLeft()}
+              </InnerCircularProgressContainer>
+              <InnerSkillsChartsContainer>
+                <SkillsChartsContainer>
+                  <Fragment>
+                    {charts}
+                    <ProgressBarLegend texts={legendText(intl)} />
+                  </Fragment>
+                </SkillsChartsContainer>
+              </InnerSkillsChartsContainer>
+            </Container>
+          </CSSTransition>
+        </TransitionGroup>
+      </Swipe>
     );
   };
+
+  renderArrowRight = () =>
+    this.getNextCategory() ? (
+      <ArrowRightWrapper onClick={this.handleNextCategoryClick}>
+        <FontAwesomeIcon
+          size='3x'
+          color={this.props.theme.colors.accent}
+          icon='angle-right'
+        />
+      </ArrowRightWrapper>
+    ) : null;
+
+  renderArrowLeft = () =>
+    this.getPreviousCategory() ? (
+      <ArrowLeftWrapper onClick={this.handlePreviousCategoryClick}>
+        <FontAwesomeIcon
+          size='3x'
+          color={this.props.theme.colors.accent}
+          icon='angle-left'
+        />
+      </ArrowLeftWrapper>
+    ) : null;
 
   renderDesktopTablet = () => {
     const { data, intl, hasInit } = this.props;
@@ -164,6 +225,45 @@ class SkillsComponent extends Component {
     );
   };
 
+  getNextCategory = () => {
+    const { skillCatPosSelected } = this.state;
+    const { data } = this.props;
+
+    const currentIndex = data.findIndex(
+      category => category.id === skillCatPosSelected.id,
+    );
+    return data[currentIndex + 1];
+  };
+
+  getPreviousCategory = () => {
+    const { skillCatPosSelected } = this.state;
+    const { data } = this.props;
+
+    const currentIndex = data.findIndex(
+      category => category.id === skillCatPosSelected.id,
+    );
+    return data[currentIndex - 1];
+  };
+
+  handleNextCategoryClick = () => {
+    const nextSkillCatPosSelected = this.getNextCategory();
+
+    nextSkillCatPosSelected &&
+      this.setState({
+        skillCatPosSelected: nextSkillCatPosSelected,
+        direction: 'next',
+      });
+  };
+
+  handlePreviousCategoryClick = () => {
+    const previousSkillCatPosSelected = this.getPreviousCategory();
+    previousSkillCatPosSelected &&
+      this.setState({
+        skillCatPosSelected: previousSkillCatPosSelected,
+        direction: 'back',
+      });
+  };
+
   handleSkillCatClick(skillCatId) {
     const skillCatPos = this.props.data.find(
       skillCat => skillCat.id === skillCatId,
@@ -173,4 +273,7 @@ class SkillsComponent extends Component {
   }
 }
 
-export default injectIntl(SkillsComponent);
+export default compose(
+  injectIntl,
+  withTheme,
+)(SkillsComponent);

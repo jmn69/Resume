@@ -38,6 +38,7 @@ export const InnerCircularProgressContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   margin-bottom: 3%;
+  position: relative;
 `;
 
 export const InnerSkillsChartsContainer = styled.div`
@@ -62,7 +63,7 @@ export const SkillsChartsContainer = styled.div`
   justify-content: center;
   margin-top: -8%;
 
-  @media screen and (min-width: 900px) {
+  @media screen and (min-width: 992px) {
     width: 60%;
   }
 `;
@@ -105,6 +106,11 @@ export const SkillCatCardContainer = styled.div`
 
   max-height: 210px;
 
+  @media screen and (max-width: 991px) {
+    display: flex;
+    justify-content: center;
+  }
+
   @media screen and (min-width: 1280px) {
     max-height: 280px;
   }
@@ -121,76 +127,9 @@ export const SkillCatCardInnerContainer = styled.div`
   width: 100%;
   height: 100%;
   position: relative;
-`;
 
-export const Selector = styled.div`
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 0 15px 15px 15px;
-  border-color: transparent transparent ${props => props.theme.colors.accent}
-    transparent;
-  display: inline-block;
-  position: absolute;
-  bottom: -25px;
-
-  @media screen and (min-width: 1000px) {
-    border-width: 0 20px 20px 20px;
-  }
-`;
-
-export const BarChartLegend = styled.div`
-  margin-top: 20px;
-
-  &:after {
-    display: block;
-    content: '';
-    clear: both;
-  }
-
-  &:before {
-    display: block;
-    position: relative;
-    content: '';
-    width: 100%;
-    height: 1px;
-    margin-bottom: -10px;
-    background: #00847f;
-  }
-`;
-export const Clearfix = styled.div`
-  &:after {
-    display: block;
-    content: '';
-    clear: both;
-  }
-`;
-export const Legend = styled.div`
-  display: inline-block;
-  float: left;
-  width: 25%;
-
-  &:before {
-    display: block;
-    position: relative;
-    content: '';
-    width: 1px;
-    height: 10px;
-    margin: auto;
-    margin-bottom: 5px;
-    background: #00847f;
-  }
-`;
-export const LegendLeft = styled(Legend)`
-  text-align: left;
-  &:before {
-    margin-left: 0;
-  }
-`;
-export const LegendRight = styled(Legend)`
-  text-align: right;
-  &:before {
-    margin-right: 0;
+  @media screen and (max-width: 991px) {
+    width: 80%;
   }
 `;
 
@@ -214,4 +153,30 @@ export const TruncateText = styled(Text)`
 
 export const CircularProgressStyled = styled(CircularProgress)`
   min-width: 90px;
+`;
+
+export const Selector = styled.div`
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 15px 15px 15px;
+  border-color: transparent transparent ${props => props.theme.colors.accent}
+    transparent;
+  display: inline-block;
+  position: absolute;
+  bottom: -25px;
+
+  @media screen and (min-width: 1000px) {
+    border-width: 0 20px 20px 20px;
+  }
+`;
+
+export const ArrowRightWrapper = styled.div`
+  position: absolute;
+  right: 0;
+`;
+
+export const ArrowLeftWrapper = styled.div`
+  position: absolute;
+  left: 0;
 `;

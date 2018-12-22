@@ -10,6 +10,10 @@ export const Container = styled.ul`
     display: none;
   }
 
+  @media only screen and (max-device-width: 991px) {
+    top: 1%;
+  }
+
   position: fixed;
   top: 4%;
   right: 20%;

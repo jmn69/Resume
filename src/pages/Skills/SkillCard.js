@@ -8,9 +8,9 @@ import { Card, TitleCard, TruncateText, Selector } from './Skills.s';
 class SkillCard extends Component {
   static propTypes = {
     category: T.any,
-    onCategoryClick: T.func.isRequired,
+    onCategoryClick: T.func,
     selected: T.bool,
-    animate: T.bool.isRequired,
+    animate: T.bool,
     delay: T.number.isRequired,
     theme: T.any,
   };
@@ -19,6 +19,8 @@ class SkillCard extends Component {
     theme: null,
     selected: false,
     category: {},
+    animate: true,
+    onCategoryClick: () => {},
   };
 
   render() {
