@@ -1,48 +1,42 @@
 import styled, { css } from 'styled-components';
 import T from 'prop-types';
 
-export const Container = styled.ul`
-  @media screen and (max-width: 700px) {
+export const Container = styled.div`
+  @media screen and (min-width: 701px) {
     display: none;
   }
 
-  @media only screen and (max-device-width: 700px) {
+  @media only screen and (min-device-width: 701px) {
     display: none;
   }
 
-  @media only screen and (max-device-width: 991px) {
-    top: 1%;
-  }
-
-  position: fixed;
-  top: 4%;
-  right: 20%;
-  z-index: 70;
-  -webkit-font-smoothing: antialiased;
-  -moz-font-smoothing: antialiased;
-  letter-spacing: 1px;
-  list-style: none;
+  display: flex;
   margin: 0;
   padding: 0;
+  justify-content: space-between;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  list-style: none;
+  background: #383838;
 `;
 
-export const MenuItem = styled.li`
-  display: inline-block;
-  margin: 4% 25px;
+export const MenuItem = styled.div`
   position: relative;
   cursor: pointer;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  padding: 4% 0;
+  border-bottom: ${props => (props.isActive ? '3px solid white' : 'none')};
 `;
 
 const activeCss = css`
-  content: '';
-  height: 2px;
-  background: ${props => props.color};
-  display: block;
   position: absolute;
-  bottom: 8px;
-  left: 0;
-  right: 0;
-  display: block;
+  bottom: -16px;
+  left: 0px;
+  height: 4px;
+  background: white;
+  width: 100%;
 `;
 
 const MenuLink = styled.span`

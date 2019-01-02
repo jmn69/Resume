@@ -4,6 +4,7 @@ import Text from 'Common/components/Text';
 import CircularProgress from 'Common/components/CircularProgress';
 
 export const DesktopContainer = styled.div`
+  min-height: min-content;
   background: ${props => props.theme.colors.white};
   position: absolute;
   top: 0px;
@@ -17,7 +18,7 @@ export const DesktopContainer = styled.div`
 
   padding-top: 8%;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 700px) {
     padding-top: 3%;
   }
 
@@ -165,15 +166,15 @@ export const TruncateText = styled(Text)`
   overflow: hidden;
   text-overflow: ellipsis;
   letter-spacing: 0;
-  font-size: calc(14px + 8 * ((100vw - 600px) / 2000));
+  font-size: calc(14px + 8 * ((100vw - 700px) / 2000));
 
   @media screen and (min-width: 1280px) {
-    font-size: calc(16px + 8 * ((100vw - 600px) / 2000));
+    font-size: calc(16px + 8 * ((100vw - 700px) / 2000));
     letter-spacing: 0.5px;
   }
 
   @media screen and (min-width: 2150px) {
-    font-size: calc(18px + 8 * ((100vw - 600px) / 2000));
+    font-size: calc(18px + 8 * ((100vw - 700px) / 2000));
     letter-spacing: 1px;
   }
 `;

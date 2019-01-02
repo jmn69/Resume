@@ -5,6 +5,10 @@ import {
   faJedi,
   faAngleRight,
   faAngleLeft,
+  faHome,
+  faCode,
+  faUsers,
+  faInfoCircle,
 } from '@fortawesome/free-solid-svg-icons';
 import { IntlProvider, addLocaleData } from 'react-intl';
 import en from 'react-intl/locale-data/en';
@@ -23,7 +27,16 @@ import './css/External';
 
 addLocaleData([...en, ...fr]);
 
-library.add(faCircleNotch, faJedi, faAngleRight, faAngleLeft);
+library.add(
+  faCircleNotch,
+  faJedi,
+  faAngleRight,
+  faAngleLeft,
+  faHome,
+  faCode,
+  faUsers,
+  faInfoCircle,
+);
 
 class Root extends Component {
   static propTypes = {

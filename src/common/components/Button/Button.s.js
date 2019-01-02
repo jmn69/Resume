@@ -9,7 +9,7 @@ export const SvgContainer = styled.div`
   cursor: pointer;
 
   svg {
-    @media screen and (min-width: 600px) {
+    @media screen and (min-width: 700px) {
       max-height: 50px;
     }
     @media screen and (min-width: 2000px) {
@@ -32,6 +32,9 @@ export const SvgContainer = styled.div`
       fill: transparent;
     }
     100% {
+      stroke-dasharray: 760;
+      stroke-dashoffset: 0;
+      stroke-width: 4px;
       fill: ${props => props.theme.colors.accent};
     }
   }
@@ -53,8 +56,8 @@ export const DrawingRect = styled(RectComp)`
   fill: ${props => (props.animate ? 'transparent' : '#FE0006')};
   width: 100%;
   height: 100%;
-  stroke-dasharray: 140 540;
-  stroke-dashoffset: -474;
+  stroke-dasharray: ${props => (props.animate ? '140 540' : '760')};
+  stroke-dashoffset: ${props => (props.animate ? '-474' : '0')};
   stroke-width: 4px;
   stroke: ${props => props.theme.colors.accent};
   ${props =>
@@ -78,7 +81,7 @@ export const ButtonText = styled(Text)`
   animation: 1s textAppear linear forwards;`
       : ''}
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 700px) {
     letter-spacing: 1px;
   }
 `;
@@ -90,7 +93,7 @@ export const TextContainer = styled.div`
   top: 5px;
   text-align: center;
 
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 700px) {
     top: 10px;
   }
   @media screen and (min-width: 2000px) {

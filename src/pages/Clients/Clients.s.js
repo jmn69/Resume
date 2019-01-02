@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  min-height: min-content;
   position: absolute;
   top: 0px;
   left: 0px;

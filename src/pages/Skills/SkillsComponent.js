@@ -115,7 +115,7 @@ class SkillsComponent extends Component {
               <InnerCircularProgressContainer>
                 <SkillCatCardContainer>
                   <SkillCatCardInnerContainer>
-                    <SkillCard category={skillCatPosSelected} />
+                    <SkillCard delay={300} category={skillCatPosSelected} />
                   </SkillCatCardInnerContainer>
                 </SkillCatCardContainer>
                 {this.renderArrowRight()}

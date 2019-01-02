@@ -3,6 +3,7 @@ import Text from 'Common/components/Text';
 import T from 'prop-types';
 
 const Container = styled.div`
+  min-height: min-content;
   position: absolute;
   top: 0px;
   left: 0px;
@@ -12,7 +13,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 700px) {
     padding-top: 3%;
   }
 
@@ -59,7 +60,7 @@ export const InnerContainer = styled.div`
     width: 1200px;
   }
 
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 700px) {
     width: 80%;
   }
   width: 90%;
@@ -70,7 +71,7 @@ export const InnerContainer = styled.div`
 `;
 
 export const LogoContainer = styled.div`
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 700px) {
     display: none;
   }
 `;
@@ -82,7 +83,7 @@ export const ContentContainer = styled.div`
   flex-direction: column;
   justify-content: center;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 700px) {
     align-items: center;
   }
 `;
@@ -93,7 +94,7 @@ export const FullStackDevWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 700px) {
     justify-content: center;
     margin-top: 0px;
     margin-bottom: 10px;
@@ -108,13 +109,13 @@ export const FullStackWrapper = styled(Text)`
   font-weight: 800;
   margin-right: 30px;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 700px) {
     font-size: 3.3rem;
     letter-spacing: 0px;
     margin-right: 0px;
   }
 
-  @media only screen and (max-device-width: 600px) {
+  @media only screen and (max-device-width: 700px) {
     font-size: 3.3rem;
     letter-spacing: 0px;
   }
@@ -124,26 +125,26 @@ export const DevWrapper = styled(Text)`
   color: ${props => props.theme.colors.lightGray2};
   font-size: 4.4rem;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 700px) {
     font-size: 3.3rem;
   }
 
-  @media only screen and (max-device-width: 600px) {
+  @media only screen and (max-device-width: 700px) {
     font-size: 3.3rem;
   }
 `;
 
 export const IntroWrapper = styled(Text)`
-  max-width: 600px;
+  max-width: 700px;
   font-size: 0.9rem;
   letter-spacing: 0.3px;
   line-height: 1.6;
 
-  @media screen and (max-height: 600px) {
+  @media screen and (max-height: 700px) {
     line-height: 1.4;
   }
 
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 700px) {
     line-height: 1.8;
   }
 
@@ -157,7 +158,7 @@ export const ButtonWrapper = styled.div`
   margin-top: 20px;
   width: 25%;
   min-width: 250px;
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 700px) {
     margin-top: 40px;
   }
 
@@ -174,7 +175,7 @@ export const NameContainer = styled.div`
 `;
 
 export const LogoMobileContainer = styled.div`
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 700px) {
     display: none;
   }
 `;
