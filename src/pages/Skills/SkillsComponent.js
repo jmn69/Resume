@@ -6,7 +6,6 @@ import Animated from 'Common/components/Animated';
 import { compose } from 'redux';
 import { withTheme } from 'styled-components';
 import universal from 'react-universal-component';
-import { responsiveWrapper } from 'react-responsive-redux';
 import ProgressBarLegend from 'Common/components/ProgressBarLegend';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
@@ -15,7 +14,8 @@ import Swipe from 'react-easy-swipe';
 import SkillsIntl from './Skills.i';
 import SkillCard from './SkillCard';
 import {
-  Container,
+  DesktopContainer,
+  MobileContainer,
   CircularProgressContainer,
   SkillsChartsContainer,
   SkillCatCardContainer,
@@ -37,14 +37,6 @@ export const skillsCatType = T.shape({
   name: T.string.isRequired,
   masteryPercentage: T.number.isRequired,
   skills: T.arrayOf(skillsType),
-});
-
-const MobileScreen = responsiveWrapper({
-  maxDeviceWidth: 991,
-});
-
-const DesktopScreen = responsiveWrapper({
-  minDeviceWidth: 992,
 });
 
 const legendText = intl => [
@@ -90,8 +82,8 @@ class SkillsComponent extends Component {
   render() {
     return (
       <Fragment>
-        <MobileScreen>{this.renderMobileTablet()}</MobileScreen>
-        <DesktopScreen>{this.renderDesktopTablet()}</DesktopScreen>
+        {this.renderDesktopTablet()}
+        {this.renderMobileTablet()}
       </Fragment>
     );
   }
@@ -119,7 +111,7 @@ class SkillsComponent extends Component {
             timeout={500}
             classNames='slide'
           >
-            <Container>
+            <MobileContainer>
               <InnerCircularProgressContainer>
                 <SkillCatCardContainer>
                   <SkillCatCardInnerContainer>
@@ -137,7 +129,7 @@ class SkillsComponent extends Component {
                   </Fragment>
                 </SkillsChartsContainer>
               </InnerSkillsChartsContainer>
-            </Container>
+            </MobileContainer>
           </CSSTransition>
         </TransitionGroup>
       </Swipe>
@@ -209,7 +201,7 @@ class SkillsComponent extends Component {
       ));
 
     return (
-      <Container>
+      <DesktopContainer>
         <InnerCircularProgressContainer>
           <CircularProgressContainer>{cards}</CircularProgressContainer>
         </InnerCircularProgressContainer>
@@ -221,7 +213,7 @@ class SkillsComponent extends Component {
             </Fragment>
           </SkillsChartsContainer>
         </InnerSkillsChartsContainer>
-      </Container>
+      </DesktopContainer>
     );
   };
 

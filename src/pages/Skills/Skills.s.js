@@ -3,7 +3,7 @@ import CardBase from 'Common/components/Card';
 import Text from 'Common/components/Text';
 import CircularProgress from 'Common/components/CircularProgress';
 
-export const Container = styled.div`
+export const DesktopContainer = styled.div`
   background: ${props => props.theme.colors.white};
   position: absolute;
   top: 0px;
@@ -19,6 +19,33 @@ export const Container = styled.div`
 
   @media screen and (max-width: 600px) {
     padding-top: 3%;
+  }
+
+  @media only screen and (max-device-width: 991px) {
+    display: none;
+  }
+`;
+
+export const MobileContainer = styled.div`
+  background: ${props => props.theme.colors.white};
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding-top: 8%;
+
+  @media screen and (max-width: 700px) {
+    padding-top: 3%;
+  }
+
+  @media only screen and (min-device-width: 992px) {
+    display: none;
   }
 `;
 

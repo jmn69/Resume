@@ -1,7 +1,6 @@
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProduction';
 import { connectRoutes } from 'redux-first-router';
-import { reducer as responsiveReducer } from 'react-responsive-redux';
 
 import routesMap from './routesMap';
 import * as reducers from './reducers';
@@ -21,7 +20,6 @@ export default (history, preloadedState) => {
     locale: localeReducer,
     location: reducer,
     settings: settingsReducer,
-    responsive: responsiveReducer,
   });
   const middlewares = applyMiddleware(middleware);
   const enhancers = composeEnhancers(enhancer, middlewares);
