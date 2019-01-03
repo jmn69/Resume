@@ -27,6 +27,12 @@ export const DesktopContainer = styled.div`
   }
 `;
 
+export const MobileHiddingContainer = styled.div`
+  @media only screen and (min-device-width: 992px) {
+    display: none;
+  }
+`;
+
 export const MobileContainer = styled.div`
   background: ${props => props.theme.colors.white};
   position: absolute;
@@ -43,10 +49,6 @@ export const MobileContainer = styled.div`
 
   @media screen and (max-width: 700px) {
     padding-top: 3%;
-  }
-
-  @media only screen and (min-device-width: 992px) {
-    display: none;
   }
 `;
 

@@ -173,7 +173,6 @@ const mapStateToProps = (state, ownProps) => ({
     pageHasInit => pageHasInit === 'Skills',
   ),
   ...ownProps,
-  responsive: state.responsive,
 });
 
 const mapDispatchToProps = dispatch => ({

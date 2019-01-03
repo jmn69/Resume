@@ -34,7 +34,7 @@ class SkillCard extends Component {
     } = this.props;
     return (
       <Fragment>
-        <Card onClick={() => onCategoryClick(category.id)} selected={selected}>
+        <Card onClick={() => this.handleClick(category.id)} selected={selected}>
           <TitleCard>
             <TruncateText
               letterSpacing='1px'
@@ -55,6 +55,10 @@ class SkillCard extends Component {
       </Fragment>
     );
   }
+
+  handleClick = id => {
+    this.props.onCategoryClick(id);
+  };
 }
 
 export default withTheme(SkillCard);

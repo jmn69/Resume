@@ -20,7 +20,7 @@ export const Container = styled.div`
   background: #383838;
 `;
 
-export const MenuItem = styled.div`
+const MenuItem = styled.div`
   position: relative;
   cursor: pointer;
   height: 100%;
@@ -29,6 +29,12 @@ export const MenuItem = styled.div`
   padding: 4% 0;
   border-bottom: ${props => (props.isActive ? '3px solid white' : 'none')};
 `;
+
+MenuItem.propTypes = {
+  isActive: T.bool,
+};
+
+export { MenuItem };
 
 const activeCss = css`
   position: absolute;
@@ -48,8 +54,8 @@ const MenuLink = styled.span`
 `;
 
 MenuLink.propTypes = {
-  color: T.string.isRequired,
-  isActive: T.bool.isRequired,
+  color: T.string,
+  isActive: T.bool,
 };
 
 export { MenuLink };

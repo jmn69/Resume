@@ -25,6 +25,7 @@ import {
   InnerSkillsChartsContainer,
   ArrowRightWrapper,
   ArrowLeftWrapper,
+  MobileHiddingContainer,
 } from './Skills.s';
 
 const skillsType = T.shape({
@@ -101,38 +102,40 @@ class SkillsComponent extends Component {
       ));
 
     return (
-      <Swipe
-        onSwipeLeft={this.handleNextCategoryClick}
-        onSwipeRight={this.handlePreviousCategoryClick}
-      >
-        <TransitionGroup className={`switcher ${direction}`} duration={500}>
-          <CSSTransition
-            key={skillCatPosSelected.id}
-            timeout={500}
-            classNames='slide'
-          >
-            <MobileContainer>
-              <InnerCircularProgressContainer>
-                <SkillCatCardContainer>
-                  <SkillCatCardInnerContainer>
-                    <SkillCard delay={300} category={skillCatPosSelected} />
-                  </SkillCatCardInnerContainer>
-                </SkillCatCardContainer>
-                {this.renderArrowRight()}
-                {this.renderArrowLeft()}
-              </InnerCircularProgressContainer>
-              <InnerSkillsChartsContainer>
-                <SkillsChartsContainer>
-                  <Fragment>
-                    {charts}
-                    <ProgressBarLegend texts={legendText(intl)} />
-                  </Fragment>
-                </SkillsChartsContainer>
-              </InnerSkillsChartsContainer>
-            </MobileContainer>
-          </CSSTransition>
-        </TransitionGroup>
-      </Swipe>
+      <MobileHiddingContainer>
+        <Swipe
+          onSwipeLeft={this.handleNextCategoryClick}
+          onSwipeRight={this.handlePreviousCategoryClick}
+        >
+          <TransitionGroup className={`switcher ${direction}`} duration={500}>
+            <CSSTransition
+              key={skillCatPosSelected.id}
+              timeout={500}
+              classNames='slide'
+            >
+              <MobileContainer>
+                <InnerCircularProgressContainer>
+                  <SkillCatCardContainer>
+                    <SkillCatCardInnerContainer>
+                      <SkillCard delay={300} category={skillCatPosSelected} />
+                    </SkillCatCardInnerContainer>
+                  </SkillCatCardContainer>
+                  {this.renderArrowRight()}
+                  {this.renderArrowLeft()}
+                </InnerCircularProgressContainer>
+                <InnerSkillsChartsContainer>
+                  <SkillsChartsContainer>
+                    <Fragment>
+                      {charts}
+                      <ProgressBarLegend texts={legendText(intl)} />
+                    </Fragment>
+                  </SkillsChartsContainer>
+                </InnerSkillsChartsContainer>
+              </MobileContainer>
+            </CSSTransition>
+          </TransitionGroup>
+        </Swipe>
+      </MobileHiddingContainer>
     );
   };
 
@@ -256,13 +259,13 @@ class SkillsComponent extends Component {
       });
   };
 
-  handleSkillCatClick(skillCatId) {
+  handleSkillCatClick = skillCatId => {
     const skillCatPos = this.props.data.find(
       skillCat => skillCat.id === skillCatId,
     );
 
     this.setState({ skillCatPosSelected: skillCatPos });
-  }
+  };
 }
 
 export default compose(
