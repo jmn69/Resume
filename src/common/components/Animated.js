@@ -9,11 +9,13 @@ export default class Animated extends Component {
     animation: T.string.isRequired,
     animationDuration: T.string,
     animate: T.bool.isRequired,
+    style: T.any,
   };
 
   static defaultProps = {
     initiallyVisible: false,
     delay: 0,
+    style: {},
     animationDuration: '1s',
   };
 
@@ -44,7 +46,10 @@ export default class Animated extends Component {
     const { ContentAnimationClasses, ContentAnimationStyle } = this.state;
 
     return (
-      <div className={ContentAnimationClasses} style={ContentAnimationStyle}>
+      <div
+        className={ContentAnimationClasses}
+        style={{ ...ContentAnimationStyle, ...this.props.style }}
+      >
         {this.props.children}
       </div>
     );

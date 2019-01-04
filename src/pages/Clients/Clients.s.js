@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import CardBase from 'Common/components/Card';
 
 export const Container = styled.div`
   min-height: min-content;
@@ -6,7 +7,14 @@ export const Container = styled.div`
   top: 0px;
   left: 0px;
   width: 100%;
-  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-top: 8%;
+
+  @media screen and (max-width: 700px) {
+    padding-top: 3%;
+  }
 
   background: rgb(105, 234, 228); /* Old browsers */
   background: -moz-linear-gradient(
@@ -38,4 +46,20 @@ export const Container = styled.div`
       endColorstr='#00bac4',
       GradientType=1
     );
+`;
+
+export const Card = styled(CardBase)`
+  width: 100%;
+  height: auto;
+  margin-bottom: 60px;
+  box-shadow: 1px 2px 15px 0 rgba(56, 56, 56, 0.16);
+  min-height: 280px;
+`;
+
+export const CardsContainer = styled.div`
+  flex-wrap: wrap;
+  width: 70%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
 `;

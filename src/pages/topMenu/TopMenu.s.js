@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components';
 import T from 'prop-types';
 
-export const Container = styled.ul`
+const Container = styled.ul`
+  display: ${props => (props.hideMenu ? 'none' : 'unset')};
   @media screen and (max-width: 700px) {
     display: none;
   }
@@ -25,6 +26,12 @@ export const Container = styled.ul`
   margin: 0;
   padding: 0;
 `;
+
+Container.propTypes = {
+  hideMenu: T.bool.isRequired,
+};
+
+export { Container };
 
 export const MenuItem = styled.li`
   display: inline-block;

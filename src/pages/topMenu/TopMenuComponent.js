@@ -30,11 +30,30 @@ class TopMenuComponent extends Component {
   static defaultProps = {
     theme: null,
   };
+
+  state = {
+    lastScrollY: 0,
+    hideMenu: false,
+  };
+
+  componentWillMount() {
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', this.handleScroll);
+    }
+  }
+
+  componentWillUnmount() {
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('scroll', this.handleScroll);
+    }
+  }
+
   render() {
     const { dispatch, path } = this.props;
+    const { hideMenu } = this.state;
     const textColor = selectColorByPageIndex(path, this.props.theme);
     return (
-      <Container>
+      <Container hideMenu={hideMenu}>
         <MenuItem onClick={() => dispatch({ type: 'HOME' })}>
           <MenuLink isActive={isActive(path, '/')} color={textColor}>
             <Text color={textColor}>
@@ -66,6 +85,21 @@ class TopMenuComponent extends Component {
       </Container>
     );
   }
+
+  handleScroll = () => {
+    if (typeof window !== 'undefined') {
+      const { lastScrollY } = this.state;
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 40) {
+        this.setState({ hideMenu: true });
+      }
+      if (currentScrollY <= 40) {
+        this.setState({ hideMenu: false });
+      }
+      this.setState({ lastScrollY: currentScrollY });
+    }
+  };
 }
 
 export default withTheme(TopMenuComponent);
