@@ -21,9 +21,8 @@ const Container = styled.ul`
 
   justify-content: flex-end;
   align-items: center;
-  padding-right: 15%;
   height: 80px;
-  width: 100%;
+  width: 80%;
   z-index: 70;
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: antialiased;

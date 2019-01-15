@@ -23,6 +23,7 @@ import {
   ButtonWrapper,
   NameContainer,
   LogoMobileContainer,
+  MenuContainer,
 } from './Home.s';
 
 const SkillsComponent = universal(() => import('../Skills'));
@@ -58,7 +59,9 @@ class Home extends Component {
 
     return (
       <Container>
-        <TopMenu />
+        <MenuContainer>
+          <TopMenu />
+        </MenuContainer>
         <InnerContainer>
           <LogoContainer>
             <FontAwesomeIcon

@@ -176,3 +176,9 @@ export const LogoMobileContainer = styled.div`
     display: none;
   }
 `;
+
+export const MenuContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+`;
