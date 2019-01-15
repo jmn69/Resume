@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Swipe from 'react-easy-swipe';
 
+import TopMenu from '../topMenu/TopMenuContainer';
 import SkillsIntl from './Skills.i';
 import SkillCard from './SkillCard';
 import {
@@ -205,6 +206,7 @@ class SkillsComponent extends Component {
 
     return (
       <DesktopContainer>
+        <TopMenu />
         <InnerCircularProgressContainer>
           <CircularProgressContainer>{cards}</CircularProgressContainer>
         </InnerCircularProgressContainer>

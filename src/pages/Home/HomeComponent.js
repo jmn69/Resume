@@ -9,6 +9,7 @@ import Button from 'Common/components/Button';
 import Animated from 'Common/components/Animated';
 import universal from 'react-universal-component';
 
+import TopMenu from '../topMenu/TopMenuContainer';
 import HomeIntl from './Home.i';
 import {
   Container,
@@ -57,6 +58,7 @@ class Home extends Component {
 
     return (
       <Container>
+        <TopMenu />
         <InnerContainer>
           <LogoContainer>
             <FontAwesomeIcon

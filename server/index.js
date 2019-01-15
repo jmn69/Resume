@@ -5,8 +5,10 @@ import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackHotServerMiddleware from 'webpack-hot-server-middleware';
 import cookieParser from 'cookie-parser';
+import AWS from 'aws-sdk';
 import clientConfig from '../webpack/client.dev';
 import serverConfig from '../webpack/server.dev';
+import config from './config';
 
 const fs = require('fs');
 
@@ -50,6 +52,43 @@ app.use((req, res, next) => {
     res.cookie('language_pref', 'fr', { maxAge: 31536000, httpOnly: false });
   }
   next();
+});
+
+const s3 = new AWS.S3({
+  accessKeyId: config.AwsAccessKey,
+  secretAccessKey: config.AwsAccessSecretKey,
+  region: 'eu-west-3',
+  signatureVersion: 'v4',
+});
+app.get('/realytics-image', (req, res) => {
+  const imgStream = s3
+    .getObject({
+      Bucket: 'jordane-michon-images',
+      Key: 'realytics.png',
+    })
+    .createReadStream();
+  res.set('Cache-Control', 'public, max-age=31557600');
+  imgStream.pipe(res);
+});
+app.get('/loyalty-image', (req, res) => {
+  const imgStream = s3
+    .getObject({
+      Bucket: 'jordane-michon-images',
+      Key: 'loyalty.png',
+    })
+    .createReadStream();
+  res.set('Cache-Control', 'public, max-age=31557600');
+  imgStream.pipe(res);
+});
+app.get('/coworkio-image', (req, res) => {
+  const imgStream = s3
+    .getObject({
+      Bucket: 'jordane-michon-images',
+      Key: 'coworkio.png',
+    })
+    .createReadStream();
+  res.set('Cache-Control', 'public, max-age=31557600');
+  imgStream.pipe(res);
 });
 
 let isBuilt = false;

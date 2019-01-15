@@ -16,12 +16,6 @@ export const DesktopContainer = styled.div`
   flex-direction: column;
   align-items: center;
 
-  padding-top: 8%;
-
-  @media screen and (max-width: 700px) {
-    padding-top: 3%;
-  }
-
   @media only screen and (max-device-width: 991px) {
     display: none;
   }

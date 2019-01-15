@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import T from 'prop-types';
 
 const Container = styled.ul`
-  display: ${props => (props.hideMenu ? 'none' : 'unset')};
+  display: ${props => (props.hideMenu ? 'none' : 'flex')};
   @media screen and (max-width: 700px) {
     display: none;
   }
@@ -11,20 +11,25 @@ const Container = styled.ul`
     display: none;
   }
 
-  @media only screen and (max-device-width: 991px) {
-    top: 1%;
+  @media screen and (min-width: 980px) {
+    height: 110px;
   }
 
-  position: fixed;
-  top: 4%;
-  right: 20%;
+  @media screen and (min-width: 1280px) {
+    height: 150px;
+  }
+
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 15%;
+  height: 80px;
+  width: 100%;
   z-index: 70;
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: antialiased;
   letter-spacing: 1px;
   list-style: none;
   margin: 0;
-  padding: 0;
 `;
 
 Container.propTypes = {
@@ -35,9 +40,9 @@ export { Container };
 
 export const MenuItem = styled.li`
   display: inline-block;
-  margin: 4% 25px;
   position: relative;
   cursor: pointer;
+  margin: 0 25px;
 `;
 
 const activeCss = css`

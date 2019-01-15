@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import CardBase from 'Common/components/Card';
+import Animated from 'Common/components/Animated';
 
 export const Container = styled.div`
   min-height: min-content;
@@ -10,11 +11,6 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  padding-top: 8%;
-
-  @media screen and (max-width: 700px) {
-    padding-top: 3%;
-  }
 
   background: rgb(105, 234, 228); /* Old browsers */
   background: -moz-linear-gradient(
@@ -50,16 +46,76 @@ export const Container = styled.div`
 
 export const Card = styled(CardBase)`
   width: 100%;
-  height: auto;
   margin-bottom: 60px;
   box-shadow: 1px 2px 15px 0 rgba(56, 56, 56, 0.16);
-  min-height: 280px;
+  height: 280px;
+
+  @media screen and (min-width: 1280px) {
+    height: 320px;
+  }
 `;
 
 export const CardsContainer = styled.div`
   flex-wrap: wrap;
-  width: 70%;
+  width: 80%;
   height: 100%;
   display: flex;
   justify-content: space-between;
+  margin-top: 3%;
+
+  @media screen and (min-width: 1280px) {
+    width: 1200px;
+  }
+`;
+
+export const ImageContainer = styled.div`
+  flex: 5;
+  background: ${props => props.theme.colors.lightGray};
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const DescriptionContainer = styled.div`
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const StyledAnimated = styled(Animated)`
+  width: 100%;
+
+  @media screen and (min-width: 600px) {
+    width: 47%;
+  }
+
+  @media screen and (min-width: 992px) {
+    width: 30%;
+  }
+`;
+
+export const CardContainer = styled.div`
+  width: 100%;
+
+  @media screen and (min-width: 600px) {
+    width: 47%;
+  }
+
+  @media screen and (min-width: 980px) {
+    width: 30%;
+  }
+`;
+
+export const MobileHiddingContainer = styled.div`
+  @media only screen and (min-width: 992px) {
+    display: none;
+  }
+`;
+
+export const DesktopHiddingContainer = styled.div`
+  @media only screen and (max-width: 991px) {
+    display: none;
+  }
 `;

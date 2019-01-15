@@ -10,6 +10,7 @@ export default class Animated extends Component {
     animationDuration: T.string,
     animate: T.bool.isRequired,
     style: T.any,
+    className: T.any,
   };
 
   static defaultProps = {
@@ -17,10 +18,11 @@ export default class Animated extends Component {
     delay: 0,
     style: {},
     animationDuration: '1s',
+    className: '',
   };
 
   state = {
-    ContentAnimationClasses: '',
+    ContentAnimationClasses: this.props.className,
     ContentAnimationStyle: { opacity: this.props.initiallyVisible ? 1 : 0 },
   };
 
@@ -28,7 +30,9 @@ export default class Animated extends Component {
     if (this.props.animate) {
       this.delayedAnimationTimeout = setTimeout(() => {
         this.setState({
-          ContentAnimationClasses: `animated ${this.props.animation}`,
+          ContentAnimationClasses: `animated ${this.props.animation} ${
+            this.props.className
+          }`,
           ContentAnimationStyle: {
             animationDuration: this.props.animationDuration,
             opacity: 1,

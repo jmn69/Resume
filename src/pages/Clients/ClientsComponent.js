@@ -1,14 +1,19 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import T from 'prop-types';
 import universal from 'react-universal-component';
-import Animated from 'Common/components/Animated';
+import Text from 'Common/components/Text';
+import TopMenu from '../topMenu/TopMenuContainer';
 
 import {
   Container,
-  ClientCardContainer,
-  ClientCardInnerContainer,
+  ImageContainer,
+  DescriptionContainer,
   CardsContainer,
   Card,
+  StyledAnimated,
+  CardContainer,
+  MobileHiddingContainer,
+  DesktopHiddingContainer,
 } from './Clients.s';
 
 const HomeComponent = universal(() => import('../Home'));
@@ -37,11 +42,20 @@ export default class Clients extends Component {
     AboutComponent.preload();
 
     if (!hasInit) {
-      setPageInit('Home');
+      setPageInit('Clients');
     }
   }
 
   render() {
+    return (
+      <Fragment>
+        {this.renderDesktop()}
+        {this.renderMobileTablet()}
+      </Fragment>
+    );
+  }
+
+  renderDesktop() {
     const { data, hasInit } = this.props;
 
     // Logic below is need to animate right to left card row by row
@@ -71,22 +85,74 @@ export default class Clients extends Component {
           }
         }
         return (
-          <Animated
+          <StyledAnimated
             initiallyVisible={hasInit}
             animate={!hasInit}
             animation='bounceInLeft'
             delay={delay}
-            style={{ width: '30%' }}
+            key={client.id}
           >
-            <Card>{client.name}</Card>
-          </Animated>
+            <Card>
+              <ImageContainer>
+                {client.image ? (
+                  <img
+                    height='100%'
+                    width={client.width ? client.width : '100%'}
+                    src={client.image}
+                    alt='no images'
+                  />
+                ) : (
+                  <Text>no images</Text>
+                )}
+              </ImageContainer>
+              <DescriptionContainer>{client.name}</DescriptionContainer>
+            </Card>
+          </StyledAnimated>
         );
       });
 
     return (
-      <Container>
-        <CardsContainer>{cards}</CardsContainer>
-      </Container>
+      <DesktopHiddingContainer>
+        <Container>
+          <TopMenu />
+          <CardsContainer>{cards}</CardsContainer>
+        </Container>
+      </DesktopHiddingContainer>
+    );
+  }
+
+  renderMobileTablet() {
+    const { data } = this.props;
+
+    const cards =
+      data &&
+      data.map(client => (
+        <CardContainer key={client.id}>
+          <Card>
+            <ImageContainer>
+              {client.image ? (
+                <img
+                  height='100%'
+                  width={client.width ? client.width : '100%'}
+                  src={client.image}
+                  alt='no images'
+                />
+              ) : (
+                <Text>no images</Text>
+              )}
+            </ImageContainer>
+            <DescriptionContainer>{client.name}</DescriptionContainer>
+          </Card>
+        </CardContainer>
+      ));
+
+    return (
+      <MobileHiddingContainer>
+        <Container>
+          <TopMenu />
+          <CardsContainer>{cards}</CardsContainer>
+        </Container>
+      </MobileHiddingContainer>
     );
   }
 }

@@ -12,10 +12,7 @@ const Container = styled.div`
 
   display: flex;
   justify-content: center;
-
-  @media screen and (max-width: 700px) {
-    padding-top: 3%;
-  }
+  flex-direction: column;
 
   background: rgb(105, 234, 228); /* Old browsers */
   background: -moz-linear-gradient(
