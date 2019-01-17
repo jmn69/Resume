@@ -2,6 +2,17 @@ import React, { Component, Fragment } from 'react';
 import T from 'prop-types';
 import universal from 'react-universal-component';
 import Text from 'Common/components/Text';
+import {
+  ReactIcon,
+  Git,
+  Js,
+  Ts,
+  Redux,
+  Bootstrap,
+  Android,
+  DotNet,
+  NodeJs,
+} from 'Common/devicon';
 import TopMenu from '../topMenu/TopMenuContainer';
 
 import {
@@ -14,26 +25,36 @@ import {
   CardContainer,
   MobileHiddingContainer,
   DesktopHiddingContainer,
+  TechContainer,
 } from './Clients.s';
 
 const HomeComponent = universal(() => import('../Home'));
 const SkillsComponent = universal(() => import('../Skills'));
 const AboutComponent = universal(() => import('../About'));
 
+const techComponents = {
+  React: <ReactIcon key='react' />,
+  Redux: <Redux key='redux' />,
+  Ts: <Ts key='Ts' />,
+  Js: <Js key='Js' />,
+  Bootstrap: <Bootstrap key='Bootstrap' />,
+  Android: <Android key='Android' />,
+  Dotnet: <DotNet key='Dotnet' />,
+  Nodejs: <NodeJs key='Nodejs' />,
+  Git: <Git textColor='white' key='Git' />,
+};
+
 export default class Clients extends Component {
   static propTypes = {
-    // theme: T.any,
-    // intl: T.any,
-    // Todo: define type
     data: T.any.isRequired,
     setPageInit: T.func.isRequired,
     hasInit: T.bool.isRequired,
   };
 
-  // static defaultProps = {
-  //   theme: null,
-  //   intl: null,
-  // };
+  state = {
+    descriptionClassNames: {},
+    techClassNames: {},
+  };
 
   componentDidMount() {
     const { hasInit, setPageInit } = this.props;
@@ -57,6 +78,7 @@ export default class Clients extends Component {
 
   renderDesktop() {
     const { data, hasInit } = this.props;
+    const { descriptionClassNames, techClassNames } = this.state;
 
     // Logic below is need to animate right to left card row by row
     const animationDelay = 300;
@@ -84,6 +106,8 @@ export default class Clients extends Component {
             delay = numberOfDoneRow * delayForRow + animationDelay;
           }
         }
+
+        const techIcons = client.technos.map(tech => techComponents[tech]);
         return (
           <StyledAnimated
             initiallyVisible={hasInit}
@@ -92,7 +116,10 @@ export default class Clients extends Component {
             delay={delay}
             key={client.id}
           >
-            <Card>
+            <Card
+              onMouseEnter={() => this.handleMouserEnter(client.id)}
+              onMouseLeave={() => this.handleMouserLeave(client.id)}
+            >
               <ImageContainer>
                 {client.image ? (
                   <img
@@ -105,7 +132,14 @@ export default class Clients extends Component {
                   <Text>no images</Text>
                 )}
               </ImageContainer>
-              <DescriptionContainer>{client.name}</DescriptionContainer>
+              <DescriptionContainer
+                className={descriptionClassNames[client.id]}
+              >
+                {client.name}
+              </DescriptionContainer>
+              <TechContainer className={techClassNames[client.id]}>
+                {techIcons}
+              </TechContainer>
             </Card>
           </StyledAnimated>
         );
@@ -121,30 +155,76 @@ export default class Clients extends Component {
     );
   }
 
+  handleMouserEnter = clientId => {
+    this.setDynamicsClassNames(clientId, 'Enter');
+  };
+
+  handleMouserLeave = clientId => {
+    this.setDynamicsClassNames(clientId, 'Leave');
+  };
+
+  handleCardTouch = clientId => {
+    const { descriptionClassNames } = this.state;
+    if (
+      descriptionClassNames[clientId] &&
+      descriptionClassNames[clientId] === 'DescriptionEnter'
+    ) {
+      this.setDynamicsClassNames(clientId, 'Leave');
+    }
+    else {
+      this.setDynamicsClassNames(clientId, 'Enter');
+    }
+  };
+
+  setDynamicsClassNames = (clientId, eventName) => {
+    const { descriptionClassNames, techClassNames } = this.state;
+    this.setState({
+      descriptionClassNames: {
+        ...descriptionClassNames,
+        ...{ [clientId]: `Description${eventName}` },
+      },
+      techClassNames: {
+        ...techClassNames,
+        ...{ [clientId]: `Tech${eventName}` },
+      },
+    });
+  };
+
   renderMobileTablet() {
     const { data } = this.props;
+    const { descriptionClassNames, techClassNames } = this.state;
 
     const cards =
       data &&
-      data.map(client => (
-        <CardContainer key={client.id}>
-          <Card>
-            <ImageContainer>
-              {client.image ? (
-                <img
-                  height='100%'
-                  width={client.width ? client.width : '100%'}
-                  src={client.image}
-                  alt='no images'
-                />
-              ) : (
-                <Text>no images</Text>
-              )}
-            </ImageContainer>
-            <DescriptionContainer>{client.name}</DescriptionContainer>
-          </Card>
-        </CardContainer>
-      ));
+      data.map(client => {
+        const techIcons = client.technos.map(tech => techComponents[tech]);
+        return (
+          <CardContainer key={client.id}>
+            <Card onClick={() => this.handleCardTouch(client.id)}>
+              <ImageContainer>
+                {client.image ? (
+                  <img
+                    height='100%'
+                    width={client.width ? client.width : '100%'}
+                    src={client.image}
+                    alt='no images'
+                  />
+                ) : (
+                  <Text>no images</Text>
+                )}
+              </ImageContainer>
+              <DescriptionContainer
+                className={descriptionClassNames[client.id]}
+              >
+                {client.name}
+              </DescriptionContainer>
+              <TechContainer className={techClassNames[client.id]}>
+                {techIcons}
+              </TechContainer>
+            </Card>
+          </CardContainer>
+        );
+      });
 
     return (
       <MobileHiddingContainer>

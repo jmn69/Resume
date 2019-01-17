@@ -49,6 +49,8 @@ export const Card = styled(CardBase)`
   margin-bottom: 60px;
   box-shadow: 1px 2px 15px 0 rgba(56, 56, 56, 0.16);
   height: 280px;
+  overflow: hidden;
+  position: relative;
 
   @media screen and (min-width: 1280px) {
     height: 320px;
@@ -78,10 +80,11 @@ export const ImageContainer = styled.div`
 `;
 
 export const DescriptionContainer = styled.div`
-  flex: 1;
+  height: 46px;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 4px;
 `;
 
 export const StyledAnimated = styled(Animated)`
@@ -118,4 +121,18 @@ export const DesktopHiddingContainer = styled.div`
   @media only screen and (max-width: 991px) {
     display: none;
   }
+`;
+
+export const TechContainer = styled.div`
+  background: ${props => props.theme.colors.darkGray};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  height: 46px;
+  left: 0;
+  bottom: -54px;
+  width: 100%;
+  padding: 4px;
+  color: ${props => props.theme.colors.lightGray};
 `;

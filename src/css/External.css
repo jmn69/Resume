@@ -6,6 +6,10 @@
           flex: 1;
 }
 
+.devicon {
+  max-width: 4em;
+}
+
 /** NEXT TRANSITION **/
 
 .next .slide-enter {
@@ -54,6 +58,25 @@
   transition: all 500ms;
 }
 
+.DescriptionEnter {
+  opacity: 0; 
+  transition: all 500ms;
+}
+
+.DescriptionLeave {
+  opacity: 1;
+  transition: all 500ms;
+}
+
+.TechEnter {
+  bottom: 0 !important;
+  transition: all 500ms;
+}
+
+.TechLeave {
+  bottom: -54px !important;
+  transition: all 500ms;
+}
 
 /*
  * react-circular-progressbar styles
