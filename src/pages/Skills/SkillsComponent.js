@@ -108,7 +108,10 @@ class SkillsComponent extends Component {
           onSwipeLeft={this.handleNextCategoryClick}
           onSwipeRight={this.handlePreviousCategoryClick}
         >
-          <TransitionGroup className={`switcher ${direction}`} duration={500}>
+          <TransitionGroup
+            className={`switcherMobile ${direction}`}
+            duration={500}
+          >
             <CSSTransition
               key={skillCatPosSelected.id}
               timeout={500}

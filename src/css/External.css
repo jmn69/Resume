@@ -6,6 +6,15 @@
           flex: 1;
 }
 
+.switcherMobile {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
 .devicon {
   max-width: 4em;
 }
