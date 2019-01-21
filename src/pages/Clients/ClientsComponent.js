@@ -14,9 +14,10 @@ import {
   DotNet,
   NodeJs,
 } from 'Common/devicon';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import TopMenu from '../topMenu/TopMenuContainer';
 import ClientsIntl from './Clients.i';
-
 import {
   Container,
   ImageContainer,
@@ -29,7 +30,13 @@ import {
   DesktopHiddingContainer,
   TechContainer,
   TitleContainer,
-  PageTitle,
+  Title,
+  RecommendationsContainer,
+  RecommendationText,
+  Ref,
+  RecommandationTitleContainer,
+  Company,
+  ContentContainer,
 } from './Clients.s';
 
 const HomeComponent = universal(() => import('../Home'));
@@ -156,21 +163,38 @@ export default class Clients extends Component {
         <Container>
           <TopMenu />
           <TitleContainer>
-            <PageTitle>
+            <Title>
               <FormattedMessage {...ClientsIntl.PageTitle} />
-            </PageTitle>
+            </Title>
           </TitleContainer>
           <CardsContainer>{cards}</CardsContainer>
-          {/* <RecommendationsContainer>
-            <Title>Dernière recommandation :</Title>
-            <RecommendationText>blablabla</RecommendationText>
-            <Ref>Vincent Lead dev Front chez Realytics</Ref>
-            <Source>Sur "lien malt"</Source>
-          </RecommendationsContainer> */}
+          {this.renderRecommendation()}
         </Container>
       </DesktopHiddingContainer>
     );
   }
+
+  renderRecommendation = () => (
+    <RecommendationsContainer>
+      <RecommandationTitleContainer>
+        <Title>
+          <FormattedMessage {...ClientsIntl.LastRecommendation} />
+        </Title>
+        <FontAwesomeIcon size='lg' color='#2196f3' icon='thumbs-up' />
+      </RecommandationTitleContainer>
+      <ContentContainer>
+        <RecommendationText href='https://www.malt.fr/profile/jordanemichon'>
+          &laquo;&nbsp;
+          <FormattedMessage {...ClientsIntl.RecommendationContent} />
+          &nbsp;&raquo;
+        </RecommendationText>
+        <Ref href='https://www.malt.fr/profile/jordanemichon'>
+          Vincent Nguyen-Huu - Lead Front
+        </Ref>
+        <Company>Realytics</Company>
+      </ContentContainer>
+    </RecommendationsContainer>
+  );
 
   handleMouserEnter = clientId => {
     this.setDynamicsClassNames(clientId, 'Enter');
@@ -248,6 +272,7 @@ export default class Clients extends Component {
         <Container>
           <TopMenu />
           <CardsContainer>{cards}</CardsContainer>
+          {this.renderRecommendation()}
         </Container>
       </MobileHiddingContainer>
     );

@@ -86,6 +86,7 @@ export const DescriptionContainer = styled.div`
   align-items: center;
   justify-content: center;
   padding: 4px;
+  font-size: 20px;
 `;
 
 export const StyledAnimated = styled(Animated)`
@@ -143,6 +144,55 @@ export const TitleContainer = styled.div`
   margin-left: 40px;
 `;
 
-export const PageTitle = styled(Text)`
+export const RecommandationTitleContainer = styled.div`
+  width: 80%;
+  margin-left: 40px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+`;
+
+export const Title = styled(Text)`
+  font-size: 30px;
+  display: inline-block;
+  margin-right: 1%;
+`;
+
+export const RecommendationsContainer = styled.div`
+  background: ${props => props.theme.colors.white};
+  width: 100%;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-top: 2%;
+`;
+
+export const RecommendationText = styled.a`
   font-size: ${props => props.theme.fontSizes.title};
+  font-style: oblique;
+  text-decoration: none;
+  font-weight: 300;
+  color: grey;
+`;
+
+export const Ref = styled.a`
+  font-size: 16px;
+  text-decoration: none;
+  color: ${props => props.theme.colors.darkGray};
+`;
+
+export const Source = styled(Text)`
+  font-size: 16px;
+`;
+
+export const Company = styled(Text)`
+  font-size: 16px;
+`;
+
+export const ContentContainer = styled.div`
+  width: 70%;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
 `;

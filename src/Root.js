@@ -9,6 +9,7 @@ import {
   faCode,
   faUsers,
   faInfoCircle,
+  faThumbsUp,
 } from '@fortawesome/free-solid-svg-icons';
 import { IntlProvider, addLocaleData } from 'react-intl';
 import en from 'react-intl/locale-data/en';
@@ -36,6 +37,7 @@ library.add(
   faCode,
   faUsers,
   faInfoCircle,
+  faThumbsUp,
 );
 
 class Root extends Component {
