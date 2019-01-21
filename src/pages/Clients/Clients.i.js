@@ -1,8 +1,8 @@
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
-  Clients: {
-    id: 'Clients.Clients',
-    defaultMessage: 'Clients',
+  PageTitle: {
+    id: 'Clients.PageTitle',
+    defaultMessage: 'Clients and companies i worked with',
   },
 });

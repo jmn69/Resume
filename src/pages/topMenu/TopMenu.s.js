@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import T from 'prop-types';
 
-const Container = styled.ul`
+export const Container = styled.ul`
   display: ${props => (props.hideMenu ? 'none' : 'flex')};
   @media screen and (max-width: 700px) {
     display: none;
@@ -19,7 +19,7 @@ const Container = styled.ul`
     height: 150px;
   }
 
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   height: 80px;
   width: 80%;
@@ -30,12 +30,6 @@ const Container = styled.ul`
   list-style: none;
   margin: 0;
 `;
-
-Container.propTypes = {
-  hideMenu: T.bool.isRequired,
-};
-
-export { Container };
 
 export const MenuItem = styled.li`
   display: inline-block;

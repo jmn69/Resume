@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { compose } from 'redux';
 import T from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { withTheme } from 'styled-components';
 import Text from 'Common/components/Text';
 import Button from 'Common/components/Button';
@@ -14,7 +13,6 @@ import HomeIntl from './Home.i';
 import {
   Container,
   InnerContainer,
-  LogoContainer,
   ContentContainer,
   FullStackDevWrapper,
   IntroWrapper,
@@ -22,7 +20,6 @@ import {
   DevWrapper,
   ButtonWrapper,
   NameContainer,
-  LogoMobileContainer,
   MenuContainer,
 } from './Home.s';
 
@@ -63,13 +60,6 @@ class Home extends Component {
           <TopMenu />
         </MenuContainer>
         <InnerContainer>
-          <LogoContainer>
-            <FontAwesomeIcon
-              size='3x'
-              color={theme.colors.lightGray}
-              icon='jedi'
-            />
-          </LogoContainer>
           <ContentContainer>
             <Animated
               initiallyVisible={hasInit}
@@ -81,13 +71,6 @@ class Home extends Component {
                 <Text color={theme.colors.lightGray2} fontSize={24}>
                   Jordane Michon (Temporary website)
                 </Text>
-                <LogoMobileContainer>
-                  <FontAwesomeIcon
-                    size='3x'
-                    color={theme.colors.lightGray}
-                    icon='jedi'
-                  />
-                </LogoMobileContainer>
               </NameContainer>
               <FullStackDevWrapper>
                 <FullStackWrapper>

@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import T from 'prop-types';
 import universal from 'react-universal-component';
 import Text from 'Common/components/Text';
+import { FormattedMessage } from 'react-intl';
 import {
   ReactIcon,
   Git,
@@ -14,6 +15,7 @@ import {
   NodeJs,
 } from 'Common/devicon';
 import TopMenu from '../topMenu/TopMenuContainer';
+import ClientsIntl from './Clients.i';
 
 import {
   Container,
@@ -26,6 +28,8 @@ import {
   MobileHiddingContainer,
   DesktopHiddingContainer,
   TechContainer,
+  TitleContainer,
+  PageTitle,
 } from './Clients.s';
 
 const HomeComponent = universal(() => import('../Home'));
@@ -80,7 +84,7 @@ export default class Clients extends Component {
     const { data, hasInit } = this.props;
     const { descriptionClassNames, techClassNames } = this.state;
 
-    // Logic below is need to animate right to left card row by row
+    // The logic below is needed to animate right to left card row by row
     const animationDelay = 300;
     let lastRowIndex = 0;
     const delayForRow = animationDelay * 3; // 3 cards per row so 3 x animation delay
@@ -117,8 +121,10 @@ export default class Clients extends Component {
             key={client.id}
           >
             <Card
-              onMouseEnter={() => this.handleMouserEnter(client.id)}
-              onMouseLeave={() => this.handleMouserLeave(client.id)}
+              onMouseOver={() => this.handleMouserEnter(client.id)}
+              onMouseOut={() => this.handleMouserLeave(client.id)}
+              onFocus={() => this.handleMouserEnter(client.id)}
+              onBlur={() => this.handleMouserLeave(client.id)}
             >
               <ImageContainer>
                 {client.image ? (
@@ -149,7 +155,18 @@ export default class Clients extends Component {
       <DesktopHiddingContainer>
         <Container>
           <TopMenu />
+          <TitleContainer>
+            <PageTitle>
+              <FormattedMessage {...ClientsIntl.PageTitle} />
+            </PageTitle>
+          </TitleContainer>
           <CardsContainer>{cards}</CardsContainer>
+          {/* <RecommendationsContainer>
+            <Title>Dernière recommandation :</Title>
+            <RecommendationText>blablabla</RecommendationText>
+            <Ref>Vincent Lead dev Front chez Realytics</Ref>
+            <Source>Sur "lien malt"</Source>
+          </RecommendationsContainer> */}
         </Container>
       </DesktopHiddingContainer>
     );

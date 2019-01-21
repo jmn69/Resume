@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import CardBase from 'Common/components/Card';
 import Animated from 'Common/components/Animated';
+import Text from 'Common/components/Text';
 
 export const Container = styled.div`
   min-height: min-content;
@@ -135,4 +136,13 @@ export const TechContainer = styled.div`
   width: 100%;
   padding: 4px;
   color: ${props => props.theme.colors.lightGray};
+`;
+
+export const TitleContainer = styled.div`
+  width: 80%;
+  margin-left: 40px;
+`;
+
+export const PageTitle = styled(Text)`
+  font-size: ${props => props.theme.fontSizes.title};
 `;

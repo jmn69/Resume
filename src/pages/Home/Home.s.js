@@ -67,12 +67,6 @@ export const InnerContainer = styled.div`
   flex-direction: column;
 `;
 
-export const LogoContainer = styled.div`
-  @media screen and (max-width: 700px) {
-    display: none;
-  }
-`;
-
 export const ContentContainer = styled.div`
   height: auto;
   width: 100%;
@@ -169,12 +163,6 @@ export const NameContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-`;
-
-export const LogoMobileContainer = styled.div`
-  @media screen and (min-width: 700px) {
-    display: none;
-  }
 `;
 
 export const MenuContainer = styled.div`
