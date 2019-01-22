@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import T from 'prop-types';
-import { injectIntl } from 'react-intl';
+import { injectIntl, FormattedMessage } from 'react-intl';
 import ProgressBar from 'Common/components/ProgressBar';
 import Animated from 'Common/components/Animated';
 import { compose } from 'redux';
@@ -27,6 +27,8 @@ import {
   ArrowRightWrapper,
   ArrowLeftWrapper,
   MobileHiddingContainer,
+  TitleMobileContainer,
+  Title,
 } from './Skills.s';
 
 const skillsType = T.shape({
@@ -118,6 +120,11 @@ class SkillsComponent extends Component {
               classNames='slide'
             >
               <MobileContainer>
+                <TitleMobileContainer>
+                  <Title>
+                    <FormattedMessage {...SkillsIntl.Skills} />
+                  </Title>
+                </TitleMobileContainer>
                 <InnerCircularProgressContainer>
                   <SkillCatCardContainer>
                     <SkillCatCardInnerContainer>

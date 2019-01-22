@@ -37,6 +37,7 @@ import {
   RecommandationTitleContainer,
   Company,
   ContentContainer,
+  TitleMobileContainer,
 } from './Clients.s';
 
 const HomeComponent = universal(() => import('../Home'));
@@ -271,6 +272,11 @@ export default class Clients extends Component {
       <MobileHiddingContainer>
         <Container>
           <TopMenu />
+          <TitleMobileContainer>
+            <Title>
+              <FormattedMessage {...ClientsIntl.Clients} />
+            </Title>
+          </TitleMobileContainer>
           <CardsContainer>{cards}</CardsContainer>
           {this.renderRecommendation()}
         </Container>

@@ -63,6 +63,7 @@ export const InnerCircularProgressContainer = styled.div`
   justify-content: center;
   margin-bottom: 3%;
   position: relative;
+  margin-top: 3%;
 `;
 
 export const InnerSkillsChartsContainer = styled.div`
@@ -202,4 +203,14 @@ export const ArrowRightWrapper = styled.div`
 export const ArrowLeftWrapper = styled.div`
   position: absolute;
   left: 0;
+`;
+
+export const TitleMobileContainer = styled.div`
+  margin-top: 3%;
+`;
+
+export const Title = styled(Text)`
+  font-size: 30px;
+  display: inline-block;
+  margin-right: 1%;
 `;

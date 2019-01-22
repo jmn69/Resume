@@ -144,6 +144,10 @@ export const TitleContainer = styled.div`
   margin-left: 40px;
 `;
 
+export const TitleMobileContainer = styled.div`
+  margin-top: 3%;
+`;
+
 export const RecommandationTitleContainer = styled.div`
   width: 80%;
   margin-left: 40px;

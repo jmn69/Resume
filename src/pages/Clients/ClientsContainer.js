@@ -6,7 +6,7 @@ const hardcodedClientsData = [
   {
     id: 1,
     name: 'Realytics',
-    image: 'http://localhost:3000/realytics-image',
+    image: './realytics-image',
     logo: 'urlLogoRealytics',
     technos: ['React', 'Redux', 'Git', 'Js', 'Ts'],
   },
