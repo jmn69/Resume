@@ -19,6 +19,16 @@
   max-width: 4em;
 }
 
+.languageSlideIn {
+  right: 100px !important;
+  transition: all 500ms;
+}
+
+.languageSlideOut {
+  right: 0 !important;
+  transition: all 500ms;
+}
+
 /** NEXT TRANSITION **/
 
 .next .slide-enter {

@@ -23,7 +23,7 @@ const SelectStyled = styled(Select)`
   }
 
   .react-select__control--is-focused {
-    border: 1px solid ${props => props.theme.colors.third};
+    border: 1px solid ${props => props.theme.colors.accent};
   }
 
   .react-select__value-container {
@@ -36,11 +36,11 @@ const SelectStyled = styled(Select)`
   }
 
   .react-select__option--is-selected {
-    background: ${props => props.theme.colors.third};
+    background: ${props => props.theme.colors.accent};
   }
 
   .react-select__option--is-focused {
-    background: ${props => props.theme.colors.third};
+    background: ${props => props.theme.colors.accent};
   }
 
   .react-select__placeholder {
