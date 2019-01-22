@@ -106,7 +106,7 @@ export const SelectorContainer = styled.div`
   position: absolute;
   top: -11px;
   right: -100px;
-  background: white;
+  background: ${props => props.theme.colors.lightGray};
   width: 100px;
   height: 41px;
   display: flex;
