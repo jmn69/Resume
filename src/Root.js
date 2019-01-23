@@ -10,6 +10,12 @@ import {
   faUsers,
   faInfoCircle,
   faThumbsUp,
+  faMapMarker,
+  faEuroSign,
+  faGlobeEurope,
+  faHourglassHalf,
+  faCheck,
+  faDownload,
 } from '@fortawesome/free-solid-svg-icons';
 import { IntlProvider, addLocaleData } from 'react-intl';
 import en from 'react-intl/locale-data/en';
@@ -38,6 +44,12 @@ library.add(
   faUsers,
   faInfoCircle,
   faThumbsUp,
+  faMapMarker,
+  faEuroSign,
+  faGlobeEurope,
+  faHourglassHalf,
+  faCheck,
+  faDownload,
 );
 
 class Root extends Component {

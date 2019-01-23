@@ -90,11 +90,13 @@ class Home extends Component {
               </IntroWrapper>
             </Animated>
             <ButtonWrapper>
-              <Button
-                delay={300}
-                animate={!hasInit}
-                text={intl.formatMessage(HomeIntl.WorkWithMe)}
-              />
+              <a href='mailto:jordane.michon@gmail.com'>
+                <Button
+                  delay={300}
+                  animate={!hasInit}
+                  text={intl.formatMessage(HomeIntl.WorkWithMe)}
+                />
+              </a>
             </ButtonWrapper>
           </ContentContainer>
         </InnerContainer>

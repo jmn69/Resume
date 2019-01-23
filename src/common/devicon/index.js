@@ -8,3 +8,6 @@ export { default as Bootstrap } from './Bootstrap';
 export { default as Android } from './Android';
 export { default as DotNet } from './DotNet';
 export { default as NodeJs } from './NodeJs';
+export { default as Malt } from './Malt';
+export { default as Linkedin } from './Linkedin';
+export { default as Github } from './Github';

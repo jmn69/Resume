@@ -112,6 +112,16 @@ app.get('/coworkio-image', (req, res) => {
   res.set('Cache-Control', 'public, max-age=31557600');
   imgStream.pipe(res);
 });
+app.get('/cv', (req, res) => {
+  const imgStream = s3
+    .getObject({
+      Bucket: 'jordane-michon-images',
+      Key: 'jmn.pdf',
+    })
+    .createReadStream();
+  res.set('Cache-Control', 'public, max-age=31557600');
+  imgStream.pipe(res);
+});
 
 let isBuilt = false;
 const done = () =>
