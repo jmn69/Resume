@@ -157,7 +157,7 @@ class AboutComponent extends Component {
                     <Link href='https://www.malt.fr/profile/jordanemichon'>
                       <Malt style={{ marginTop: '-1px' }} />
                     </Link>
-                    <Link href='www.linkedin.com/in/jordane-michon-73779011b'>
+                    <Link href='https://www.linkedin.com/in/jordane-michon-73779011b'>
                       <Linkedin style={{ marginTop: '-7px' }} />
                     </Link>
                     <Link href='https://github.com/jmn69'>
