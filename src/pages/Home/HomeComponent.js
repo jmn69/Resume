@@ -6,7 +6,6 @@ import { withTheme } from 'styled-components';
 import Text from 'Common/components/Text';
 import Button from 'Common/components/Button';
 import Animated from 'Common/components/Animated';
-import LanguageSelector from 'Common/components/LanguageSelector';
 import universal from 'react-universal-component';
 
 import TopMenu from '../topMenu/TopMenuContainer';
@@ -57,7 +56,6 @@ class Home extends Component {
 
     return (
       <Container>
-        <LanguageSelector />
         <MenuContainer>
           <TopMenu />
         </MenuContainer>

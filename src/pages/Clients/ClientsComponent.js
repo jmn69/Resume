@@ -15,7 +15,6 @@ import {
   NodeJs,
 } from 'Common/devicon';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import LanguageSelector from 'Common/components/LanguageSelector';
 
 import TopMenu from '../topMenu/TopMenuContainer';
 import ClientsIntl from './Clients.i';
@@ -83,7 +82,6 @@ export default class Clients extends Component {
   render() {
     return (
       <Fragment>
-        <LanguageSelector />
         {this.renderDesktop()}
         {this.renderMobileTablet()}
       </Fragment>

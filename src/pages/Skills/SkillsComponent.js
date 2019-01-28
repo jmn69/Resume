@@ -9,7 +9,6 @@ import universal from 'react-universal-component';
 import ProgressBarLegend from 'Common/components/ProgressBarLegend';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import LanguageSelector from 'Common/components/LanguageSelector';
 import Swipe from 'react-easy-swipe';
 
 import TopMenu from '../topMenu/TopMenuContainer';
@@ -87,7 +86,6 @@ class SkillsComponent extends Component {
   render() {
     return (
       <Fragment>
-        <LanguageSelector />
         {this.renderDesktopTablet()}
         {this.renderMobileTablet()}
       </Fragment>

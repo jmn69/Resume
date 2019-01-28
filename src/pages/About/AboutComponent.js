@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import T from 'prop-types';
 import { compose } from 'redux';
 import { injectIntl, FormattedMessage } from 'react-intl';
-import LanguageSelector from 'Common/components/LanguageSelector';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'Common/components/Button';
 import { withTheme } from 'styled-components';
@@ -67,7 +66,6 @@ class AboutComponent extends Component {
     const { theme, hasInit, intl } = this.props;
     return (
       <Container>
-        <LanguageSelector />
         <MenuContainer>
           <TopMenu />
         </MenuContainer>

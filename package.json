@@ -32,6 +32,8 @@
     "cookie-parser": "^1.4.3",
     "core-js": "^2.6.1",
     "dotenv": "^6.2.0",
+    "emotion": "^10.0.6",
+    "emotion-server": "^10.0.6",
     "express": "^4.15.2",
     "file-loader": "^2.0.0",
     "fontfaceobserver": "^2.1.0",

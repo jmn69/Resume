@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { flushChunkNames } from 'react-universal-component/server';
 import flushChunks from 'webpack-flush-chunks';
 import { ServerStyleSheet } from 'styled-components';
+import { renderStylesToString } from 'emotion-server';
 
 import configureStore from './configureStore';
 import Root from '../src/Root';
@@ -14,7 +15,9 @@ export default ({ clientStats }) => async (req, res) => {
 
   const sheet = new ServerStyleSheet();
   const app = createApp(Root, store);
-  const appString = ReactDOM.renderToString(sheet.collectStyles(app));
+  const appString = renderStylesToString(
+    ReactDOM.renderToString(sheet.collectStyles(app)),
+  );
   const styleTags = sheet.getStyleTags();
   const state = store.getState();
   const stateJson = JSON.stringify(state);

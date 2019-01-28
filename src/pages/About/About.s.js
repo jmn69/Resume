@@ -18,12 +18,12 @@ export const MenuContainer = styled.div`
 `;
 
 export const FunFactContainer = styled.div`
-  @media screen and (min-width: 991px) {
-    min-width: 500px;
+  @media screen and (min-width: 600px) {
+    min-width: 600px;
   }
 
   flex: 1;
-  min-width: 150px;
+  min-width: 300px;
 `;
 export const InformationContainer = styled.div`
   flex: 1;
@@ -49,7 +49,7 @@ export const ContactMeContainer = styled.div`
   min-height: 300px;
 `;
 export const AboutContainer = styled.div`
-  @media screen and (min-width: 991px) {
+  @media screen and (min-width: 600px) {
     min-width: 600px;
   }
 
@@ -73,7 +73,7 @@ export const ContentContainer = styled.div`
 `;
 
 export const LeftContainer = styled.div`
-  @media screen and (min-width: 991px) {
+  @media screen and (min-width: 600px) {
     min-width: 300px;
   }
 
@@ -85,7 +85,7 @@ export const LeftContainer = styled.div`
 `;
 
 export const RightContainer = styled.div`
-  @media screen and (min-width: 991px) {
+  @media screen and (min-width: 600px) {
     min-width: 300px;
   }
 
