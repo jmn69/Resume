@@ -142,10 +142,18 @@ export const TechContainer = styled.div`
 export const TitleContainer = styled.div`
   width: 80%;
   margin-left: 40px;
+
+  @media screen and (max-width: 1099px) {
+    width: 100%;
+    margin-left: 0;
+    text-align: center;
+  }
 `;
 
 export const TitleMobileContainer = styled.div`
   margin-top: 3%;
+  width: 100%;
+  text-align: center;
 `;
 
 export const RecommandationTitleContainer = styled.div`

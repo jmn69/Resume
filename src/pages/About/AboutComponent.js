@@ -32,11 +32,61 @@ import {
   RightInnerContainer,
   ButtonWrapper,
   TextContact,
+  DescriptionContainer,
+  TitleContainer,
+  Title,
+  ButtonCircle,
+  TextFunFact,
 } from './About.s';
 
 const SkillsComponent = universal(() => import('../Skills'));
 const ClientsComponent = universal(() => import('../Clients'));
 const HomeComponent = universal(() => import('../Home'));
+
+const getRandomInt = max => Math.floor(Math.random() * Math.floor(max));
+
+const funFacts = intl => [
+  {
+    id: 1,
+    text: intl.formatMessage(AboutIntl.FunFact1),
+  },
+  {
+    id: 2,
+    text: intl.formatMessage(AboutIntl.FunFact2),
+  },
+  {
+    id: 3,
+    text: intl.formatMessage(AboutIntl.FunFact3),
+  },
+  {
+    id: 4,
+    text: intl.formatMessage(AboutIntl.FunFact4),
+  },
+  {
+    id: 5,
+    text: intl.formatMessage(AboutIntl.FunFact5),
+  },
+  {
+    id: 6,
+    text: intl.formatMessage(AboutIntl.FunFact6),
+  },
+  {
+    id: 7,
+    text: intl.formatMessage(AboutIntl.FunFact7),
+  },
+  {
+    id: 8,
+    text: intl.formatMessage(AboutIntl.FunFact8),
+  },
+  {
+    id: 9,
+    text: intl.formatMessage(AboutIntl.FunFact9),
+  },
+  {
+    id: 10,
+    text: intl.formatMessage(AboutIntl.FunFact10),
+  },
+];
 
 class AboutComponent extends Component {
   static propTypes = {
@@ -51,6 +101,10 @@ class AboutComponent extends Component {
     intl: null,
   };
 
+  state = {
+    currentFunFact: '',
+  };
+
   componentDidMount() {
     const { hasInit, setPageInit } = this.props;
     SkillsComponent.preload();
@@ -63,6 +117,7 @@ class AboutComponent extends Component {
   }
 
   render() {
+    const { currentFunFact } = this.state;
     const { theme, hasInit, intl } = this.props;
     return (
       <Container>
@@ -70,7 +125,25 @@ class AboutComponent extends Component {
           <TopMenu />
         </MenuContainer>
         <ContentContainer>
-          <FunFactContainer>content</FunFactContainer>
+          <FunFactContainer>
+            <TitleContainer>
+              <Title>
+                <FormattedMessage {...AboutIntl.FunFact} />
+              </Title>
+            </TitleContainer>
+            <DescriptionContainer>
+              <FormattedMessage
+                {...AboutIntl.FunFactDescription}
+                values={{ eol: <br /> }}
+              />
+            </DescriptionContainer>
+            <ButtonCircle onClick={this.handleFunFactClick} />
+            {currentFunFact ? (
+              <TextFunFact>
+                &laquo;&nbsp;{currentFunFact.text}&nbsp;&raquo;
+              </TextFunFact>
+            ) : null}
+          </FunFactContainer>
           <AboutContainer>
             <InformationContainer>
               <LeftContainer>
@@ -187,6 +260,12 @@ class AboutComponent extends Component {
       </Container>
     );
   }
+
+  handleFunFactClick = () => {
+    const tradFunFacts = funFacts(this.props.intl);
+    const randomFunFactId = getRandomInt(tradFunFacts.length);
+    this.setState({ currentFunFact: tradFunFacts[randomFunFactId] });
+  };
 }
 
 export default compose(

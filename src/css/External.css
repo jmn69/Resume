@@ -2,8 +2,8 @@
   position: relative;
   height: 100vh;
   -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  -ms-flex: 1;
+  flex: 1;
 }
 
 .switcherMobile {
@@ -11,8 +11,8 @@
   height: 100vh;
   overflow: hidden;
   -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  -ms-flex: 1;
+  flex: 1;
 }
 
 .devicon {
@@ -29,56 +29,57 @@
   transition: all 500ms;
 }
 
-/** NEXT TRANSITION **/
+@media screen and (min-width: 992px) {
+  /** NEXT TRANSITION **/
 
-.next .slide-enter {
-  transform: translateX(100%); 
-  opacity: 0; 
+  .next .slide-enter {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  .next .slide-enter-active {
+    transform: translateX(0%);
+    opacity: 1;
+    transition: all 500ms;
+  }
+
+  .next .slide-exit {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+
+  .next .slide-exit-active {
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: all 500ms;
+  }
+
+  /** BACK TRANSITION **/
+
+  .back .slide-enter {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  .back .slide-enter-active {
+    transform: translateX(0%);
+    opacity: 1;
+    transition: all 500ms;
+  }
+
+  .back .slide-exit {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+
+  .back .slide-exit-active {
+    transform: translateX(100%);
+    opacity: 0;
+    transition: all 500ms;
+  }
 }
-
-.next .slide-enter-active {
-  transform: translateX(0%); 
-  opacity: 1;
-  transition: all 500ms;
-}
-
-.next .slide-exit {
-  transform: translateX(0%); 
-  opacity: 1; 
-}
-
-.next .slide-exit-active {
-  transform: translateX(-100%); 
-  opacity: 0; 
-  transition: all 500ms;
-}
-
-/** BACK TRANSITION **/
-
-.back .slide-enter {
-  transform: translateX(-100%); 
-  opacity: 0; 
-}
-
-.back .slide-enter-active {
-  transform: translateX(0%); 
-  opacity: 1; 
-  transition: all 500ms;
-}
-
-.back .slide-exit {
-  transform: translateX(0%); 
-  opacity: 1; 
-}
-
-.back .slide-exit-active {
-  transform: translateX(100%); 
-  opacity: 0; 
-  transition: all 500ms;
-}
-
 .DescriptionEnter {
-  opacity: 0; 
+  opacity: 0;
   transition: all 500ms;
 }
 
@@ -117,7 +118,7 @@
   stroke: #3e98c7;
   stroke-linecap: round;
   transition: stroke-dashoffset 0.5s ease 0s;
-    transform: rotate(90deg);
+  transform: rotate(90deg);
   transform-origin: center center;
 }
 
@@ -160,6 +161,38 @@
 
 .CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-trail {
   stroke: transparent;
+}
+
+@-webkit-keyframes pulsate1 {
+  0% {
+    -webkit-transform: scale(0.6);
+    transform: scale(0.6);
+    opacity: 1;
+    box-shadow: inset 0px 0px 25px 3px rgba(255, 255, 255, 0.75),
+      0px 0px 25px 10px rgba(255, 255, 255, 0.75);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 0;
+    box-shadow: none;
+  }
+}
+
+@keyframes pulsate1 {
+  0% {
+    -webkit-transform: scale(0.6);
+    transform: scale(0.6);
+    opacity: 1;
+    box-shadow: inset 0px 0px 25px 3px rgba(255, 255, 255, 0.75),
+      0px 0px 25px 10px rgba(255, 255, 255, 0.75);
+  }
+  100% {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1);
+    opacity: 0;
+    box-shadow: none;
+  }
 }
 
 /*!
@@ -2065,14 +2098,15 @@
   from {
     -webkit-transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0)
       rotate3d(0, 1, 0, -360deg);
-    transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0) rotate3d(0, 1, 0, -360deg);
+    transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0)
+      rotate3d(0, 1, 0, -360deg);
     -webkit-animation-timing-function: ease-out;
     animation-timing-function: ease-out;
   }
 
   40% {
-    -webkit-transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px)
-      rotate3d(0, 1, 0, -190deg);
+    -webkit-transform: perspective(400px) scale3d(1, 1, 1)
+      translate3d(0, 0, 150px) rotate3d(0, 1, 0, -190deg);
     transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px)
       rotate3d(0, 1, 0, -190deg);
     -webkit-animation-timing-function: ease-out;
@@ -2080,8 +2114,8 @@
   }
 
   50% {
-    -webkit-transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px)
-      rotate3d(0, 1, 0, -170deg);
+    -webkit-transform: perspective(400px) scale3d(1, 1, 1)
+      translate3d(0, 0, 150px) rotate3d(0, 1, 0, -170deg);
     transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px)
       rotate3d(0, 1, 0, -170deg);
     -webkit-animation-timing-function: ease-in;
@@ -2089,8 +2123,8 @@
   }
 
   80% {
-    -webkit-transform: perspective(400px) scale3d(0.95, 0.95, 0.95) translate3d(0, 0, 0)
-      rotate3d(0, 1, 0, 0deg);
+    -webkit-transform: perspective(400px) scale3d(0.95, 0.95, 0.95)
+      translate3d(0, 0, 0) rotate3d(0, 1, 0, 0deg);
     transform: perspective(400px) scale3d(0.95, 0.95, 0.95) translate3d(0, 0, 0)
       rotate3d(0, 1, 0, 0deg);
     -webkit-animation-timing-function: ease-in;
@@ -2100,7 +2134,8 @@
   to {
     -webkit-transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0)
       rotate3d(0, 1, 0, 0deg);
-    transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0) rotate3d(0, 1, 0, 0deg);
+    transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0)
+      rotate3d(0, 1, 0, 0deg);
     -webkit-animation-timing-function: ease-in;
     animation-timing-function: ease-in;
   }
@@ -2110,14 +2145,15 @@
   from {
     -webkit-transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0)
       rotate3d(0, 1, 0, -360deg);
-    transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0) rotate3d(0, 1, 0, -360deg);
+    transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0)
+      rotate3d(0, 1, 0, -360deg);
     -webkit-animation-timing-function: ease-out;
     animation-timing-function: ease-out;
   }
 
   40% {
-    -webkit-transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px)
-      rotate3d(0, 1, 0, -190deg);
+    -webkit-transform: perspective(400px) scale3d(1, 1, 1)
+      translate3d(0, 0, 150px) rotate3d(0, 1, 0, -190deg);
     transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px)
       rotate3d(0, 1, 0, -190deg);
     -webkit-animation-timing-function: ease-out;
@@ -2125,8 +2161,8 @@
   }
 
   50% {
-    -webkit-transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px)
-      rotate3d(0, 1, 0, -170deg);
+    -webkit-transform: perspective(400px) scale3d(1, 1, 1)
+      translate3d(0, 0, 150px) rotate3d(0, 1, 0, -170deg);
     transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px)
       rotate3d(0, 1, 0, -170deg);
     -webkit-animation-timing-function: ease-in;
@@ -2134,8 +2170,8 @@
   }
 
   80% {
-    -webkit-transform: perspective(400px) scale3d(0.95, 0.95, 0.95) translate3d(0, 0, 0)
-      rotate3d(0, 1, 0, 0deg);
+    -webkit-transform: perspective(400px) scale3d(0.95, 0.95, 0.95)
+      translate3d(0, 0, 0) rotate3d(0, 1, 0, 0deg);
     transform: perspective(400px) scale3d(0.95, 0.95, 0.95) translate3d(0, 0, 0)
       rotate3d(0, 1, 0, 0deg);
     -webkit-animation-timing-function: ease-in;
@@ -2145,7 +2181,8 @@
   to {
     -webkit-transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0)
       rotate3d(0, 1, 0, 0deg);
-    transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0) rotate3d(0, 1, 0, 0deg);
+    transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0)
+      rotate3d(0, 1, 0, 0deg);
     -webkit-animation-timing-function: ease-in;
     animation-timing-function: ease-in;
   }

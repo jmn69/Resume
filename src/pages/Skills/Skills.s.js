@@ -207,6 +207,8 @@ export const ArrowLeftWrapper = styled.div`
 
 export const TitleMobileContainer = styled.div`
   margin-top: 3%;
+  width: 100%;
+  text-align: center;
 `;
 
 export const Title = styled(Text)`
