@@ -69,7 +69,7 @@ class Home extends Component {
             >
               <NameContainer>
                 <Text color={theme.colors.lightGray2} fontSize={24}>
-                  Jordane Michon (Temporary website)
+                  Jordane Michon
                 </Text>
               </NameContainer>
               <FullStackDevWrapper>

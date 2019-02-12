@@ -156,7 +156,7 @@ class AboutComponent extends Component {
                     />
                   </IconWrapper>
                   <TextInformation>
-                    Travail à distance et sur Lyon
+                    <FormattedMessage {...AboutIntl.Workplace} />
                   </TextInformation>
                 </RowContainer>
                 <RowContainer>
@@ -167,7 +167,9 @@ class AboutComponent extends Component {
                       icon='euro-sign'
                     />
                   </IconWrapper>
-                  <TextInformation>TJM 450€</TextInformation>
+                  <TextInformation>
+                    <FormattedMessage {...AboutIntl.TJM} />
+                  </TextInformation>
                 </RowContainer>
                 <RowContainer>
                   <IconWrapper>
@@ -177,7 +179,9 @@ class AboutComponent extends Component {
                       icon='globe-europe'
                     />
                   </IconWrapper>
-                  <TextInformation>Français et Anglais</TextInformation>
+                  <TextInformation>
+                    <FormattedMessage {...AboutIntl.Languages} />
+                  </TextInformation>
                 </RowContainer>
                 <RowContainer>
                   <IconWrapper>
@@ -188,7 +192,7 @@ class AboutComponent extends Component {
                     />
                   </IconWrapper>
                   <TextInformation>
-                    Horaires de travail flexibles
+                    <FormattedMessage {...AboutIntl.WorkingHours} />
                   </TextInformation>
                 </RowContainer>
                 <RowContainer>
@@ -199,7 +203,9 @@ class AboutComponent extends Component {
                       icon='check'
                     />
                   </IconWrapper>
-                  <TextInformation>Disponibilité immédiate</TextInformation>
+                  <TextInformation>
+                    <FormattedMessage {...AboutIntl.Availability} />
+                  </TextInformation>
                 </RowContainer>
               </LeftContainer>
               <Divider />
@@ -215,14 +221,16 @@ class AboutComponent extends Component {
                     </DownloadIconContainer>
                     <DownloadTextContainer>
                       <TextInformation>
-                        Télécharger mon CV au format pdf
+                        <FormattedMessage {...AboutIntl.DownloadResume} />
                       </TextInformation>
                     </DownloadTextContainer>
                   </Link>
                 </RightInnerContainer>
                 <RightInnerContainer>
                   <DownloadTextContainer>
-                    <TextInformation>Retrouvez moi aussi sur :</TextInformation>
+                    <TextInformation>
+                      <FormattedMessage {...AboutIntl.FindMe} /> &nbsp;:
+                    </TextInformation>
                   </DownloadTextContainer>
                   <RowLinksContainer>
                     <Link href='https://www.malt.fr/profile/jordanemichon'>

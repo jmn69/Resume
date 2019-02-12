@@ -143,7 +143,9 @@ export default class Clients extends Component {
                     alt='no images'
                   />
                 ) : (
-                  <Text>no images</Text>
+                  <Text>
+                    <FormattedMessage {...ClientsIntl.NoImages} />
+                  </Text>
                 )}
               </ImageContainer>
               <DescriptionContainer
@@ -252,7 +254,9 @@ export default class Clients extends Component {
                     alt='no images'
                   />
                 ) : (
-                  <Text>no images</Text>
+                  <Text>
+                    <FormattedMessage {...ClientsIntl.NoImages} />
+                  </Text>
                 )}
               </ImageContainer>
               <DescriptionContainer

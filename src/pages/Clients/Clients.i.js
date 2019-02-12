@@ -5,6 +5,10 @@ export default defineMessages({
     id: 'Clients.Clients',
     defaultMessage: 'Clients',
   },
+  NoImages: {
+    id: 'Clients.NoImages',
+    defaultMessage: 'Confidential visual',
+  },
   PageTitle: {
     id: 'Clients.PageTitle',
     defaultMessage: 'Clients and companies i worked with',

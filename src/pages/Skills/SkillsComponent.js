@@ -46,7 +46,7 @@ export const skillsCatType = T.shape({
 const legendText = intl => [
   intl.formatMessage(SkillsIntl.Initiate),
   intl.formatMessage(SkillsIntl.GoodLvl),
-  intl.formatMessage(SkillsIntl.VeryGoodLvl),
+  intl.formatMessage(SkillsIntl.Confirmed),
   intl.formatMessage(SkillsIntl.Expertise),
 ];
 

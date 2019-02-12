@@ -13,9 +13,9 @@ export default defineMessages({
     id: 'Skills.GoodLvl',
     defaultMessage: 'Good level',
   },
-  VeryGoodLvl: {
-    id: 'Skills.VeryGoodLvl',
-    defaultMessage: 'Very good level',
+  Confirmed: {
+    id: 'Skills.Confirmed',
+    defaultMessage: 'Confirmed',
   },
   Expertise: {
     id: 'Skills.Expertise',

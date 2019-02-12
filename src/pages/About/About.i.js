@@ -5,6 +5,34 @@ export default defineMessages({
     id: 'About.About',
     defaultMessage: 'About',
   },
+  Workplace: {
+    id: 'About.Workplace',
+    defaultMessage: 'Remote work and Lyon',
+  },
+  TJM: {
+    id: 'About.TJM',
+    defaultMessage: 'ADR 450€',
+  },
+  Languages: {
+    id: 'About.Languages',
+    defaultMessage: 'French and english',
+  },
+  WorkingHours: {
+    id: 'About.WorkingHours',
+    defaultMessage: 'Flexible working hours',
+  },
+  Availability: {
+    id: 'About.Availability',
+    defaultMessage: 'Immediate availability',
+  },
+  DownloadResume: {
+    id: 'About.DownloadResume',
+    defaultMessage: 'Download my resume in pdf format',
+  },
+  FindMe: {
+    id: 'About.FindMe',
+    defaultMessage: 'Find me too on',
+  },
   FunFact: {
     id: 'About.FunFact',
     defaultMessage: 'Fun fact',
@@ -12,72 +40,72 @@ export default defineMessages({
   ContactMeText: {
     id: 'About.ContactMeText',
     defaultMessage: `You can contact me if you have an opportunity to offer me or if you want to know more about me.
-      Know that I favor missions in full telework, 
+      Know that I favor missions in full remote work, 
       I prefer the tranquility of my environment to be as productive as possible when I realize your projects.{eol}
       If you still requires a physical presence in your office do not hesitate to discuss it with me.`,
   },
   FunFactDescription: {
     id: 'About.FunFactDescription',
-    defaultMessage: `Ecrire un texte pour se décrire n'est jamais évident.{eol}
-    J'ai trouvé cela plus interessant et divertissant de vous proposer plusieurs faits divers sur moi.`,
+    defaultMessage: `Writing a text to describe yourself is never easy.{eol}
+    I found it more interesting and entertaining to offer you several facts about me.`,
   },
   FunFact1: {
     id: 'About.FunFact1',
     defaultMessage:
-      "J'ai servis pendant 3 ans dans la réserve de l'armée de l'air sur la BA 952 en tant que fusilier commando. Cela a été une expérience très enrichissante ou l'on apprends notamment à connaitre et repousser ses propres limites.",
+      'I served for 3 years in the Air Force Reserve on the BA 952 as a commando fusilier. It has been a very enriching experience where you learn to know and push your own limits.',
   },
   FunFact2: {
     id: 'About.FunFact2',
     defaultMessage:
-      "Je suis propriétaire d'une jolie maison en campagne et je ne retournerais habiter en ville pour rien au monde ! (Sauf peut etre la fibre)",
+      'I own a nice house in the countryside and I would not go back to town for anything! (Except maybe fiber)',
   },
   FunFact3: {
     id: 'About.FunFact3',
     defaultMessage:
-      "J'ai collaboré avec 7 entreprises dans l'IT, à la culture radicalement opposée pour certaines ;)",
+      'I already collaborated with 7 companies in the IT, the culture radically opposed for some !',
   },
   FunFact4: {
     id: 'About.FunFact4',
     defaultMessage:
-      "J'adore les chiens et surtout le mien ! Il est l'une des raisons pour lesquels j'aime télétravailler.",
+      "I love dogs and especially mine! It's one of the reasons I like working remotly.",
   },
   FunFact5: {
     id: 'About.FunFact5',
     defaultMessage:
-      "Depuis que je travaille à mon domicile, j'écoute beaucoup moins de musique (obligatoire en open space, cherchez l'erreur) et je profite du calme pour travailler sereinement sur vos projets ;)",
+      'Since I work at home, I listen to a lot less music (mandatory in open space, look for the error) and I enjoy the silence to work calmly on your projects;)',
   },
   FunFact6: {
     id: 'About.FunFact6',
     defaultMessage:
-      "3 cafés. C'est probablement la dose que je vais consommer aujourd'hui.",
+      '3 coffees. This is probably the dose I am going to consume today.',
   },
   FunFact7: {
     id: 'About.FunFact7',
-    defaultMessage: "Le ski c'est bien, le snowboard c'est mieux.",
+    defaultMessage: 'Skiing is good, snowboarding is better.',
   },
   FunFact8: {
     id: 'About.FunFact8',
     defaultMessage:
-      'Passionné de jeux video et de la culture niponne, surprenant pour un dev hin ?',
+      'Passionate about video games and japanese culture, surprising for a dev hin?',
   },
   FunFact9: {
     id: 'About.FunFact9',
     defaultMessage:
-      "Je suis un pragmatique efficace, j'ai fui des que j'en ai eu l'occasion le fléau du présentéisme en France. La productivité et la qualité d'un travail n'est pas ne corrélation direct avec le temps.",
+      'I am an effective pragmatist, I fled as soon as I had the occasion the scourge of presenteeism in France. The productivity and quality of a job is not directly correlated with time.',
   },
   FunFact10: {
     id: 'About.FunFact10',
     defaultMessage:
-      "J'ai migré du monde .Net vers une stack Js complète ces dernières années. Est ce que je devrais apprendre le python ou le go aussi ? Si vous avez un avis sur le sujet venez le partager !",
+      'I migrated from the .Net world to a full Js stack in recent years. Should I learn python or go too? If you have an opinion on the subject come share it!',
   },
   FunFact11: {
     id: 'About.FunFact11',
     defaultMessage:
-      "Les vacances en été dans les landes c'est la vie. Quel meilleur sentiment que celui d'une vague de 4m qui vous retourne dans tous les sens jusqu'à l'épuisement ?",
+      'Summer holidays in the ocean is life. What better feeling than a wave of 4m that returns you in all directions until exhaustion?',
   },
   FunFact12: {
     id: 'About.FunFact12',
     defaultMessage:
-      "J'ai un profond interêt pour l'entreprenariat, tôt ou tard, je me lancerais dans un projet de startup.",
+      'I have a deep interest in entrepreneurship, sooner or later I would start a startup project.',
   },
 });
