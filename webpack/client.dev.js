@@ -4,6 +4,7 @@ const WriteFilePlugin = require('write-file-webpack-plugin');
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 const sharedConfig = require('./config.shared.js');
 const getLocalIdent = require('css-loader/lib/getLocalIdent');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   name: 'client',
@@ -103,6 +104,7 @@ module.exports = {
   plugins: [
     new WriteFilePlugin(), // used so you can see what chunks are produced in dev
     new ExtractCssChunks({ hot: true, cssModules: true }),
+    new Dotenv(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({

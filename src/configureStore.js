@@ -1,11 +1,14 @@
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProduction';
 import { connectRoutes } from 'redux-first-router';
+import ReactGA from 'react-ga';
 
 import routesMap from './routesMap';
 import * as reducers from './reducers';
 import localeReducer from './locale/reducer';
 import settingsReducer from './settings/reducer';
+
+ReactGA.initialize(process.env.GA_TRACKING_ID);
 
 export default (history, preloadedState) => {
   const {
@@ -13,7 +16,15 @@ export default (history, preloadedState) => {
   } = connectRoutes(
     history,
     routesMap,
+    {
+      onBeforeChange: (dispatch, getState, bag) =>
+        ReactGA.pageview(reducers.page('', { type: bag.type })),
+    },
   );
+
+  if (preloadedState) {
+    ReactGA.pageview(preloadedState.page);
+  }
 
   const rootReducer = combineReducers({
     ...reducers,

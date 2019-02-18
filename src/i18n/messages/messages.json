@@ -121,7 +121,7 @@
   },
   {
     "id": "About.FunFact8",
-    "defaultMessage": "Passionate about video games and niponne culture, surprising for a dev hin?",
+    "defaultMessage": "Passionate about video games and japanese culture, surprising for a dev hin?",
     "filepath": "src/pages/About/About.i.js"
   },
   {
@@ -181,7 +181,7 @@
   },
   {
     "id": "HomeSection.Intro",
-    "defaultMessage": "Professional in the IT world for over 8 years,\n    I respond to the demands of this ever-changing market with a pragmatic and creative approach.{eol}\n    It is with a culture of result, which take root in my need for competitiveness,\n    that I accompany your teams in the success of the products of tomorrow.{eol}{eol}\n    As a freelancer and contractor, I rely on a wide variety of experiences to bring you cross-domain expertise.",
+    "defaultMessage": "IT's professional for over 8 years,\n    I respond to the demands of this ever-changing market with a pragmatic and creative approach.{eol}\n    It's with a result's culture, which take root in my need for competitiveness,\n    that I lead your teams in the success of the tomorrow's products.{eol}{eol}\n    As a freelancer and contractor, I rely on a wide variety of experiences to bring you a cross-domain expertise.",
     "filepath": "src/pages/Home/Home.i.js"
   },
   {

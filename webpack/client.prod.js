@@ -6,6 +6,7 @@ const sharedConfig = require('./config.shared.js');
 const getLocalIdent = require('css-loader/lib/getLocalIdent');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
 //   .BundleAnalyzerPlugin;
 
@@ -121,6 +122,7 @@ module.exports = {
       algorithm: 'gzip',
       test: /\.js$|\.css$|\.html$/,
     }),
+    new Dotenv(),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.DefinePlugin({

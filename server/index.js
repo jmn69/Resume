@@ -9,7 +9,9 @@ import AWS from 'aws-sdk';
 import clientConfig from '../webpack/client.dev';
 import serverConfig from '../webpack/server.dev';
 
+const path = require('path');
 const fs = require('fs');
+
 const Joi = require('joi');
 require('dotenv').config();
 
@@ -20,6 +22,9 @@ const envVarsSchema = Joi.object({
   AWS_SECRET_ACCESS_KEY: Joi.string()
     .required()
     .description('AWS secret access key required'),
+  GA_TRACKING_ID: Joi.string()
+    .required()
+    .description('GA tracking id required'),
 })
   .unknown()
   .required();
@@ -32,6 +37,7 @@ if (error) {
 const config = {
   AwsAccessKey: envVars.AWS_ACCESS_KEY,
   AwsAccessSecretKey: envVars.AWS_SECRET_ACCESS_KEY,
+  GaTrackingId: envVars.GA_TRACKING_ID,
 };
 
 const DEV = process.env.NODE_ENV === 'development';
@@ -122,6 +128,11 @@ app.get('/cv', (req, res) => {
   res.set('Cache-Control', 'public, max-age=31557600');
   imgStream.pipe(res);
 });
+
+app.use(
+  '/favicon.ico',
+  express.static(path.resolve(__dirname, '../favicon.ico')),
+);
 
 let isBuilt = false;
 const done = () =>
