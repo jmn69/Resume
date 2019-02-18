@@ -105,6 +105,11 @@ class AboutComponent extends Component {
     currentFunFact: '',
   };
 
+  constructor(props) {
+    super(props);
+    this.myRef = React.createRef();
+  }
+
   componentDidMount() {
     const { hasInit, setPageInit } = this.props;
     SkillsComponent.preload();
@@ -137,7 +142,7 @@ class AboutComponent extends Component {
                 values={{ eol: <br /> }}
               />
             </DescriptionContainer>
-            <ButtonCircle onClick={this.handleFunFactClick} />
+            <ButtonCircle onClick={this.handleFunFactClick} ref={this.myRef} />
             {currentFunFact ? (
               <TextFunFact>
                 &laquo;&nbsp;{currentFunFact.text}&nbsp;&raquo;
@@ -270,6 +275,9 @@ class AboutComponent extends Component {
   }
 
   handleFunFactClick = () => {
+    this.myRef &&
+      this.myRef.current &&
+      window.scrollTo(0, this.myRef.current.offsetTop);
     const tradFunFacts = funFacts(this.props.intl);
     const randomFunFactId = getRandomInt(tradFunFacts.length);
     this.setState({ currentFunFact: tradFunFacts[randomFunFactId] });

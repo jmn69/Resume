@@ -2,17 +2,28 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import T from 'prop-types';
 import { withTheme } from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Logo from 'Common/Logo';
 
 import Text from 'Common/components/Text';
 import TopMenuIntl from './TopMenu.i';
-import { Container, MenuItem, MenuLink } from './TopMenu.s';
+import { Container, MenuItem, MenuLink, LogoWrapper } from './TopMenu.s';
 
 const selectColorByPageIndex = (path, theme) => {
   const colorByPageIndex = {
     '/': theme.colors.lightGray,
     '/skills': theme.colors.primary,
     '/clients': theme.colors.lightGray,
+    '/about': theme.colors.primary,
+  };
+
+  return colorByPageIndex[path] || 'white';
+};
+
+const selectLogoColorByPageIndex = (path, theme) => {
+  const colorByPageIndex = {
+    '/': theme.colors.white,
+    '/skills': theme.colors.primary,
+    '/clients': theme.colors.white,
     '/about': theme.colors.primary,
   };
 
@@ -35,9 +46,12 @@ class TopMenuComponent extends Component {
   render() {
     const { dispatch, path } = this.props;
     const textColor = selectColorByPageIndex(path, this.props.theme);
+    const logoColor = selectLogoColorByPageIndex(path, this.props.theme);
     return (
       <Container>
-        <FontAwesomeIcon size='3x' color={textColor} icon='jedi' />
+        <LogoWrapper>
+          <Logo color={logoColor} />
+        </LogoWrapper>
         <div>
           <MenuItem onClick={() => dispatch({ type: 'HOME' })}>
             <MenuLink isActive={isActive(path, '/')} color={textColor}>

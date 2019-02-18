@@ -64,3 +64,8 @@ MenuLink.propTypes = {
 };
 
 export { MenuLink };
+
+export const LogoWrapper = styled.div`
+  width: 100px;
+  height: 100px;
+`;

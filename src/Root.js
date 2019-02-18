@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faCircleNotch,
-  faJedi,
   faAngleRight,
   faAngleLeft,
   faHome,
@@ -36,7 +35,6 @@ addLocaleData([...en, ...fr]);
 
 library.add(
   faCircleNotch,
-  faJedi,
   faAngleRight,
   faAngleLeft,
   faHome,
