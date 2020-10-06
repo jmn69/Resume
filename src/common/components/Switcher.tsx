@@ -4,12 +4,12 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 type Props = {
   page: string;
-  direction: any;
+  direction: string;
   children: ReactElement;
 };
 
-const Switcher = ({ page, direction: { animation }, children }: Props) => (
-  <TransitionGroup className={`switcher ${animation}`} duration={500}>
+const Switcher = ({ page, direction, children }: Props) => (
+  <TransitionGroup className={`switcher ${direction}`} duration={500}>
     <CSSTransition key={page} timeout={500} classNames="slide">
       {children}
     </CSSTransition>
