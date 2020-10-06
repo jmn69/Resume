@@ -18,7 +18,7 @@ const Switcher = ({ page, direction, children }: Props) => (
 
 const mapStateToProps = (state: any) => ({
   page: state.page,
-  direction: state.direction,
+  direction: state.direction.animation,
 });
 
 export default connect(mapStateToProps)(Switcher);
