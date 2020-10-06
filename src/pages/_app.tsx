@@ -25,7 +25,6 @@ import Switcher from '@/common/components/Switcher';
 import { useStore } from '../store';
 
 import theme from '../theme';
-import '@/css/Init.css';
 import '@/css/External.css';
 
 library.add(
@@ -50,7 +49,7 @@ const GlobalStyle = createGlobalStyle`
 	body{
 		margin: 0;
 		padding: 0;
-    font-family: ${(props) => props.theme.font.family};
+    font-family: ${(props) => props.theme.font.family} ,Tahoma, sans-serif;
 	}
 `;
 
