@@ -2,6 +2,7 @@
 .eslintrc.js
 babel.config.js
 next.config.js
+nextjsMapSiteGenerator.js
 
 # DO ignore JSON-with-comments files
 tsconfig.json

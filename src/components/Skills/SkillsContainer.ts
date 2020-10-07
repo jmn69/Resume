@@ -20,18 +20,13 @@ const hardcodedSkillsData = [
       },
       {
         id: 3,
-        name: 'Unit Test',
-        masteryPercentage: 70,
+        name: 'Vue.js',
+        masteryPercentage: 60,
       },
       {
         id: 4,
-        name: 'Vue.js',
-        masteryPercentage: 40,
-      },
-      {
-        id: 5,
         name: 'Angular',
-        masteryPercentage: 20,
+        masteryPercentage: 50,
       },
     ],
   },
@@ -41,23 +36,23 @@ const hardcodedSkillsData = [
     masteryPercentage: 80,
     skills: [
       {
-        id: 6,
+        id: 5,
         name: 'Node.js',
         masteryPercentage: 90,
       },
       {
-        id: 7,
+        id: 6,
         name: 'API Rest',
         masteryPercentage: 90,
       },
       {
-        id: 8,
+        id: 7,
         name: 'ASP.Net Core, MVC 4/5',
         masteryPercentage: 80,
       },
       {
-        id: 9,
-        name: 'Unit Test',
+        id: 8,
+        name: 'TDD / DDD / BDD',
         masteryPercentage: 70,
       },
     ],
@@ -65,7 +60,7 @@ const hardcodedSkillsData = [
   {
     id: 3,
     name: 'Mobile',
-    masteryPercentage: 70,
+    masteryPercentage: 80,
     skills: [
       {
         id: 10,
@@ -74,18 +69,18 @@ const hardcodedSkillsData = [
       },
       {
         id: 11,
-        name: 'Fastlane/Fabric',
+        name: 'Fastlane',
         masteryPercentage: 70,
       },
       {
         id: 13,
         name: 'Android Natif',
-        masteryPercentage: 70,
+        masteryPercentage: 60,
       },
       {
         id: 14,
         name: 'IOS',
-        masteryPercentage: 40,
+        masteryPercentage: 30,
       },
     ],
   },
@@ -97,12 +92,12 @@ const hardcodedSkillsData = [
       {
         id: 15,
         name: 'Docker',
-        masteryPercentage: 50,
+        masteryPercentage: 80,
       },
       {
         id: 16,
-        name: 'Nginx',
-        masteryPercentage: 50,
+        name: 'Firebase',
+        masteryPercentage: 80,
       },
       {
         id: 17,
@@ -155,8 +150,8 @@ const hardcodedSkillsData = [
       },
       {
         id: 24,
-        name: 'Oracle',
-        masteryPercentage: 20,
+        name: 'Algolia',
+        masteryPercentage: 60,
       },
       {
         id: 25,

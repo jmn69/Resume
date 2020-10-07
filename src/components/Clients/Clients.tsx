@@ -12,7 +12,7 @@ import {
   NodeJs,
 } from '@/common/devicon';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import Firebase from '@/config/firebase';
 import TopMenu from '@/common/components/topMenu';
 import {
   Container,
@@ -57,6 +57,22 @@ type Props = {
 const Clients = ({ hasInit, setPageInit, data }: Props) => {
   const [descriptionClassNames, setDescriptionClassNames] = useState<any>({});
   const [techClassNames, setTechClassNames] = useState<any>({});
+  const [dataSyncWithFirebase, setDataSyncWithFirebase] = useState(data);
+
+  useEffect(() => {
+    const mapDataWithFirebase = async () => {
+      const newData = await Promise.all(
+        data.map(async (item) => {
+          const url = item.image
+            ? await Firebase.storage().ref(item.image).getDownloadURL()
+            : null;
+          return { ...item, url };
+        })
+      );
+      setDataSyncWithFirebase(newData);
+    };
+    mapDataWithFirebase();
+  }, [data]);
 
   useEffect(() => {
     if (!hasInit) {
@@ -128,9 +144,9 @@ const Clients = ({ hasInit, setPageInit, data }: Props) => {
     let delay = delayForRow;
 
     const cards =
-      data &&
-      data.map((client: any, index: number) => {
-        const numberOfRemainingClient = data.length - index;
+      dataSyncWithFirebase &&
+      dataSyncWithFirebase.map((client: any, index: number) => {
+        const numberOfRemainingClient = dataSyncWithFirebase.length - index;
         if (index > 0) {
           delay -= animationDelay;
         }
@@ -164,11 +180,11 @@ const Clients = ({ hasInit, setPageInit, data }: Props) => {
               onBlur={() => handleMouserLeave(client.id)}
             >
               <ImageContainer>
-                {client.image ? (
+                {client.url ? (
                   <img
                     height="100%"
                     width={client.width ? client.width : '100%'}
-                    src={client.image}
+                    src={client.url}
                     alt="no images"
                   />
                 ) : (
@@ -204,8 +220,8 @@ const Clients = ({ hasInit, setPageInit, data }: Props) => {
 
   const renderMobileTablet = () => {
     const cards =
-      data &&
-      data.map((client) => {
+      dataSyncWithFirebase &&
+      dataSyncWithFirebase.map((client) => {
         const techIcons = client.technos.map(
           (tech: any) => techComponents[tech]
         );
@@ -213,11 +229,11 @@ const Clients = ({ hasInit, setPageInit, data }: Props) => {
           <CardContainer key={client.id}>
             <Card onClick={() => handleCardTouch(client.id)}>
               <ImageContainer>
-                {client.image ? (
+                {client.url ? (
                   <img
                     height="100%"
                     width={client.width ? client.width : '100%'}
-                    src={client.image}
+                    src={client.url}
                     alt="no images"
                   />
                 ) : (

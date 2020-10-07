@@ -72,12 +72,16 @@ export const CardsContainer = styled.div`
 `;
 
 export const ImageContainer = styled.div`
-  flex: 5;
+  height: 234px;
   background: ${(props) => props.theme.colors.lightGray};
   border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media screen and (min-width: 1280px) {
+    height: 274px;
+  }
 `;
 
 export const DescriptionContainer = styled.div`
@@ -87,6 +91,7 @@ export const DescriptionContainer = styled.div`
   justify-content: center;
   padding: 4px;
   font-size: 20px;
+  background: white;
 `;
 
 export const StyledAnimated = styled(Animated)`

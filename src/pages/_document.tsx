@@ -32,8 +32,12 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html>
+      <Html lang="en">
         <Head>
+          <meta
+            name="description"
+            content="Jordane MICHON Portfolio, Software engineer Fullstack"
+          />
           <link
             href="https://fonts.googleapis.com/css?family=Lato:300,400,500,700,900&display=swap"
             rel="stylesheet"

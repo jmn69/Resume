@@ -1,3 +1,4 @@
+const withOptimizedImages = require('next-optimized-images');
 const path = require('path');
 
 const config = {
@@ -7,4 +8,4 @@ const config = {
   },
 };
 
-module.exports = config;
+module.exports = withOptimizedImages(config);
