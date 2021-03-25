@@ -165,7 +165,7 @@ const About = ({ setPageInit, hasInit }: Props) => {
                     icon="euro-sign"
                   />
                 </IconWrapper>
-                <TextInformation>ADR 500€</TextInformation>
+                <TextInformation>ADR 600€</TextInformation>
               </RowContainer>
               <RowContainer>
                 <IconWrapper>
